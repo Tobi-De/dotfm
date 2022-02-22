@@ -1,7 +1,6 @@
 ---
-lang: en
-title: This is a good title
-adjective: perfect
+title: This is the home page
+template: home.html
 ---
 
-This is sample text
+

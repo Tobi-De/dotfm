@@ -1,30 +1,24 @@
 import os
 from pathlib import Path
 
-# 1. Django Core Settings
+import environ
 
-# Dangerous: disable host header validation
-ALLOWED_HOSTS = ["*"]
-
-SECRET_KEY = "77563d6d7f54e54fede0eafe0f94635c53dc1f73fa4c1f6c2d4249a30f094dca"
-
+env = environ.Env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": "db.sqlite3",
-    },
-}
+environ.Env.read_env(str(BASE_DIR / ".env"))
 
-DEBUG = os.environ.get("DEBUG", "") == "1"
+ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOST")
+
+SECRET_KEY = env("DJANGO_SECRET_KEY")
+
+DEBUG = env.bool("DJANGO_DEBUG", False)
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 INSTALLED_APPS = [
     "coltrane",
-    "dotfm.core",
 ]
 
 ROOT_URLCONF = "dotfm.urls"
@@ -34,7 +28,7 @@ USE_TZ = True
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [(BASE_DIR / "dotfm/templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
