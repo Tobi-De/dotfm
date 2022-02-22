@@ -1,6 +1,7 @@
 ---
-title: This is the home page
+title: Home page
 template: home.html
+lang: en
 ---
 
-
+Index content
