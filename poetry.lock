@@ -669,7 +669,7 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "c9d8b203f41836a02ab3362483a1ddecc85ef7d063c0e8690d49c03481f1a06c"
+content-hash = "0dfde78b767e5efd29d383e0d27ab623759589e0263c4ef29e02cc004bc47167"
 
 [metadata.files]
 aiopg = [
