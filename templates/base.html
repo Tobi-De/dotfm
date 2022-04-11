@@ -1,14 +1,16 @@
 {% load static %}
 {% load django_browser_reload %}
+{% load tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Tobi DEGNON{% endblock  title%}</title>
+    <title>{% block title %}Tobi DEGNON{% endblock title %}</title>
     <script src="{% static 'js/htmx.min.js' %}" defer></script>
+    {% tailwind_css %}
 </head>
 <body>
-
+{% block content %} {% endblock content %}
 {% django_browser_reload_script %}
 </body>
 </html>

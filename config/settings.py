@@ -14,9 +14,6 @@ if READ_DOT_ENV_FILE:
 
 APPS_DIR = BASE_DIR / "dotfm"
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 
@@ -24,6 +21,10 @@ SECRET_KEY = env("DJANGO_SECRET_KEY")
 DEBUG = env("DJANGO_DEBUG", default=False)
 
 ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS")
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
 # Application definition
 
@@ -42,15 +43,19 @@ THIRD_PARTY_APPS = [
     "coltrane",
     "procrastinate.contrib.django",
     "django_browser_reload",
+    "tailwind",
 ]
 
 LOCAL_APPS = [
     "dotfm.core",
     "dotfm.blog",
     "dotfm.newsletter",
+    "dotfm.theme",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+TAILWIND_APP_NAME = "dotfm.theme"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -160,7 +165,7 @@ LOGGING = {
     "formatters": {
         "verbose": {
             "format": "%(levelname)s %(asctime)s %(module)s "
-                      "%(process)d %(thread)d %(message)s"
+            "%(process)d %(thread)d %(message)s"
         }
     },
     "handlers": {
