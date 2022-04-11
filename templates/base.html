@@ -1,0 +1,14 @@
+{% load static %}
+{% load django_browser_reload %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Tobi DEGNON{% endblock  title%}</title>
+    <script src="{% static 'js/htmx.min.js' %}" defer></script>
+</head>
+<body>
+
+{% django_browser_reload_script %}
+</body>
+</html>
