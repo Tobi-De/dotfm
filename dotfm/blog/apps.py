@@ -2,5 +2,8 @@ from django.apps import AppConfig
 
 
 class BlogConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'dotfm.blog'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "dotfm.blog"
+
+    def ready(self):
+        import dotfm.blog.listeners  # noqa

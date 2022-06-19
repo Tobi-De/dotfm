@@ -34,12 +34,13 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
+    "taggit",
     "django_htmx",
-    "coltrane",
-    "procrastinate.contrib.django",
-    "django_browser_reload",
     "tailwind",
     "django_extensions",
+    "pgtrigger",
+    "pgpubsub",
+    "django_browser_reload",
 ]
 
 LOCAL_APPS = [

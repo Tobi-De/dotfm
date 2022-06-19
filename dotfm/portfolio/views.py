@@ -6,4 +6,4 @@ from .models import Project
 
 @render_html("portfolio/projects.html")
 def project_list(request: HttpRequest):
-    return Project.objects.order_by("-created")
+    return {"projects": Project.objects.order_by("-created")}
