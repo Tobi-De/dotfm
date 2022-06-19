@@ -14,7 +14,7 @@ WORKDIR /code
 
 RUN apk update \
     && apk add --virtual build-deps build-base \
-    && apk add --no-cache libffi-dev redis \
+    && apk add --no-cache libffi-dev libpq-dev redis \
     && pip install --upgrade pip supervisor \
     && python --version
 
