@@ -1,4 +1,4 @@
-FROM python:3.10.4-bullseye as requirements-stage
+FROM python:3.10 as requirements-stage
 
 WORKDIR /tmp
 
@@ -8,9 +8,15 @@ COPY ./pyproject.toml ./poetry.lock* /tmp/
 
 RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 
-FROM python:3.10.4-bullseye
+FROM python:3.10-alpine
 
 WORKDIR /code
+
+RUN apk update \
+    && apk add --virtual build-deps build-base \
+    && apk add --no-cache libffi-dev redis \
+    && pip install --upgrade pip supervisor \
+    && python --version
 
 COPY --from=requirements-stage /tmp/requirements.txt /code/requirements.txt
 
@@ -20,4 +26,4 @@ COPY . /code
 
 EXPOSE 80
 
-CMD ["sh", "/code/runserver.sh"]
+CMD ["supervisord", "-c", "/etc/supervisord.conf"]
