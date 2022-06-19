@@ -39,9 +39,11 @@ THIRD_PARTY_APPS = [
     "procrastinate.contrib.django",
     "django_browser_reload",
     "tailwind",
+    "django_extensions",
 ]
 
 LOCAL_APPS = [
+    "dotfm.portfolio",
     "dotfm.blog",
     "dotfm.newsletter",
     "dotfm.theme",
@@ -155,3 +157,16 @@ LOGGING = {
     },
     "root": {"level": "INFO", "handlers": ["console"]},
 }
+
+# Blog author
+AUTHOR_USERNAME = env("AUTHOR_USERNAME", default="tobi")
+AUTHOR_EMAIL = env("AUTHOR_EMAIL", default="tobidegnon@proton.me")
+AUTHOR_PASSWORD = env("AUTHOR_PASSWORD")
+# Socials
+# TODO fill up these
+AUTHOR_TWITTER = env.url("AUTHOR_TWITTER", default="")
+AUTHOR_GITHUB = env.url("AUTHOR_GIHUB", default="https://github.com/Tobi-De")
+AUTHOR_DEVTO = env.url("AUTHOR_DEVTO", default="")
+AUTHOR_HASHNODE = env.url("AUTHOR_HASHNODE", default="")
+AUTHOR_POLYWORK = env.url("AUTHOR_POLYWORK", default="")
+AUTHOR_SPOTIFY = env.url("AUTHOR_SPOTIFY", default="")
