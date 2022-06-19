@@ -20,6 +20,8 @@ RUN apk update \
 
 COPY --from=requirements-stage /tmp/requirements.txt /code/requirements.txt
 
+COPY supervisord.conf /etc/supervisord.conf
+
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 COPY . /code
