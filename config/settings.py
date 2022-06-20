@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import environ
+import pgconnection
 
 env = environ.Env()
 
@@ -39,7 +40,6 @@ THIRD_PARTY_APPS = [
     "tailwind",
     "django_extensions",
     "pgtrigger",
-    "pgpubsub",
     "django_browser_reload",
 ]
 
@@ -87,12 +87,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-DATABASES = {
-    "default": env.db(
-        "DATABASE_URL",
-        default="postgres:///dotfm",
-    ),
-}
+DATABASES = pgconnection.configure(
+    {
+        "default": env.db(
+            "DATABASE_URL",
+            default="postgres:///dotfm",
+        ),
+    }
+)
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 

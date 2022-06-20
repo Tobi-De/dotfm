@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from django.http import HttpRequest
 
-# Create your views here.
+
+def subscribe(request: HttpRequest):
+    pass
+
+
+def unsubscribe(request: HttpRequest):
+    pass

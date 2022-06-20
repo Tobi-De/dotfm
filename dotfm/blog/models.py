@@ -35,12 +35,13 @@ class Post(LifecycleModel, TimeStampedModel):
     title = models.CharField(max_length=255, unique=True, db_index=True)
     overview = models.TextField()
     content = models.TextField()
+    content_changed = MonitorField(monitor="content")
     slug = AutoSlugField(populate_from=("title",), max_length=120)
     status = models.CharField(
         max_length=30, choices=Status.choices, default=Status.DRAFT
     )
-    featured = models.BooleanField(default=False)
     published_at = MonitorField(monitor="status", when=(Status.PUBLISHED,))
+    featured = models.BooleanField(default=False)
     auto_publishing_date = models.DateTimeField(null=True, blank=True)
     private_key = UrlsafeTokenField(
         editable=False, help_text="Use to privately share a draft post"
@@ -83,6 +84,11 @@ class Post(LifecycleModel, TimeStampedModel):
         return minutes if seconds < 30 else (minutes + 1)
 
     @property
+    def html_overview(self) -> str:
+        """render the post overview to html"""
+        return markdown(self.overview, extras=MARKDOWN_EXTRAS)
+
+    @property
     def html_content(self) -> str:
         """render the post content to html"""
         return markdown(self.content, extras=MARKDOWN_EXTRAS)
@@ -100,9 +106,9 @@ class Post(LifecycleModel, TimeStampedModel):
     def _create_auto_publishing_task(self):
         if not self.auto_publishing_date:
             return
-        # TODO
+        # TODO create scheduler task
 
-    @hook(AFTER_CREATE, when="auto_publishing_date", was_not=None)
+    @hook(AFTER_CREATE, when="auto_publishing_date", is_not=None)
     def create_auto_publishing_task(self):
         self._create_auto_publishing_task()
 
@@ -113,3 +119,5 @@ class Post(LifecycleModel, TimeStampedModel):
     def publish(self) -> None:
         self.status = self.Status.PUBLISHED
         self.save()
+        # publish to all channels
+        # TODO publishing to all channels
