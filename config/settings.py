@@ -36,10 +36,13 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     "taggit",
+    "crispy_forms",
+    "crispy_tailwind",
     "django_htmx",
     "tailwind",
     "django_extensions",
     "pgtrigger",
+    "django_q",
     "django_browser_reload",
 ]
 
@@ -167,9 +170,31 @@ AUTHOR_EMAIL = env("AUTHOR_EMAIL", default="tobidegnon@proton.me")
 AUTHOR_PASSWORD = env("AUTHOR_PASSWORD")
 # Socials
 # TODO fill up these
-AUTHOR_TWITTER = env.url("AUTHOR_TWITTER", default="")
+AUTHOR_TWITTER = env.url("AUTHOR_TWITTER", default="https://twitter.com/tobidegnon")
 AUTHOR_GITHUB = env.url("AUTHOR_GIHUB", default="https://github.com/Tobi-De")
-AUTHOR_DEVTO = env.url("AUTHOR_DEVTO", default="")
-AUTHOR_HASHNODE = env.url("AUTHOR_HASHNODE", default="")
-AUTHOR_POLYWORK = env.url("AUTHOR_POLYWORK", default="")
-AUTHOR_SPOTIFY = env.url("AUTHOR_SPOTIFY", default="")
+AUTHOR_DEVTO = env.url("AUTHOR_DEVTO", default="https://dev.to/tobi")
+AUTHOR_HASHNODE = env.url("AUTHOR_HASHNODE", default="https://tobidegnon.hashnode.dev/")
+AUTHOR_POLYWORK = env.url(
+    "AUTHOR_POLYWORK", default="https://www.polywork.com/tobidegnon"
+)
+AUTHOR_SPOTIFY = env.url(
+    "AUTHOR_SPOTIFY",
+    default="https://open.spotify.com/user/16nkjfi9016vplwwuohlk9t5n?si=32da9f7b741f4ef4",
+)
+
+# django-q
+
+Q_CLUSTER = {
+    "name": "Django-ORM",
+    "workers": 4,
+    "timeout": 90,
+    "retry": 120,
+    "queue_limit": 50,
+    "bulk": 10,
+    "orm": "default",
+}
+
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+
+CRISPY_TEMPLATE_PACK = "tailwind"

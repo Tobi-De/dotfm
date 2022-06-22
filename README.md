@@ -20,3 +20,4 @@ Code source for my [personal website](https://tobi.dotfm.tech).
 - [ ] Newsletter -  subscribe
 - [ ] Newsletter -  unsubscribe
 - [ ] Sitemaps
+- [ ] Announce post on twitter and polywork

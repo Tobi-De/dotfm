@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.utils.html import strip_tags
 from django_extensions.db.fields import AutoSlugField
 from django_lifecycle import AFTER_CREATE, AFTER_UPDATE, LifecycleModel, hook
+from django_q.tasks import schedule
 from markdown2 import markdown
 from model_utils.fields import MonitorField, UrlsafeTokenField
 from model_utils.models import QueryManager, TimeStampedModel
@@ -99,14 +100,14 @@ class Post(LifecycleModel, TimeStampedModel):
         return ""
 
     @property
-    def menu_items(self) -> dict[str, str]:
+    def mini_menu(self) -> dict[str, str]:
         """build a menu from content into a dictionary with menu name as key  and the url for value."""
         return {}
 
     def _create_auto_publishing_task(self):
         if not self.auto_publishing_date:
             return
-        # TODO create scheduler task
+        schedule("dotfm.blog.tasks.publish_post", self.id)
 
     @hook(AFTER_CREATE, when="auto_publishing_date", is_not=None)
     def create_auto_publishing_task(self):
