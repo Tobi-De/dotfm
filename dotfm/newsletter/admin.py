@@ -9,9 +9,10 @@ class SubscriberAdmin(admin.ModelAdmin):
         "id",
         "full_name",
         "email",
-        "code",
-        "confirmed",
+        "secret",
+        "confirmed_at",
+        "unsubscribe_at",
         "created",
         "modified",
     )
-    list_filter = ("created", "modified", "confirmed")
+    list_filter = ("created", "modified", "confirmed_at", "unsubscribe_at")

@@ -3,11 +3,10 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import TemplateView
 
-from dotfm.portfolio.views import project_list
-
 urlpatterns = [
-    path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
-    path("projects/", project_list, name="projects"),
+    path("", TemplateView.as_view(template_name="home.html"), name="home"),
+    path("blog/", include("dotfm.blog.urls", namespace="blog")),
+    path("newsletter/", include("dotfm.newsletter.urls", namespace="newsletter")),
     path(settings.ADMIN_URL, admin.site.urls),
 ]
 

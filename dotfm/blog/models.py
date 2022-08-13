@@ -1,4 +1,6 @@
-import pgtrigger
+from collections import Counter
+from itertools import chain
+
 from django.db import models
 from django.urls import reverse
 from django.utils.html import strip_tags
@@ -27,7 +29,6 @@ MARKDOWN_EXTRAS = [
 ]
 
 
-@pgtrigger.register(pgtrigger.SoftDelete(name="soft_delete", field="is_active"))
 class Post(LifecycleModel, TimeStampedModel):
     class Status(models.TextChoices):
         DRAFT = "DRAFT", "Draft"
@@ -45,10 +46,7 @@ class Post(LifecycleModel, TimeStampedModel):
     featured = models.BooleanField(default=False)
     auto_publishing_date = models.DateTimeField(null=True, blank=True)
     private_key = UrlsafeTokenField(
-        editable=False, help_text="Use to privately share a draft post"
-    )
-    is_active = models.BooleanField(
-        default=True, help_text="Set to False when an instance is deleted"
+        editable=False, help_text="Use to privately share a draft version of the post."
     )
 
     objects = models.Manager()
@@ -62,15 +60,13 @@ class Post(LifecycleModel, TimeStampedModel):
         return self.title
 
     def get_absolute_url(self) -> str:
-        return reverse("blog:post_detail", kwargs={"slug": self.slug})
+        return reverse("blog:detail", kwargs={"slug": self.slug})
 
     @property
     def sharable_url(self):
         url = self.get_absolute_url()
         if self.status == self.Status.DRAFT:
-            url = reverse(
-                "blog:private_post_detail", kwargs={"private_key": self.private_key}
-            )
+            url = reverse("blog:private", kwargs={"key": self.private_key})
         return url
 
     @property
@@ -99,11 +95,6 @@ class Post(LifecycleModel, TimeStampedModel):
         # TODO
         return ""
 
-    @property
-    def mini_menu(self) -> dict[str, str]:
-        """build a menu from content into a dictionary with menu name as key  and the url for value."""
-        return {}
-
     def _create_auto_publishing_task(self):
         if not self.auto_publishing_date:
             return
@@ -122,3 +113,9 @@ class Post(LifecycleModel, TimeStampedModel):
         self.save()
         # publish to all channels
         # TODO publishing to all channels
+
+    @classmethod
+    def top_tags(cls, max_nbr: int = 10) -> list[str]:
+        all_tags = [post.tags.names() for post in Post.objects.all()]
+        all_tags = chain(*all_tags)
+        return list(Counter(all_tags).keys())[:max_nbr]

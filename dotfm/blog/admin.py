@@ -12,7 +12,6 @@ class PostAdmin(admin.ModelAdmin):
         "status",
         "published_at",
         "auto_publishing_date",
-        "is_active",
         "created",
         "modified",
     )
@@ -22,7 +21,7 @@ class PostAdmin(admin.ModelAdmin):
         "featured",
         "published_at",
         "auto_publishing_date",
-        "is_active",
+        "status",
     )
     raw_id_fields = ("tags",)
     search_fields = ("title", "description", "overview")
