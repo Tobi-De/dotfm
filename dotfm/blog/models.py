@@ -92,7 +92,7 @@ class Post(LifecycleModel, TimeStampedModel):
 
     @property
     def html_metadata(self) -> str:
-        # TODO
+        # TODO the idea is generating meta tags
         return ""
 
     def _create_auto_publishing_task(self):
