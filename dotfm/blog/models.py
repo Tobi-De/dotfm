@@ -6,7 +6,6 @@ from django.urls import reverse
 from django.utils.html import strip_tags
 from django_extensions.db.fields import AutoSlugField
 from django_lifecycle import AFTER_CREATE, AFTER_UPDATE, LifecycleModel, hook
-from django_q.tasks import schedule
 from markdown2 import markdown
 from model_utils.fields import MonitorField, UrlsafeTokenField
 from model_utils.models import QueryManager, TimeStampedModel
@@ -98,7 +97,7 @@ class Post(LifecycleModel, TimeStampedModel):
     def _create_auto_publishing_task(self):
         if not self.auto_publishing_date:
             return
-        schedule("dotfm.blog.tasks.publish_post", self.id)
+        # schedule("dotfm.blog.tasks.publish_post", self.id)
 
     @hook(AFTER_CREATE, when="auto_publishing_date", is_not=None)
     def create_auto_publishing_task(self):

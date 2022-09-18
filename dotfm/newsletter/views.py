@@ -1,7 +1,5 @@
-from crispy_forms.templatetags.crispy_forms_tags import as_crispy_form
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404
-from django.utils.html import format_html
 from django.views.decorators.http import require_POST
 from fbv.decorators import render_html
 
@@ -10,18 +8,17 @@ from .models import Subscriber
 
 
 def index(request: HttpRequest):
-    return format_html(as_crispy_form(SubscriberForm()))
+    return HttpResponse(SubscriberForm().render())
 
 
 @require_POST
 def subscribe_hxpost(request: HttpRequest):
     form = SubscriberForm(request.POST)
-    html = format_html(as_crispy_form(form))
-    if form.is_valid():
-        instance: Subscriber = form.save()
-        instance.send_confirmation_email(request)
-        html = format_html("<p>Check your email for the confirmation email<p>")
-    return HttpResponse(html)
+    if not form.is_valid():
+        return HttpResponse(form.render())
+    instance: Subscriber = form.save()
+    instance.send_confirmation_email(request)
+    return HttpResponse("<p>Check your email for the confirmation email<p>")
 
 
 @render_html("newsletter/confirm_subscription.html")

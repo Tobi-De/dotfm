@@ -37,12 +37,9 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     "taggit",
-    "crispy_forms",
-    "crispy_tailwind",
     "django_htmx",
     "tailwind",
     "django_extensions",
-    "django_q",
     "django_browser_reload",
 ]
 
@@ -185,17 +182,3 @@ AUTHOR_SPOTIFY = env.url(
     "AUTHOR_SPOTIFY",
     default="https://open.spotify.com/user/16nkjfi9016vplwwuohlk9t5n?si=32da9f7b741f4ef4",
 )
-
-Q_CLUSTER = {
-    "name": "Django-ORM",
-    "workers": 4,
-    "timeout": 90,
-    "retry": 120,
-    "queue_limit": 50,
-    "bulk": 10,
-    "orm": "default",
-}
-
-CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
-
-CRISPY_TEMPLATE_PACK = "tailwind"

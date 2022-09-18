@@ -1,8 +1,7 @@
 from django.core.mail import send_mail
 from django.db import models
 from django.http import HttpRequest
-from django.template.engine import Context
-from django.template.loader import get_template
+from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.html import strip_tags
@@ -46,8 +45,10 @@ class Subscriber(TimeStampedModel):
 
     def send_welcome_email(self, request: HttpRequest) -> None:
         blog_link = request.build_absolute_uri(reverse("blog:index"))
-        body = get_template("newsletter/emails/welcome.html").render(
-            context=Context({"blog_link": blog_link, "subscriber": self})
+        body = render_to_string(
+            "newsletter/emails/welcome.html",
+            request=request,
+            context={"blog_link": blog_link, "subscriber": self},
         )
         send_mail(
             subject="Welcome to my newsletter",
