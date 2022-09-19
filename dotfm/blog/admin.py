@@ -1,17 +1,18 @@
 from django.contrib import admin
+from solo.admin import SingletonModelAdmin
 
-from .models import Post
+from .models import Author, Post
+
+admin.site.register(Author, SingletonModelAdmin)
 
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = (
-        "id",
+        "slug",
         "title",
         "overview",
-        "status",
-        "published_at",
-        "auto_publishing_date",
+        "featured",
         "created",
         "modified",
     )
@@ -19,9 +20,14 @@ class PostAdmin(admin.ModelAdmin):
         "created",
         "modified",
         "featured",
-        "published_at",
-        "auto_publishing_date",
-        "status",
     )
     raw_id_fields = ("tags",)
-    search_fields = ("title", "description", "overview")
+    search_fields = ("slug",)
+
+    @classmethod
+    def title(cls, obj: Post):
+        return obj.title
+
+    @classmethod
+    def overview(cls, obj: Post):
+        return obj.overview

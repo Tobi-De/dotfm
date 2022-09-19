@@ -8,6 +8,9 @@ ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 APPS_DIR = ROOT_DIR / "dotfm"
 
+# Only used by coltrane to find the content directory
+BASE_DIR = APPS_DIR / "blog"
+
 READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
 
 if READ_DOT_ENV_FILE:
@@ -41,6 +44,8 @@ THIRD_PARTY_APPS = [
     "tailwind",
     "django_extensions",
     "django_browser_reload",
+    "coltrane",
+    "solo",
 ]
 
 LOCAL_APPS = [
@@ -79,7 +84,6 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "dotfm.blog.context_processors.author_infos",
             ],
         },
     },
@@ -159,26 +163,3 @@ LOGGING = {
     },
     "root": {"level": "INFO", "handlers": ["console"]},
 }
-
-AUTHOR_USERNAME = env("AUTHOR_USERNAME", default="tobi")
-
-AUTHOR_EMAIL = env("AUTHOR_EMAIL", default="tobidegnon@proton.me")
-
-AUTHOR_PASSWORD = env("AUTHOR_PASSWORD")
-
-AUTHOR_TWITTER = env.url("AUTHOR_TWITTER", default="https://twitter.com/tobidegnon")
-
-AUTHOR_GITHUB = env.url("AUTHOR_GIHUB", default="https://github.com/Tobi-De")
-
-AUTHOR_DEVTO = env.url("AUTHOR_DEVTO", default="https://dev.to/tobi")
-
-AUTHOR_HASHNODE = env.url("AUTHOR_HASHNODE", default="https://tobidegnon.hashnode.dev/")
-
-AUTHOR_POLYWORK = env.url(
-    "AUTHOR_POLYWORK", default="https://www.polywork.com/tobidegnon"
-)
-
-AUTHOR_SPOTIFY = env.url(
-    "AUTHOR_SPOTIFY",
-    default="https://open.spotify.com/user/16nkjfi9016vplwwuohlk9t5n?si=32da9f7b741f4ef4",
-)

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% load solo_tags %}
+
+
+{% block content %}
+    {% get_solo 'blog.Author' as author %}
+{% endblock %}

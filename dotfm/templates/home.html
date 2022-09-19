@@ -1,6 +1,9 @@
 {% extends "base.html" %}
+{% load solo_tags %}
+
 
 {% block content %}
+    {% get_solo 'blog.Author' as author %}
     <div class="grid grid-cols-5 gap-2">
         <header class="col-span-5 flex w-full h-24 px-14">
             <nav class="flex w-full items-center">
@@ -28,8 +31,10 @@
                     <h1 class="text-xl mb-7 ml-1 font-normal">hi, my name is</h1>
                     <h2 class="font-semibold leading-tight" style="font-size: clamp(40px, 8vw, 80px);">Tobi DEGNON.</h2>
                 </header>
-                <h3 class="mt-2.5 font-semibold" style="font-size: clamp(40px, 8vw, 80px);">I build things for the web</h3>
-                <p class="mt-5 max-w-xl">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut culpa expedita labore laudantium quidem
+                <h3 class="mt-2.5 font-semibold" style="font-size: clamp(40px, 8vw, 80px);">I build things for the
+                    web</h3>
+                <p class="mt-5 max-w-xl">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut culpa expedita
+                    labore laudantium quidem
                     sapiente similique, suscipit vitae. Aperiam consequatur ea excepturi expedita quasi. A modi
                     necessitatibus quae ut? Architecto!</p>
             </section>

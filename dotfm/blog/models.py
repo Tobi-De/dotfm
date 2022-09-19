@@ -1,55 +1,49 @@
 from collections import Counter
 from itertools import chain
 
+from coltrane.renderer import StaticRequest, render_markdown
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
+from django.utils.functional import cached_property
 from django.utils.html import strip_tags
-from django_extensions.db.fields import AutoSlugField
-from django_lifecycle import AFTER_CREATE, AFTER_UPDATE, LifecycleModel, hook
-from markdown2 import markdown
-from model_utils.fields import MonitorField, UrlsafeTokenField
-from model_utils.models import QueryManager, TimeStampedModel
+from django_lifecycle import LifecycleModel
+from model_utils.models import TimeStampedModel
+from solo.models import SingletonModel
 from taggit.managers import TaggableManager
 
-# List of all available extras: https://github.com/trentm/python-markdown2/wiki/Extras
-MARKDOWN_EXTRAS = [
-    "fenced-code-blocks",
-    "header-ids",
-    "metadata",
-    "strike",
-    "tables",
-    "task_list",
-    "nofollow",
-    "code-friendly",
-    "footnotes",
-    "numbering",
-    "strike",
-    "toc",
-]
+
+class Author(SingletonModel):
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    twitter = models.URLField(blank=True)
+    github = models.URLField(blank=True)
+    devto = models.URLField(blank=True)
+    hashnode = models.URLField(blank=True)
+    polywork = models.URLField(blank=True)
+    spotify = models.URLField(blank=True)
+
+    def __str__(self):
+        return self.name
+
+
+def _check_if_content_file_exists(slug: str):
+    try:
+        render_markdown(slug=slug, request=StaticRequest("/"))
+    except FileNotFoundError:
+        raise ValidationError(f"File {slug}.md not found")
 
 
 class Post(LifecycleModel, TimeStampedModel):
-    class Status(models.TextChoices):
-        DRAFT = "DRAFT", "Draft"
-        PUBLISHED = "PUBLISHED", "Published"
-
-    title = models.CharField(max_length=255, unique=True, db_index=True)
-    overview = models.TextField()
-    content = models.TextField()
-    content_changed = MonitorField(monitor="content")
-    slug = AutoSlugField(populate_from=("title",), max_length=120)
-    status = models.CharField(
-        max_length=30, choices=Status.choices, default=Status.DRAFT
+    slug = models.SlugField(
+        unique=True,
+        max_length=255,
+        db_index=True,
+        validators=(_check_if_content_file_exists,),
     )
-    published_at = MonitorField(monitor="status", when=(Status.PUBLISHED,))
     featured = models.BooleanField(default=False)
-    auto_publishing_date = models.DateTimeField(null=True, blank=True)
-    private_key = UrlsafeTokenField(
-        editable=False, help_text="Use to privately share a draft version of the post."
-    )
 
     objects = models.Manager()
-    public = QueryManager(status=Status.PUBLISHED, is_active=True).order_by("-created")
     tags = TaggableManager()
 
     class Meta:
@@ -59,59 +53,31 @@ class Post(LifecycleModel, TimeStampedModel):
         return self.title
 
     def get_absolute_url(self) -> str:
-        return reverse("blog:detail", kwargs={"slug": self.slug})
+        return reverse("coltrane:content", args=[self.slug])
+
+    @cached_property
+    def coltrane_context(self) -> dict:
+        _, context = render_markdown(slug=self.slug, request=StaticRequest("/"))
+        return context
 
     @property
-    def sharable_url(self):
-        url = self.get_absolute_url()
-        if self.status == self.Status.DRAFT:
-            url = reverse("blog:private", kwargs={"key": self.private_key})
-        return url
+    def title(self) -> str:
+        return self.coltrane_context.get("title")
 
     @property
-    def is_published(self):
-        return self.status == self.Status.PUBLISHED
+    def overview(self) -> str:
+        return self.coltrane_context.get("overview", "")
 
     @property
-    def reading_time(self):
-        word_count = len(strip_tags(markdown(self.content)).split())
-        minutes = int(str(word_count / 200).split(".")[0])
-        seconds = round(int(str(word_count / 200).split(".")[1]) * 0.60)
-        return minutes if seconds < 30 else (minutes + 1)
-
-    @property
-    def html_overview(self) -> str:
-        """render the post overview to html"""
-        return markdown(self.overview, extras=MARKDOWN_EXTRAS)
-
-    @property
-    def html_content(self) -> str:
-        """render the post content to html"""
-        return markdown(self.content, extras=MARKDOWN_EXTRAS)
-
-    @property
-    def html_metadata(self) -> str:
-        # TODO the idea is generating meta tags
-        return ""
-
-    def _create_auto_publishing_task(self):
-        if not self.auto_publishing_date:
-            return
-        # schedule("dotfm.blog.tasks.publish_post", self.id)
-
-    @hook(AFTER_CREATE, when="auto_publishing_date", is_not=None)
-    def create_auto_publishing_task(self):
-        self._create_auto_publishing_task()
-
-    @hook(AFTER_UPDATE, when="auto_publishing_date", has_changed=True)
-    def create_auto_publishing_task_(self):
-        self._create_auto_publishing_task()
-
-    def publish(self) -> None:
-        self.status = self.Status.PUBLISHED
-        self.save()
-        # publish to all channels
-        # TODO publishing to all channels
+    def reading_time_minutes(self) -> int:
+        content = self.coltrane_context.get("content")
+        word_count = len(strip_tags(content).split())
+        #  this is based on the generally understood statistic that most adults
+        #  read at about 200 words per minute
+        value = word_count / 200
+        minutes, decimal_points = divmod(value, 1)
+        seconds = decimal_points * 0.60
+        return round(minutes if seconds < 30 else (minutes + 1))
 
     @classmethod
     def top_tags(cls, max_nbr: int = 10) -> list[str]:

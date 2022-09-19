@@ -14,6 +14,7 @@
           content="developer, backend, python, django, htmx, fastapi, database, web, technology, portfolio, blog">
     <script src="{% static 'js/htmx.min.js' %}" defer></script>
     {% tailwind_css %}
+    {% block css %}{% endblock css %}
 </head>
 {% django_browser_reload_script %}
 <body>
