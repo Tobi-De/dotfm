@@ -363,18 +363,6 @@ python-versions = ">=3.6"
 Django = ">=3.2"
 
 [[package]]
-name = "django-tailwind"
-version = "3.4.0"
-description = "Tailwind CSS Framework for Django projects"
-category = "main"
-optional = false
-python-versions = ">=3.8,<4.0"
-
-[package.dependencies]
-django = ">=3.2.14"
-django-browser-reload = ">=1.6.0,<2.0.0"
-
-[[package]]
 name = "executing"
 version = "1.0.0"
 description = "Get the currently executing AST node of a frame, and other information"
@@ -958,7 +946,7 @@ python-versions = "*"
 
 [[package]]
 name = "sqlparse"
-version = "0.4.2"
+version = "0.4.3"
 description = "A non-validating SQL parser."
 category = "main"
 optional = false
@@ -1146,7 +1134,7 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "602a01454c2f2e575a3d3db3836cbd051974d218e79cb6aa908457abc665b460"
+content-hash = "4331916ec2a67a5d53620c5e5834989f1494351922e9cf84c351ca4f265404d2"
 
 [metadata.files]
 appnope = [
@@ -1283,10 +1271,6 @@ django-stubs-ext = [
 django-taggit = [
     {file = "django-taggit-3.0.0.tar.gz", hash = "sha256:e645b8e3dd4f85989d5ef5c5a3d5ebbe5badf5d1e51b53e42d0af726240b00b9"},
     {file = "django_taggit-3.0.0-py3-none-any.whl", hash = "sha256:ca2df20399a11321db75988404afb640a08eff61e52bde35f6c16f307004ec9e"},
-]
-django-tailwind = [
-    {file = "django-tailwind-3.4.0.tar.gz", hash = "sha256:b0ea5f2e2e45b86f7165673291323e46200a91cfed99b80278272a49f034c7a4"},
-    {file = "django_tailwind-3.4.0-py3-none-any.whl", hash = "sha256:ce47a28b466e2e427534ee5a8c6f2ee7f7ffb6bce83b55b7ec22be994b293b65"},
 ]
 executing = [
     {file = "executing-1.0.0-py2.py3-none-any.whl", hash = "sha256:550d581b497228b572235e633599133eeee67073c65914ca346100ad56775349"},
@@ -1652,8 +1636,8 @@ spinners = [
     {file = "spinners-0.0.24.tar.gz", hash = "sha256:1eb6aeb4781d72ab42ed8a01dcf20f3002bf50740d7154d12fb8c9769bf9e27f"},
 ]
 sqlparse = [
-    {file = "sqlparse-0.4.2-py3-none-any.whl", hash = "sha256:48719e356bb8b42991bdbb1e8b83223757b93789c00910a616a071910ca4a64d"},
-    {file = "sqlparse-0.4.2.tar.gz", hash = "sha256:0c00730c74263a94e5a9919ade150dfc3b19c574389985446148402998287dae"},
+    {file = "sqlparse-0.4.3-py3-none-any.whl", hash = "sha256:0323c0ec29cd52bceabc1b4d9d579e311f3e4961b98d174201d5622a23b85e34"},
+    {file = "sqlparse-0.4.3.tar.gz", hash = "sha256:69ca804846bb114d2ec380e4360a8a340db83f0ccf3afceeb1404df028f57268"},
 ]
 stack-data = [
     {file = "stack_data-0.5.0-py3-none-any.whl", hash = "sha256:66d2ebd3d7f29047612ead465b6cae5371006a71f45037c7e2507d01367bce3b"},

@@ -1,15 +1,13 @@
 {% extends "coltrane/base.html" %}
 {% load static %}
-{% block css %}
-{#    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">#}
-    <link rel="stylesheet" href="{% static "css/code.css" %}"/>
-{% endblock %}
 
 {% block content %}
     <div class="container mx-auto px-4 py-4">
-        <div class="flex flex-row gap-4">
-            <div class="basis-2/6 prose">{{ toc }}</div>
-            <div class="basis-4/6 prose" >{{ content }}</div>
+        <div class="flex flex-col xl:flex-row gap-4">
+            <div class="prose prose-sm lg:prose-base">
+                {{ toc }}
+            </div>
+            <div class="prose md:prose-lg lg:prose-xl">{{ content }}</div>
         </div>
     </div>
 {% endblock content %}

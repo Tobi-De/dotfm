@@ -8,6 +8,7 @@ from django.urls import reverse
 from django.utils.functional import cached_property
 from django.utils.html import strip_tags
 from django_lifecycle import LifecycleModel
+from model_utils.managers import QueryManager
 from model_utils.models import TimeStampedModel
 from solo.models import SingletonModel
 from taggit.managers import TaggableManager
@@ -34,17 +35,24 @@ def _check_if_content_file_exists(slug: str):
         raise ValidationError(f"File {slug}.md not found")
 
 
-class Post(LifecycleModel, TimeStampedModel):
+class Entry(LifecycleModel, TimeStampedModel):
+    class Type(models.TextChoices):
+        POST = "POST", "Post"
+        SNIPPET = "SNIPPET", "Snippet"
+
     slug = models.SlugField(
         unique=True,
         max_length=255,
         db_index=True,
         validators=(_check_if_content_file_exists,),
     )
+    type = models.CharField(max_length=8, choices=Type.choices, default=Type.POST)
     featured = models.BooleanField(default=False)
 
     objects = models.Manager()
     tags = TaggableManager()
+    snippets = QueryManager(type=Type.SNIPPET)
+    posts = QueryManager(type=Type.POST)
 
     class Meta:
         ordering = ("-created",)
@@ -53,7 +61,8 @@ class Post(LifecycleModel, TimeStampedModel):
         return self.title
 
     def get_absolute_url(self) -> str:
-        return reverse("coltrane:content", args=[self.slug])
+        prefix = "posts" if self.type == self.Type.POST else "snippets"
+        return reverse("coltrane:content", args=[f"{prefix}/{self.slug}"])
 
     @cached_property
     def coltrane_context(self) -> dict:

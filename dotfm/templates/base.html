@@ -1,6 +1,5 @@
 {% load static %}
 {% load django_browser_reload %}
-{% load tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,12 +11,11 @@
     <meta name="author" content="Tobi DEGNON">
     <meta name="keywords"
           content="developer, backend, python, django, htmx, fastapi, database, web, technology, portfolio, blog">
-    <script src="{% static 'js/htmx.min.js' %}" defer></script>
-    {% tailwind_css %}
-    {% block css %}{% endblock css %}
+    <link rel="stylesheet" href="{% static "bundle.css" %}">
+    <script src="{% static 'bundle.js' %}" defer></script>
 </head>
 {% django_browser_reload_script %}
-<body>
+<body class="bg-slate-900 text-slate-400">
 {% block content %} {% endblock content %}
 </body>
 </html>

@@ -41,7 +41,6 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     "taggit",
     "django_htmx",
-    "tailwind",
     "django_extensions",
     "django_browser_reload",
     "coltrane",
@@ -51,12 +50,9 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "dotfm.blog",
     "dotfm.newsletter",
-    "dotfm.theme",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
-
-TAILWIND_APP_NAME = "dotfm.theme"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
