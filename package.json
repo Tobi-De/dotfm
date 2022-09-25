@@ -6,12 +6,14 @@
   "repository": "git@github.com:Tobi-De/dotfm.git",
   "author": "Tobi-De <tobidegnon@protonmail.com>",
   "license": "MIT",
+  "web-types": "./htmx-web-types.json",
   "scripts": {
     "build": "./build.js"
   },
   "dependencies": {
     "esbuild": "^0.15.9",
-    "htmx.org": "^1.8.0"
+    "htmx.org": "^1.8.0",
+    "mermaid": "^9.1.7"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",

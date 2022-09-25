@@ -261,7 +261,7 @@ Django = ">=2.0"
 
 [[package]]
 name = "django-fbv"
-version = "0.4.0"
+version = "0.5.1"
 description = "Utilities to make function-based views cleaner, more efficient, and better tasting. "
 category = "main"
 optional = false
@@ -271,7 +271,7 @@ python-versions = ">=3.7,<4.0"
 django = ">2.2.0"
 
 [package.extras]
-docs = ["Sphinx (>=4.3.2,<5.0.0)", "furo (>=2021.11.23,<2022.0.0)", "linkify-it-py (>=1.0.3,<2.0.0)", "myst-parser (>=0.16.1,<0.17.0)", "sphinx-copybutton (>=0.4.0,<0.5.0)", "toml"]
+docs = ["Sphinx (>=4.3.2,<5.0.0)", "attrs (>=21.4.0,<22.0.0)", "furo (>=2021.11.23,<2022.0.0)", "linkify-it-py (>=1.0.3,<2.0.0)", "myst-parser (>=0.16.1,<0.17.0)", "sphinx-copybutton (>=0.4.0,<0.5.0)", "toml"]
 
 [[package]]
 name = "django-htmx"
@@ -917,7 +917,7 @@ rich = "*"
 
 [[package]]
 name = "setuptools"
-version = "65.3.0"
+version = "65.4.0"
 description = "Easily download, build, install, upgrade, and uninstall Python packages"
 category = "main"
 optional = false
@@ -1134,7 +1134,7 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "4331916ec2a67a5d53620c5e5834989f1494351922e9cf84c351ca4f265404d2"
+content-hash = "9127168a10a6ffb8b7e09b02b42a39be95268508fefded6c0b254699f782e6bd"
 
 [metadata.files]
 appnope = [
@@ -1242,8 +1242,8 @@ django-fastdev = [
     {file = "django-fastdev-1.7.2.tar.gz", hash = "sha256:cb3bea837dd85f5cae2c80ffb4dc38479c35a8f4a1098d90d8ae218395e76011"},
 ]
 django-fbv = [
-    {file = "django-fbv-0.4.0.tar.gz", hash = "sha256:84c9e5d35d5356ee570eb68513d84ed7fe8bc2307c3e65b2a5251783d77e612e"},
-    {file = "django_fbv-0.4.0-py3-none-any.whl", hash = "sha256:985738669b6d847e39586c9d3631c6a0703bd76fbde06a075f5ee5f43c0e7751"},
+    {file = "django-fbv-0.5.1.tar.gz", hash = "sha256:8ab598453b9ddca7854999e0dfa96e264d331aea3c5e9766d777f62f2ccf12d7"},
+    {file = "django_fbv-0.5.1-py3-none-any.whl", hash = "sha256:5f9aefddb929777e203ff6ae4c46c6e53bbe1ba4534ba6c2e73b43304f4feea8"},
 ]
 django-htmx = [
     {file = "django-htmx-1.12.2.tar.gz", hash = "sha256:93a356ec0a983a33cc11d927bfe4ab3eca847dc89786d6293e80bc12dc9da03c"},
@@ -1624,8 +1624,8 @@ rich-click = [
     {file = "rich_click-0.2.0-py3-none-any.whl", hash = "sha256:62f131e2e22c2dffaf17d4f93c5e58dec408316e80bb27e9ba0153e5cbb8ffb1"},
 ]
 setuptools = [
-    {file = "setuptools-65.3.0-py3-none-any.whl", hash = "sha256:2e24e0bec025f035a2e72cdd1961119f557d78ad331bb00ff82efb2ab8da8e82"},
-    {file = "setuptools-65.3.0.tar.gz", hash = "sha256:7732871f4f7fa58fb6bdcaeadb0161b2bd046c85905dbaa066bdcbcc81953b57"},
+    {file = "setuptools-65.4.0-py3-none-any.whl", hash = "sha256:c2d2709550f15aab6c9110196ea312f468f41cd546bceb24127a1be6fdcaeeb1"},
+    {file = "setuptools-65.4.0.tar.gz", hash = "sha256:a8f6e213b4b0661f590ccf40de95d28a177cd747d098624ad3f69c40287297e9"},
 ]
 six = [
     {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
