@@ -1,8 +1,4 @@
-from collections import Counter
-from itertools import chain
-
 from coltrane.renderer import StaticRequest, render_markdown
-from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
 from django.utils.functional import cached_property
@@ -28,24 +24,12 @@ class Author(SingletonModel):
         return self.name
 
 
-def _check_if_content_file_exists(slug: str):
-    try:
-        render_markdown(slug=slug, request=StaticRequest("/"))
-    except FileNotFoundError:
-        raise ValidationError(f"File {slug}.md not found")
-
-
 class Entry(LifecycleModel, TimeStampedModel):
     class Type(models.TextChoices):
         POST = "POST", "Post"
         SNIPPET = "SNIPPET", "Snippet"
 
-    slug = models.SlugField(
-        unique=True,
-        max_length=255,
-        db_index=True,
-        validators=(_check_if_content_file_exists,),
-    )
+    slug = models.SlugField(unique=True, max_length=255, db_index=True)
     type = models.CharField(max_length=8, choices=Type.choices, default=Type.POST)
     featured = models.BooleanField(default=False)
 
@@ -60,13 +44,18 @@ class Entry(LifecycleModel, TimeStampedModel):
     def __str__(self):
         return self.title
 
-    def get_absolute_url(self) -> str:
+    @property
+    def full_path(self) -> str:
         prefix = "posts" if self.type == self.Type.POST else "snippets"
-        return reverse("coltrane:content", args=[f"{prefix}/{self.slug}"])
+        prefix += f"/{self.created.date().year}"
+        return f"{prefix}/{self.slug}"
+
+    def get_absolute_url(self) -> str:
+        return reverse("coltrane:content", args=[self.full_path])
 
     @cached_property
     def coltrane_context(self) -> dict:
-        _, context = render_markdown(slug=self.slug, request=StaticRequest("/"))
+        _, context = render_markdown(slug=self.full_path, request=StaticRequest("/"))
         return context
 
     @property
@@ -87,9 +76,3 @@ class Entry(LifecycleModel, TimeStampedModel):
         minutes, decimal_points = divmod(value, 1)
         seconds = decimal_points * 0.60
         return round(minutes if seconds < 30 else (minutes + 1))
-
-    @classmethod
-    def top_tags(cls, max_nbr: int = 10) -> list[str]:
-        all_tags = [post.tags.names() for post in Post.objects.all()]
-        all_tags = chain(*all_tags)
-        return list(Counter(all_tags).keys())[:max_nbr]

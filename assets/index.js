@@ -1,6 +1,7 @@
 import "./styles.css";
 import "./code.css"
 import 'htmx.org';
+import 'giscus';
 
 import mermaidAPI from 'mermaid';
 

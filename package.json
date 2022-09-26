@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "esbuild": "^0.15.9",
+    "giscus": "^1.2.0",
     "htmx.org": "^1.8.0",
     "mermaid": "^9.1.7"
   },

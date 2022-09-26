@@ -5,3 +5,8 @@
 .body {
     font-family: Calibri, Tahoma, sans-serif;
 }
+
+.comments-container {
+  max-height: 640px;
+  overflow-y: scroll;
+}
