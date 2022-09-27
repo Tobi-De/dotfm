@@ -1,5 +1,6 @@
 {% extends "coltrane/base.html" %}
 {% load static %}
+{% load blog_tags %}
 
 {% block content %}
     <div class="container mx-auto px-4 py-4">
@@ -8,6 +9,8 @@
                 {{ toc }}
             </div>
             <div class="prose md:prose-lg lg:prose-xl">
+                {{ content|reading_time }}
+                {{ tags }}
                 {{ content }}
                 <div class="comments-container">
                     <giscus-widget

@@ -1,32 +1,15 @@
 ---
 title: Host your Django project on DigitalOcean using dokku
+draft: true
+tags: deployment, django, python, dokku
 overview: >
     Setting up a server to deploy your new django project could be a really daunting task but tools like
     dokku can really make thing more easy and straightforward.
+published_at:
 ---
 
 # Host your Django project on DigitalOcean using dokku
 
-
-```python
-class Post(LifecycleModel, TimeStampedModel):
-    slug = models.SlugField(
-        unique=True,
-        max_length=255,
-        db_index=True,
-        validators=(_check_if_content_file_exists,),
-    )
-    featured = models.BooleanField(default=False)
-
-    objects = models.Manager()
-    tags = TaggableManager()
-
-    class Meta:
-        ordering = ("-created",)
-
-    def __str__(self):
-        return self.title
-```
 
 Some things to change
 

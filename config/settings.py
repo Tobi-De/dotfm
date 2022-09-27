@@ -9,7 +9,7 @@ ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent
 APPS_DIR = ROOT_DIR / "dotfm"
 
 # Only used by coltrane to find the content directory
-BASE_DIR = APPS_DIR / "blog"
+BASE_DIR = ROOT_DIR
 
 READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
 
@@ -39,7 +39,6 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    "taggit",
     "django_htmx",
     "django_extensions",
     "django_browser_reload",

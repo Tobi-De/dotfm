@@ -1,7 +1,10 @@
 ---
 title: Htmx autocomplete in pycharm
+tags: htmx, pycharm
+draft: true
 overview: >
     Setting up htmx attributes autocomplete in pycharm using JetBrains web-types.
+published_at:
 ---
 
 # Htmx autocomplete in pycharm
@@ -11,6 +14,7 @@ This post was inspired by [this tweet](https://twitter.com/sponsfreixes/status/1
 Read more on JetBrains web-types [here](https://github.com/JetBrains/web-types#web-types).
 
 Create a **package.json** file in the root of your project directory:
+
 
 ```sh
 yarn init -y
