@@ -1,35 +1,27 @@
-{% extends "coltrane/base.html" %}
+{% extends "blog/base.html" %}
 {% load static %}
 {% load blog_tags %}
 
 {% block content %}
-    <div class="container mx-auto px-4 py-4">
-        <div class="flex flex-col xl:flex-row gap-4">
-            <div class="prose prose-sm lg:prose-base">
-                {{ toc }}
-            </div>
-            <div class="prose md:prose-lg lg:prose-xl">
-                {{ content|reading_time }}
-                {{ tags }}
-                {{ content }}
-                <div class="comments-container">
-                    <giscus-widget
-                            id="comments"
-                            repo="Tobi-De/dotfm"
-                            repoid="R_kgDOG4i3FA"
-                            category="Announcements"
-                            categoryid="DIC_kwDOG4i3FM4CRn5z"
-                            mapping="pathname"
-                            strict="1"
-                            reactionsenabled="1"
-                            emitmetadata="0"
-                            inputposition="top"
-                            theme="dark"
-                            lang="en"
-                            loading="lazy"
-                    ></giscus-widget>
+    {% if "posts" in request.path %}
+        <div class="">
+            <div class="flex flex-col xl:flex-row gap-4">
+                <div class="prose md:prose-lg lg:prose-xl">
+                    {{ content|reading_time }}
+                    {{ tags|join:", " }}
+                    {{ content }}
+                    {% include "blog/_comments.html" %}
+                </div>
+                <div class="prose prose-sm lg:prose-base">
+                    {{ toc }}
                 </div>
             </div>
         </div>
-    </div>
+    {% else %}
+        {{ title }}
+        <div class="prose py-2">
+            {{ content }}
+        </div>
+        {% include "blog/_comments.html" %}
+    {% endif %}
 {% endblock content %}

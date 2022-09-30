@@ -1,10 +1,10 @@
-___
-title: The title of the entry
+---
+title: The title of the post
 draft: true
-tags: python, django
-overview: >
-    A multiline overview of the content
-published_at: 29/09/2022
-___
-
-# Title here
+tags:
+ - python
+ - django
+description: >
+   A multiline description of the content
+publish_date: 29/09/2022
+---

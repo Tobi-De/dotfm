@@ -1,13 +1,13 @@
 ---
 title: Htmx autocomplete in pycharm
-tags: htmx, pycharm
+tags:
+ - htmx
+ - pycharm
 draft: true
-overview: >
+description: >
     Setting up htmx attributes autocomplete in pycharm using JetBrains web-types.
-published_at:
+publish_date:
 ---
-
-# Htmx autocomplete in pycharm
 
 This post was inspired by [this tweet](https://twitter.com/sponsfreixes/status/1573725414643535872).
 

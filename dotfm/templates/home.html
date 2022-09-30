@@ -1,177 +1,189 @@
-{% extends "base.html" %}
+{% load static %}
 {% load solo_tags %}
-
-
-{% block content %}
-    {{ popo }}
-    {% get_solo 'blog.Author' as author %}
-    <div class="grid grid-cols-5 gap-2 leading-tight text-lg">
-        <header class="col-span-5 flex w-full h-24 px-14">
-            <nav class="flex w-full items-center">
-                <div class="grow flex items-center">logo</div>
-                <ul class="flex items-center justify-between gap-3">
-                    <li class="p-2">Home</li>
-                    <li class="p-2">Resume</li>
-                    <li class="p-2">Blog</li>
-                    <li class="p-2">Colophon</li>
-                </ul>
-            </nav>
-        </header>
-        <div class="">
-            <ul>
-                <li>Github link</li>
-                <li>Twitter link</li>
-                <li>Devto link</li>
-                <li>Hashnode link</li>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block extra_meta %}{% endblock extra_meta %}
+    <title>Tobi DEGNON</title>
+    <meta name="description" content="Tobi DEGNON online portfolio and web developer blog.">
+    <meta name="author" content="Tobi DEGNON">
+    <meta name="keywords"
+          content="developer, backend, python, django, htmx, fastapi, database, web, technology, portfolio, blog">
+    <link rel="stylesheet" href="{% static "bundle.css" %}">
+    <script src="{% static 'bundle.js' %}" defer></script>
+</head>
+<body class="bg-slate-900 text-slate-400">
+{% get_solo 'blog.Author' as author %}
+<div class="grid grid-cols-5 gap-2 leading-tight text-lg">
+    <header class="col-span-5 flex w-full h-24 px-14">
+        <nav class="flex w-full items-center">
+            <div class="grow flex items-center">logo</div>
+            <ul class="flex items-center justify-between gap-3">
+                <li class="p-2">Home</li>
+                <li class="p-2">Resume</li>
+                <li class="p-2">Blog</li>
+                <li class="p-2">Colophon</li>
             </ul>
-        </div>
-        <main class="col-span-3">
-            <!-- Hero section -->
-            <section class="flex flex-col min-h-screen justify-center" aria-labelledby="hero-title">
-                <header>
-                    <h1 class="text-xl mb-7 ml-1 font-normal">hi, my name is</h1>
-                    <h2 class="font-semibold" style="font-size: clamp(40px, 8vw, 80px);">Tobi DEGNON.</h2>
-                </header>
-                <h3 class="mt-2.5 font-semibold" style="font-size: clamp(40px, 8vw, 80px);">I build things for the
-                    web</h3>
-                <p class="mt-5 max-w-xl">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut culpa expedita
-                    labore laudantium quidem
-                    sapiente similique, suscipit vitae. Aperiam consequatur ea excepturi expedita quasi. A modi
-                    necessitatibus quae ut? Architecto!</p>
-            </section>
-
-            <!-- About me -->
-            <section class="mx-auto py-28">
-                <header>
-                    <h2 class="text-slate-300 font-semibold mt-2.5 mb-40" style="font-size: clamp(26px,5vw,32px)">About
-                        Me</h2>
-                </header>
-                <div>
-                    <div>Image of Myself</div>
-                    <div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa dignissimos dolorum eaque
-                            eius,
-                            et exercitationem impedit iste laborum maxime modi nobis optio pariatur rerum similique
-                            tenetur.
-                            Ab accusamus aspernatur assumenda consequuntur culpa delectus, dolorem eaque et
-                            exercitationem
-                            facere fugiat fugit id illum iste, laborum laudantium maiores nesciunt nostrum officiis
-                            omnis
-                            perferendis perspiciatis quae quas quia, quos rerum sapiente tenetur? Ad, aliquam aliquid
-                            .</p>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa dignissimos dolorum eaque
-                            eius,
-                            et exercitationem impedit iste laborum maxime modi nobis optio pariatur rerum similique
-                            tenetur.
-                            Ab accusamus aspernatur assumenda consequuntur culpa delectus, dolorem eaque et
-                            exercitationem
-                            .</p>
-                        <p>Tech I've being working with recently</p>
-                        <ul>
-                            <li>Python</li>
-                            <li>Django</li>
-                            <li>Fastapi</li>
-                            <li>Htmx</li>
-                            <li>Tailwind</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Work Experience -->
-            <section>
-                <header>
-                    <h2>Where I've worked</h2>
-                </header>
-                <div>
-                    <div>
-                        <ul>
-                            <li>Entreprise 1</li>
-                            <li>Entreprise 2</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div>
-                            <h3>Dev</h3>
-                            <span>Aout - Decembre 2020</span>
-                            <ul>
-                                <li>Did 1</li>
-                                <li>Did 2</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3>Dev</h3>
-                            <span>Aout - Decembre 2020</span>
-                            <ul>
-                                <li>Did 1</li>
-                                <li>Did 2</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Project -->
-            <section>
-                <header>
-                    <h2>Some things I've built</h2>
-                </header>
-                <div>
-                    <div>Project Image</div>
-                    <div>
-                        <h3>Project 1</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium cum facere iusto
-                            nesciunt
-                            quae quo quos voluptatibus? Aliquam eaque earum facilis in, iusto praesentium reiciendis
-                            sapiente
-                            suscipit. Accusantium aperiam beatae consectetur culpa cumque dolore excepturi, laboriosam
-                            maiores
-                            molestiae nihil nisi odit optio pariatur, perspiciatis quidem quisquam saepe sequi sint,
-                            voluptatibus?</p>
-                        <ul>
-                            <li>python</li>
-                            <li>django</li>
-                        </ul>
-                        <ul>
-                            <li>Github link</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <h4>Other Noteworthy projects</h4>
-                <span>View the Archive</span>
-                <div>
-                    <div>
-                        <h5>Sub Project 1</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque autem corporis deserunt
-                            dolores
-                            eaque eius, facilis hic itaque iusto laboriosam laudantium libero quasi, quibusdam repellat
-                            vero
-                            voluptatibus voluptatum! Ipsa, vitae.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Get in touch -->
-            <section>
-                <header>
-                    <h2>Get In touch</h2>
-                </header>
-                <div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque cumque deleniti, dolorum eum
-                        itaque
-                        nam officia quis totam! Aliquid, atque!</p>
-                    <a href="">Say Hello</a>
-                </div>
-            </section>
-
-        </main>
-        <div class="">
-            <span>tobidegnon@proton.me</span>
-        </div>
-        <footer class="col-span-5 flex justify-center py-5">
-            <p>Built by Tobi DEGNON, design inspired by <a href="https://brittanychiang.com/">Brittany Chiang</a></p>
-        </footer>
+        </nav>
+    </header>
+    <div class="">
+        <ul>
+            <li>Github link</li>
+            <li>Twitter link</li>
+            <li>Devto link</li>
+            <li>Hashnode link</li>
+        </ul>
     </div>
-{% endblock content %}
+    <main class="col-span-3">
+        <!-- Hero section -->
+        <section class="flex flex-col min-h-screen justify-center" aria-labelledby="hero-title">
+            <header>
+                <h1 class="text-xl mb-7 ml-1 font-normal">hi, my name is</h1>
+                <h2 class="font-semibold" style="font-size: clamp(40px, 8vw, 80px);">Tobi DEGNON.</h2>
+            </header>
+            <h3 class="mt-2.5 font-semibold" style="font-size: clamp(40px, 8vw, 80px);">I build things for the
+                web</h3>
+            <p class="mt-5 max-w-xl">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut culpa expedita
+                labore laudantium quidem
+                sapiente similique, suscipit vitae. Aperiam consequatur ea excepturi expedita quasi. A modi
+                necessitatibus quae ut? Architecto!</p>
+        </section>
+
+        <!-- About me -->
+        <section class="mx-auto py-28">
+            <header>
+                <h2 class="text-slate-300 font-semibold mt-2.5 mb-40" style="font-size: clamp(26px,5vw,32px)">About
+                    Me</h2>
+            </header>
+            <div>
+                <div>Image of Myself</div>
+                <div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa dignissimos dolorum eaque
+                        eius,
+                        et exercitationem impedit iste laborum maxime modi nobis optio pariatur rerum similique
+                        tenetur.
+                        Ab accusamus aspernatur assumenda consequuntur culpa delectus, dolorem eaque et
+                        exercitationem
+                        facere fugiat fugit id illum iste, laborum laudantium maiores nesciunt nostrum officiis
+                        omnis
+                        perferendis perspiciatis quae quas quia, quos rerum sapiente tenetur? Ad, aliquam aliquid
+                        .</p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa dignissimos dolorum eaque
+                        eius,
+                        et exercitationem impedit iste laborum maxime modi nobis optio pariatur rerum similique
+                        tenetur.
+                        Ab accusamus aspernatur assumenda consequuntur culpa delectus, dolorem eaque et
+                        exercitationem
+                        .</p>
+                    <p>Tech I've being working with recently</p>
+                    <ul>
+                        <li>Python</li>
+                        <li>Django</li>
+                        <li>Fastapi</li>
+                        <li>Htmx</li>
+                        <li>Tailwind</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience -->
+        <section>
+            <header>
+                <h2>Where I've worked</h2>
+            </header>
+            <div>
+                <div>
+                    <ul>
+                        <li>Entreprise 1</li>
+                        <li>Entreprise 2</li>
+                    </ul>
+                </div>
+                <div>
+                    <div>
+                        <h3>Dev</h3>
+                        <span>Aout - Decembre 2020</span>
+                        <ul>
+                            <li>Did 1</li>
+                            <li>Did 2</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Dev</h3>
+                        <span>Aout - Decembre 2020</span>
+                        <ul>
+                            <li>Did 1</li>
+                            <li>Did 2</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project -->
+        <section>
+            <header>
+                <h2>Some things I've built</h2>
+            </header>
+            <div>
+                <div>Project Image</div>
+                <div>
+                    <h3>Project 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium cum facere iusto
+                        nesciunt
+                        quae quo quos voluptatibus? Aliquam eaque earum facilis in, iusto praesentium reiciendis
+                        sapiente
+                        suscipit. Accusantium aperiam beatae consectetur culpa cumque dolore excepturi, laboriosam
+                        maiores
+                        molestiae nihil nisi odit optio pariatur, perspiciatis quidem quisquam saepe sequi sint,
+                        voluptatibus?</p>
+                    <ul>
+                        <li>python</li>
+                        <li>django</li>
+                    </ul>
+                    <ul>
+                        <li>Github link</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4>Other Noteworthy projects</h4>
+            <span>View the Archive</span>
+            <div>
+                <div>
+                    <h5>Sub Project 1</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque autem corporis deserunt
+                        dolores
+                        eaque eius, facilis hic itaque iusto laboriosam laudantium libero quasi, quibusdam repellat
+                        vero
+                        voluptatibus voluptatum! Ipsa, vitae.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Get in touch -->
+        <section>
+            <header>
+                <h2>Get In touch</h2>
+            </header>
+            <div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque cumque deleniti, dolorum eum
+                    itaque
+                    nam officia quis totam! Aliquid, atque!</p>
+                <a href="">Say Hello</a>
+            </div>
+        </section>
+
+    </main>
+    <div class="">
+        <span>tobidegnon@proton.me</span>
+    </div>
+    <footer class="col-span-5 flex justify-center py-5">
+        <p>Built by Tobi DEGNON, design inspired by <a href="https://brittanychiang.com/">Brittany Chiang</a></p>
+    </footer>
+</div>
+</body>
+</html>

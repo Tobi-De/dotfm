@@ -1,15 +1,16 @@
 ---
 title: Host your Django project on DigitalOcean using dokku
 draft: true
-tags: deployment, django, python, dokku
-overview: >
+tags:
+ - deployment
+ - django
+ - python
+ - dokku
+description: >
     Setting up a server to deploy your new django project could be a really daunting task but tools like
     dokku can really make thing more easy and straightforward.
-published_at:
+publish_date:
 ---
-
-# Host your Django project on DigitalOcean using dokku
-
 
 Some things to change
 
@@ -17,7 +18,7 @@ Some things to change
 - precise where some command are not needed when the user is using cookiecutter, for example to avoid using pip freeze.
 - do not tied this to digital ocean, it can work on any vps, next time I'm using linode for this
 
-{{ overview }}
+{{ description }}
 
 In this post we are going to see how you can easily deploy your awesome Django project on a linux server( Virtual Private Server a.k.a vps ). In this tutorial I will be using [DigitalOcean](https://m.do.co/c/507efee95715), a well know cloud provider that offers you a full control on your server, I also choose [DigitalOcean](https://m.do.co/c/507efee95715) because they have a 1-click app [Dokku](http://dokku.viewdocs.io/dokku/) droplet to get you up and running quickly.
 
