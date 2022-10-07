@@ -1,5 +1,5 @@
 ---
-title: Host your Django project on DigitalOcean using dokku
+title: Host your Django project on DigitalOcean using dokku blah blah blah blah blah
 draft: true
 tags:
  - deployment

@@ -3,25 +3,23 @@
 {% load blog_tags %}
 
 {% block content %}
-    {% if "posts" in request.path %}
-        <div class="">
-            <div class="flex flex-col xl:flex-row gap-4">
-                <div class="prose md:prose-lg lg:prose-xl">
-                    {{ content|reading_time }}
-                    {{ tags|join:", " }}
-                    {{ content }}
-                    {% include "blog/_comments.html" %}
-                </div>
-                <div class="prose prose-sm lg:prose-base">
+    <main class="p-4">
+        <header class="prose prose-invert py-6">
+            <span class="">#{{ tags|join:" #" }}</span>
+            <h1 class="">{{ title }}</h1>
+            <span>{{ content|reading_time }} read</span>
+        </header>
+        <div class="flex flex-col lg:flex-row gap-2">
+            <aside class="prose prose-sm prose-invert lg:w-60 lg:order-last">
+                <h2>Table of Contents</h2>
+                <nav aria-label="table of content">
                     {{ toc }}
-                </div>
-            </div>
+                </nav>
+            </aside>
+            <article class="prose prose-invert">
+                {{ content }}
+                {% include "blog/_comments.html" %}
+            </article>
         </div>
-    {% else %}
-        {{ title }}
-        <div class="prose py-2">
-            {{ content }}
-        </div>
-        {% include "blog/_comments.html" %}
-    {% endif %}
+    </main>
 {% endblock content %}
