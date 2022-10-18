@@ -1,9 +1,22 @@
-{% extends "base.html" %}
+{% load static %}
 {% load solo_tags %}
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block extra_meta %}{% endblock extra_meta %}
+    <title>Tobi DEGNON</title>
+    <meta name="description" content="Tobi DEGNON online portfolio and web developer blog.">
+    <meta name="author" content="Tobi DEGNON">
+    <meta name="keywords"
+        content="developer, backend, python, django, htmx, fastapi, database, web, technology, portfolio, blog">
+    <link rel="stylesheet" href="{% static 'bundle.css' %}">
+    <script src="{% static 'bundle.js' %}" defer></script>
+</head>
 
-{% block content %}
-    {{ popo }}
+<body class="bg-zinc-900 text-zinc-50">
     {% get_solo 'blog.Author' as author %}
     <div class="grid grid-cols-5 gap-2 leading-tight text-lg">
         <header class="col-span-5 flex w-full h-24 px-14">
@@ -12,7 +25,7 @@
                 <ul class="flex items-center justify-between gap-3">
                     <li class="p-2">Home</li>
                     <li class="p-2">Resume</li>
-                    <li class="p-2">Blog</li>
+                    <li class="p-2"><a href="{% url 'coltrane:content' 'index' %}">Blog</a></li>
                     <li class="p-2">Colophon</li>
                 </ul>
             </nav>
@@ -174,4 +187,6 @@
             <p>Built by Tobi DEGNON, design inspired by <a href="https://brittanychiang.com/">Brittany Chiang</a></p>
         </footer>
     </div>
-{% endblock content %}
+</body>
+
+</html>

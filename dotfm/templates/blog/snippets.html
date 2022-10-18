@@ -1,0 +1,14 @@
+{% extends "blog/base.html" %}
+{% load blog_tags %}
+
+
+{% block content %}
+    {% get_snippets as snippets %}
+    <ul>
+        {% for snippet in snippets %}
+            <li class="m-2">
+                <a href="{{ snippet.slug }}">{{ snippet.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

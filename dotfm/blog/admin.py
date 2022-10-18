@@ -1,34 +1,6 @@
 from django.contrib import admin
 from solo.admin import SingletonModelAdmin
 
-from .models import Author, Entry
+from .models import Author
 
 admin.site.register(Author, SingletonModelAdmin)
-
-
-@admin.register(Entry)
-class EntryAdmin(admin.ModelAdmin):
-    list_display = (
-        "slug",
-        "title",
-        "overview",
-        "type",
-        "featured",
-        "created",
-        "modified",
-    )
-    list_filter = (
-        "created",
-        "modified",
-        "featured",
-    )
-    raw_id_fields = ("tags",)
-    search_fields = ("slug",)
-
-    @classmethod
-    def title(cls, obj: Entry):
-        return obj.title
-
-    @classmethod
-    def overview(cls, obj: Entry):
-        return obj.overview

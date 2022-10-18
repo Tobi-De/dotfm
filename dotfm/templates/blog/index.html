@@ -1,7 +1,40 @@
-{% extends "base.html" %}
+{% extends "blog/base.html" %}
 {% load solo_tags %}
-
+{% load blog_tags %}
 
 {% block content %}
     {% get_solo 'blog.Author' as author %}
+    {% get_posts as posts %}
+    <main class="flex gap-2">
+        <aside class="order-last">
+            <section>
+                <h2>Tags</h2>
+                <ul>
+                    <li><a href="">Python</a></li>
+                    <li><a href="">Django</a></li>
+                    <li><a href="">Htmx</a></li>
+                    <li><a href="">Javascript</a></li>
+                </ul>
+                <a href="">python</a>
+            </section>
+            <section>
+                <h2>Worth reading</h2>
+                <ul>
+                    <li><a href="https://grugbrain.dev/" target="_blank">Grug brain dev</a></li>
+                    <li><a href="https://github.com/guettli/wol" target="_blank">Wol by Guettli</a></li>
+                    <li><a href="https://fs.blog/chestertons-fence/" target="_blank">Second Order Thinking</a></li>
+                    <li><a href="https://htmx.org/essays/rest-explained/" target="_blank">REST - What is it, really?</a>/li><
+                </ul>
+            </section>
+        </aside>
+        <section>
+            {% for post in posts %}
+                <article class="py-2">
+                    <h2 href="{{ post.slug }}">{{ post.title }}</h2>
+                    <p class="py-2">{{ post.description }}</p>
+                    <a href="{{ post.slug }}">Read more</a>
+                </article>
+            {% endfor %}
+        </section>
+    </main>
 {% endblock %}
