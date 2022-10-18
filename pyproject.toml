@@ -20,7 +20,7 @@ coltrane = "^0.19.0"
 django-solo = "^2.0.0"
 Pygments = "^2.13.0"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 django-browser-reload = "^1.6.0"
 mypy = "^0.982"
 black = "^22.8.0"

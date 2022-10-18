@@ -327,3 +327,5 @@ tags
 
 .env
 yarn.lock
+
+db.sqlite3
