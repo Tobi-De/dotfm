@@ -11,7 +11,7 @@ APPS_DIR = ROOT_DIR / "dotfm"
 # Only used by coltrane to find the content directory
 BASE_DIR = ROOT_DIR
 
-READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=True)
+READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
 
 if READ_DOT_ENV_FILE:
     env.read_env(str(ROOT_DIR / ".env"))
