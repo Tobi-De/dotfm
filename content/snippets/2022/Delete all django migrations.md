@@ -5,7 +5,7 @@ tags:
  - python
  - django
 description:
-publish_date:
+publish_date: 2022-10-20
 upload_path: snippets/2022
 ---
 
