@@ -328,4 +328,5 @@ tags
 .env
 yarn.lock
 
+.parcel-cache
 db.sqlite3
