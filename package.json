@@ -3,19 +3,19 @@
   "version": "1.0.0",
   "description": "personal website",
   "source": "assets/index.js",
-  "main": "dotfm/static/bundle.js",
   "repository": "git@github.com:Tobi-De/dotfm.git",
   "author": "Tobi-De <tobidegnon@proton.me>",
   "license": "MIT",
   "web-types": "./htmx-web-types.json",
   "scripts": {
-    "watch": "parcel watch",
-    "build": "parcel build"
+    "watch": "parcel watch --dist-dir dotfm/static",
+    "build": "parcel build --dist-dir dotfm/static"
   },
   "dependencies": {
     "giscus": "^1.2.0",
     "htmx.org": "^1.8.2",
-    "mermaid": "^9.1.7"
+    "mermaid": "^9.1.7",
+    "swiper": "^8.4.4"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
@@ -24,6 +24,7 @@
     "@tailwindcss/typography": "^0.5.7",
     "parcel": "^2.7.0",
     "postcss": "^8.4.18",
+    "process": "^0.11.10",
     "tailwindcss": "^3.2.1"
   }
 }
