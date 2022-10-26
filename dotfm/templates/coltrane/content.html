@@ -3,23 +3,40 @@
 {% load blog_tags %}
 
 {% block content %}
-    <main class="p-4 flex justify-center">
-        <header class="prose prose-invert py-6">
-            <span class="">#{{ tags|join:" #" }}</span>
-            <h1 class="">{{ title }}</h1>
-            <span>{{ content|reading_time }} read</span>
-        </header>
-        <div class="flex flex-col lg:flex-row gap-2">
-            <aside class="prose prose-sm prose-invert lg:w-60 lg:order-last">
-                <h2>Table of Contents</h2>
-                <nav aria-label="table of content">
-                    {{ toc }}
-                </nav>
-            </aside>
-            <article class="prose prose-invert">
-                {{ content }}
-                {% include "blog/_comments.html" %}
-            </article>
+    <main class="px-8 mt-20">
+        <div class="mx-auto max-w-7xl lg:px-8">
+            <div class="px-4 lg:px-12">
+                <div class="flex mx-auto max-w-7xl lg:px-8">
+                    <div class="mx-auto w-full max-w-2xl">
+                        <header class="mb-4">
+                            <time datetime="2022-09-05"
+                                  class="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500"><span
+                                    class="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500"></span><span
+                                    class="ml-3">September 5, 2022</span></time>
+                            <h1 class="mt-6 text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+                                {{ title }}
+                            </h1>
+                            {#                            <span class="mt-5 text-sm">{{ content|reading_time }}</span>#}
+                            <p class="mt-6 text-base text-zinc-600 dark:text-zinc-400">{{ description }}</p>
+                        </header>
+                        <div class="relative w-full mb-4 prose prose-invert">
+                            {{ content }}
+                            {% include "blog/_comments.html" %}
+                        </div>
+                    </div>
+                    <aside class="hidden lg:block lg:w-80" aria-labelledby="sidebar-label">
+                        <div class="sticky top-36">
+                            <h3 id="sidebar-label" class="sr-only">Sidebar</h3>
+                            <div class="p-6 pb-4 mt-6 mb-6 font-medium border rounded-lg border-zinc-700">
+                                <h4 class="mb-4 font-bold uppercase">Table of content</h4>
+                                <div class="flex flex-wrap prose prose-sm prose-invert">
+                                    {{ toc }}
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
         </div>
     </main>
 {% endblock content %}

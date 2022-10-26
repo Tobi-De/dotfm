@@ -17,17 +17,17 @@
 <body class="container mx-auto bg-zinc-900 text-zinc-50">
 <header>
     <nav class="flex justify-center mt-4">
-        <ul class="flex gap-3 justify-center border border-0 py-2 px-3 rounded-full bg-zinc-800/90 text-zinc-200 text-sm font-medium">
+        <ul class="flex gap-2 justify-center border border-0 p-1 rounded-full bg-zinc-800/90 text-zinc-200 text-sm font-medium">
             <li><a href="{% url "home" %}"
                    class="relative block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400">Home</a>
             </li>
             <li><a href="{% url "projects" %}"
                    class="relative block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400">Projects</a>
             </li>
-            <li><a href="{% url "coltrane:content" "index" %}"
+            <li><a href="{% url "coltrane:content" "posts" %}"
                    class="relative block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400">Posts</a>
             </li>
-            <li><a href="" class="relative block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400">Snippets</a>
+            <li><a href="{% url "coltrane:content" "snippets" %}" class="relative block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400">Snippets</a>
             </li>
             <li><a href="{% url "colophon" %}"
                    class="relative block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400">Colophon</a>

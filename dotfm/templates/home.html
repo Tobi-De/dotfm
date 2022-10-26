@@ -6,7 +6,18 @@
 {% block content %}
     {% get_solo 'blog.Author' as author %}
     <main>
-        <div class="sm:px-8 mt-12">
+        <section class="px-8 mt-20">
+            <div class="px-8 mb-3">
+                <div class="mx-auto max-w-7xl">
+                    <div class="px-4 lg:px-12">
+                        <div class="mx-auto max-w-2xl lg:max-w-5xl">
+                            <img class="object-cover w-16 h-16 border-2 border-gray-700 rounded-full"
+                                 alt="Testimonial avatar"
+                                 src="https://avatars.githubusercontent.com/u/40334729?v=4">
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="mx-auto max-w-7xl lg:px-8">
                 <div class="relative px-4 sm:px-8 lg:px-12">
                     <div class="mx-auto max-w-2xl lg:max-w-5xl">
@@ -52,17 +63,16 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="mt-16">
+        </section>
+        <section class="mt-16">
             <h2 class="font-bold text-2xl md:text-2xl tracking-tight mb-4 text-white text-center">Featured Posts</h2>
             <div class="my-4 flex flex-col items-center md:flex-row md:justify-center gap-5 overflow-hidden py-4 sm:gap-8">
                 <a href="#"
                    class="block p-6 max-w-sm rounded-lg border shadow-md border-zinc-700 hover:bg-zinc-700">
-                    <time class="relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500 pl-3.5"
+                    <time class="relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 pl-3.5"
                           datetime="2022-09-05"><span class="absolute inset-y-0 left-0 flex items-center"
                                                       aria-hidden="true"><span
-                            class="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500"></span></span>September
+                            class="h-4 w-0.5 rounded-full bg-zinc-500"></span></span>September
                         5, 2022
                     </time>
                     <h5 class="mb-2 text-2xl font-bold tracking-tight">Noteworthy
@@ -81,10 +91,10 @@
                 </a>
                 <a href="#"
                    class="block p-6 max-w-sm rounded-lg border shadow-md border-zinc-700 hover:bg-zinc-700">
-                    <time class="relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500 pl-3.5"
+                    <time class="relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 pl-3.5"
                           datetime="2022-09-05"><span class="absolute inset-y-0 left-0 flex items-center"
                                                       aria-hidden="true"><span
-                            class="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500"></span></span>September
+                            class="h-4 w-0.5 rounded-full bg-zinc-500"></span></span>September
                         5, 2022
                     </time>
                     <h5 class="mb-2 text-2xl font-bold tracking-tight">Noteworthy
@@ -103,10 +113,10 @@
                 </a>
                 <a href="#"
                    class="block p-6 max-w-sm rounded-lg border shadow-md  border-zinc-700 hover:bg-zinc-700">
-                    <time class="relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500 pl-3.5"
-                          datetime="2022-09-05"><span class="absolute inset-y-0 left-0 flex items-center"
-                                                      aria-hidden="true"><span
-                            class="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500"></span></span>September
+                    <time class="relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400  pl-3.5"
+                          datetime="2022-09-05">
+                        <span class="absolute inset-y-0 left-0 flex items-center" aria-hidden="true">
+                            <span class="h-4 w-0.5 rounded-full bg-zinc-500"></span></span>September
                         5, 2022
                     </time>
                     <h5 class="mb-2 text-2xl font-bold tracking-tight">Noteworthy
@@ -124,119 +134,44 @@
                     </div>
                 </a>
             </div>
-        </div>
-
-        <div class="mt-16">
+        </section>
+        <section class="mt-16 max-w-6xl mx-auto">
             <h2 class="font-bold text-2xl md:text-2xl tracking-tight mb-4 text-white text-center">Some things I've
                 built</h2>
-            <div class="swiper ">
-                <!-- Additional required wrapper -->
-
-                <div class="swiper-wrapper">
-                    <!-- Slides -->
-                    <div class="swiper-slide my-4 py-4 lg:flex lg:justify-center">
-                        <div class="border border-zinc-700 mx-4 lg:mx-8 lg:flex lg:max-w-5xl lg:shadow-lg lg:rounded-lg">
-                            <div class="lg:w-1/2">
-                                <div class="h-64 bg-cover lg:rounded-lg lg:h-full"
-                                     style="background-image:url('https://images.unsplash.com/photo-1593642532400-2682810df593?ixlib=rb-1.2.1&ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80')"></div>
-                            </div>
-                            <div class="max-w-xl px-6 py-12 lg:max-w-5xl lg:w-1/2">
-                                <h2 class="text-2xl font-bold text-gray-800 dark:text-white md:text-3xl">Build Your New
-                                    <span
-                                            class="text-blue-600 dark:text-blue-400">Idea</span></h2>
-                                <p class="mt-4 text-gray-600 dark:text-gray-400">Lorem, ipsum dolor sit amet consectetur
-                                    adipisicing elit. Quidem modi reprehenderit vitae exercitationem aliquid dolores
-                                    ullam
-                                    temporibus enim expedita aperiam mollitia iure consectetur dicta tenetur, porro
-                                    consequuntur
-                                    saepe accusantium consequatur.</p>
-
-                                <div class="mt-8">
-                                    <a href=""
-                                       class="group relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition hover:text-teal-500 dark:text-zinc-200">
-                                        <svg viewBox="0 0 24 24" aria-hidden="true"
-                                             class="h-6 w-6 flex-none group-hover:fill-teal-500">
-                                            <path d="M15.712 11.823a.75.75 0 1 0 1.06 1.06l-1.06-1.06Zm-4.95 1.768a.75.75 0 0 0 1.06-1.06l-1.06 1.06Zm-2.475-1.414a.75.75 0 1 0-1.06-1.06l1.06 1.06Zm4.95-1.768a.75.75 0 1 0-1.06 1.06l1.06-1.06Zm3.359.53-.884.884 1.06 1.06.885-.883-1.061-1.06Zm-4.95-2.12 1.414-1.415L12 6.344l-1.415 1.413 1.061 1.061Zm0 3.535a2.5 2.5 0 0 1 0-3.536l-1.06-1.06a4 4 0 0 0 0 5.656l1.06-1.06Zm4.95-4.95a2.5 2.5 0 0 1 0 3.535L17.656 12a4 4 0 0 0 0-5.657l-1.06 1.06Zm1.06-1.06a4 4 0 0 0-5.656 0l1.06 1.06a2.5 2.5 0 0 1 3.536 0l1.06-1.06Zm-7.07 7.07.176.177 1.06-1.06-.176-.177-1.06 1.06Zm-3.183-.353.884-.884-1.06-1.06-.884.883 1.06 1.06Zm4.95 2.121-1.414 1.414 1.06 1.06 1.415-1.413-1.06-1.061Zm0-3.536a2.5 2.5 0 0 1 0 3.536l1.06 1.06a4 4 0 0 0 0-5.656l-1.06 1.06Zm-4.95 4.95a2.5 2.5 0 0 1 0-3.535L6.344 12a4 4 0 0 0 0 5.656l1.06-1.06Zm-1.06 1.06a4 4 0 0 0 5.657 0l-1.061-1.06a2.5 2.5 0 0 1-3.535 0l-1.061 1.06Zm7.07-7.07-.176-.177-1.06 1.06.176.178 1.06-1.061Z"
-                                                  fill="currentColor"></path>
-                                        </svg>
-                                        <span class="ml-2">github.com</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+            <p class="mt-4 text-center text-gray-500 dark:text-gray-300">
+                Some of the projects I've worked on recently, see more <a href="{% url "projects" %}"
+                                                                          class="font-medium text-teal-500">here</a>.
+            </p>
+            <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 md:grid-cols-2 xl:grid-cols-3">
+                <div class="overflow-hidden bg-cover rounded-lg cursor-pointer h-96 group"
+                     style="background-image:url('https://images.unsplash.com/photo-1621111848501-8d3634f82336?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1565&q=80')">
+                    <div
+                            class="flex flex-col justify-center w-full h-full px-8 py-4 transition-opacity duration-700 opacity-0 backdrop-blur-sm bg-gray-800/60 group-hover:opacity-100">
+                        <h2 class="mt-4 text-2xl font-semibold text-white capitalize">Best website collections</h2>
+                        <p class="mt-2 text-lg tracking-wider text-blue-400 uppercase ">Website</p>
                     </div>
-                    <div class="swiper-slide my-4 py-4 lg:flex lg:justify-center">
-                        <div class=" border border-zinc-700 mx-4 lg:mx-8 lg:flex lg:max-w-5xl lg:shadow-lg lg:rounded-lg">
-                            <div class="lg:w-1/2">
-                                <div class="h-64 bg-cover lg:rounded-lg lg:h-full"
-                                     style="background-image:url('https://images.unsplash.com/photo-1593642532400-2682810df593?ixlib=rb-1.2.1&ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80')"></div>
-                            </div>
-                            <div class="max-w-xl px-6 py-12 lg:max-w-5xl lg:w-1/2">
-                                <h2 class="text-2xl font-bold text-gray-800 dark:text-white md:text-3xl">Build Your New
-                                    <span
-                                            class="text-blue-600 dark:text-blue-400">Idea</span></h2>
-                                <p class="mt-4 text-gray-600 dark:text-gray-400">Lorem, ipsum dolor sit amet consectetur
-                                    adipisicing elit. Quidem modi reprehenderit vitae exercitationem aliquid dolores
-                                    ullam
-                                    temporibus enim expedita aperiam mollitia iure consectetur dicta tenetur, porro
-                                    consequuntur
-                                    saepe accusantium consequatur.</p>
-
-                                <div class="mt-8">
-                                    <a href=""
-                                       class="group relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition hover:text-teal-500 dark:text-zinc-200">
-                                        <svg viewBox="0 0 24 24" aria-hidden="true"
-                                             class="h-6 w-6 flex-none group-hover:fill-teal-500">
-                                            <path d="M15.712 11.823a.75.75 0 1 0 1.06 1.06l-1.06-1.06Zm-4.95 1.768a.75.75 0 0 0 1.06-1.06l-1.06 1.06Zm-2.475-1.414a.75.75 0 1 0-1.06-1.06l1.06 1.06Zm4.95-1.768a.75.75 0 1 0-1.06 1.06l1.06-1.06Zm3.359.53-.884.884 1.06 1.06.885-.883-1.061-1.06Zm-4.95-2.12 1.414-1.415L12 6.344l-1.415 1.413 1.061 1.061Zm0 3.535a2.5 2.5 0 0 1 0-3.536l-1.06-1.06a4 4 0 0 0 0 5.656l1.06-1.06Zm4.95-4.95a2.5 2.5 0 0 1 0 3.535L17.656 12a4 4 0 0 0 0-5.657l-1.06 1.06Zm1.06-1.06a4 4 0 0 0-5.656 0l1.06 1.06a2.5 2.5 0 0 1 3.536 0l1.06-1.06Zm-7.07 7.07.176.177 1.06-1.06-.176-.177-1.06 1.06Zm-3.183-.353.884-.884-1.06-1.06-.884.883 1.06 1.06Zm4.95 2.121-1.414 1.414 1.06 1.06 1.415-1.413-1.06-1.061Zm0-3.536a2.5 2.5 0 0 1 0 3.536l1.06 1.06a4 4 0 0 0 0-5.656l-1.06 1.06Zm-4.95 4.95a2.5 2.5 0 0 1 0-3.535L6.344 12a4 4 0 0 0 0 5.656l1.06-1.06Zm-1.06 1.06a4 4 0 0 0 5.657 0l-1.061-1.06a2.5 2.5 0 0 1-3.535 0l-1.061 1.06Zm7.07-7.07-.176-.177-1.06 1.06.176.178 1.06-1.061Z"
-                                                  fill="currentColor"></path>
-                                        </svg>
-                                        <span class="ml-2">github.com</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide my-4 py-4 lg:flex lg:justify-center">
-                        <div class=" border border-zinc-700 mx-4 lg:mx-8 lg:flex lg:max-w-5xl lg:shadow-lg lg:rounded-lg">
-                            <div class="lg:w-1/2">
-                                <div class="h-64 bg-cover lg:rounded-lg lg:h-full"
-                                     style="background-image:url('https://images.unsplash.com/photo-1593642532400-2682810df593?ixlib=rb-1.2.1&ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80')"></div>
-                            </div>
-                            <div class="max-w-xl px-6 py-12 lg:max-w-5xl lg:w-1/2">
-                                <h2 class="text-2xl font-bold text-gray-800 dark:text-white md:text-3xl">Build Your New
-                                    <span
-                                            class="text-blue-600 dark:text-blue-400">Idea</span></h2>
-                                <p class="mt-4 text-gray-600 dark:text-gray-400">Lorem, ipsum dolor sit amet consectetur
-                                    adipisicing elit. Quidem modi reprehenderit vitae exercitationem aliquid dolores
-                                    ullam
-                                    temporibus enim expedita aperiam mollitia iure consectetur dicta tenetur, porro
-                                    consequuntur
-                                    saepe accusantium consequatur.</p>
-
-                                <div class="mt-8">
-                                    <a href=""
-                                       class="group relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition hover:text-teal-500 dark:text-zinc-200">
-                                        <svg viewBox="0 0 24 24" aria-hidden="true"
-                                             class="h-6 w-6 flex-none group-hover:fill-teal-500">
-                                            <path d="M15.712 11.823a.75.75 0 1 0 1.06 1.06l-1.06-1.06Zm-4.95 1.768a.75.75 0 0 0 1.06-1.06l-1.06 1.06Zm-2.475-1.414a.75.75 0 1 0-1.06-1.06l1.06 1.06Zm4.95-1.768a.75.75 0 1 0-1.06 1.06l1.06-1.06Zm3.359.53-.884.884 1.06 1.06.885-.883-1.061-1.06Zm-4.95-2.12 1.414-1.415L12 6.344l-1.415 1.413 1.061 1.061Zm0 3.535a2.5 2.5 0 0 1 0-3.536l-1.06-1.06a4 4 0 0 0 0 5.656l1.06-1.06Zm4.95-4.95a2.5 2.5 0 0 1 0 3.535L17.656 12a4 4 0 0 0 0-5.657l-1.06 1.06Zm1.06-1.06a4 4 0 0 0-5.656 0l1.06 1.06a2.5 2.5 0 0 1 3.536 0l1.06-1.06Zm-7.07 7.07.176.177 1.06-1.06-.176-.177-1.06 1.06Zm-3.183-.353.884-.884-1.06-1.06-.884.883 1.06 1.06Zm4.95 2.121-1.414 1.414 1.06 1.06 1.415-1.413-1.06-1.061Zm0-3.536a2.5 2.5 0 0 1 0 3.536l1.06 1.06a4 4 0 0 0 0-5.656l-1.06 1.06Zm-4.95 4.95a2.5 2.5 0 0 1 0-3.535L6.344 12a4 4 0 0 0 0 5.656l1.06-1.06Zm-1.06 1.06a4 4 0 0 0 5.657 0l-1.061-1.06a2.5 2.5 0 0 1-3.535 0l-1.061 1.06Zm7.07-7.07-.176-.177-1.06 1.06.176.178 1.06-1.061Z"
-                                                  fill="currentColor"></path>
-                                        </svg>
-                                        <span class="ml-2">github.com</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
 
-                <!-- If we need pagination -->
-                <div class="swiper-pagination"></div>
+                <div class="overflow-hidden bg-cover rounded-lg cursor-pointer h-96 group"
+                     style="background-image:url('https://images.unsplash.com/photo-1621609764180-2ca554a9d6f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80')">
+                    <div
+                            class="flex flex-col justify-center w-full h-full px-8 py-4 transition-opacity duration-700 opacity-0 backdrop-blur-sm bg-gray-800/60 group-hover:opacity-100">
+                        <h2 class="mt-4 text-2xl font-semibold text-white capitalize">Block of Ui kit collections</h2>
+                        <p class="mt-2 text-lg tracking-wider text-blue-400 uppercase ">Ui kit</p>
+                    </div>
+                </div>
+
+                <div class="overflow-hidden bg-cover rounded-lg cursor-pointer h-96 group"
+                     style="background-image:url('https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80')">
+                    <div
+                            class="flex flex-col justify-center w-full h-full px-8 py-4 transition-opacity duration-700 opacity-0 backdrop-blur-sm bg-gray-800/60 group-hover:opacity-100">
+                        <h2 class="mt-4 text-2xl font-semibold text-white capitalize">Ton’s of mobile mockup</h2>
+                        <p class="mt-2 text-lg tracking-wider text-blue-400 uppercase ">Mockups</p>
+                    </div>
+                </div>
             </div>
-        </div>
-
-
-        <div class="mt-16">
+        </section>
+        <section class="mt-16">
             <div class="mx-auto max-w-xl px-2 lg:px-8">
                 <div class="flex justify-center">
                     <div class="text-center">
@@ -257,20 +192,10 @@
                                 </svg>
                                 <span class="ml-4">tobidegnon@proton.me</span></a>
                         </div>
-                        {#                        <a href=""#}
-                        {#                           class="flex gap-2 justify-center font-medium text-teal-500 border rounded mt-4 px-2 py-4">#}
-                        {#                            <svg viewBox="0 0 24 24" aria-hidden="true"#}
-                        {#                                 class="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-500">#}
-                        {#                                <path fill-rule="evenodd"#}
-                        {#                                      d="M6 5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H6Zm.245 2.187a.75.75 0 0 0-.99 1.126l6.25 5.5a.75.75 0 0 0 .99 0l6.25-5.5a.75.75 0 0 0-.99-1.126L12 12.251 6.245 7.187Z"></path>#}
-                        {#                            </svg>#}
-                        {#                            tobidegnon@proto#}
-                        {#                        </a>#}
                     </div>
                 </div>
 
             </div>
-        </div>
-
+        </section>
     </main>
 {% endblock content %}

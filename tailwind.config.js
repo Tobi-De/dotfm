@@ -10,9 +10,9 @@ module.exports = {
                     css: {
                         //     color: "#94a3b8",
                         a: {
-                            color: '#3182ce',
+                            color: 'rgb(113 113 122)',
                             '&:hover': {
-                                color: '#2c5282',
+                                color: 'rgb(45 212 191)',
                             },
                         },
                         //     "h1, h2, h3, h4, h5, h6": {
