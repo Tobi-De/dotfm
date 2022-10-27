@@ -1,6 +1,7 @@
 {% extends "blog/base.html" %}
 {% load static %}
 {% load blog_tags %}
+{% load humanize%}
 
 {% block content %}
     <main class="px-8 mt-20">
@@ -9,10 +10,11 @@
                 <div class="flex mx-auto max-w-7xl lg:px-8">
                     <div class="mx-auto w-full max-w-2xl">
                         <header class="mb-4">
-                            <time datetime="2022-09-05"
+                            <!-- when this will be a datetime, put the isoformat value -->
+                            <time datetime="{{ publish_date }}"
                                   class="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500"><span
                                     class="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500"></span><span
-                                    class="ml-3">September 5, 2022</span></time>
+                                    class="ml-3">{{ publish_date|naturalday }}</span></time>
                             <h1 class="mt-6 text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
                                 {{ title }}
                             </h1>
@@ -24,17 +26,19 @@
                             {% include "blog/_comments.html" %}
                         </div>
                     </div>
-                    <aside class="hidden lg:block lg:w-80" aria-labelledby="sidebar-label">
-                        <div class="sticky top-36">
-                            <h3 id="sidebar-label" class="sr-only">Sidebar</h3>
-                            <div class="p-6 pb-4 mt-6 mb-6 font-medium border rounded-lg border-zinc-700">
-                                <h4 class="mb-4 font-bold uppercase">Table of content</h4>
-                                <div class="flex flex-wrap prose prose-sm prose-invert">
-                                    {{ toc }}
+                    {% if "posts" in request.path %}
+                        <aside class="hidden lg:block lg:w-80" aria-labelledby="sidebar-label">
+                            <div class="sticky top-36">
+                                <h3 id="sidebar-label" class="sr-only">Sidebar</h3>
+                                <div class="p-6 pb-4 mt-6 mb-6 font-medium border rounded-lg border-zinc-700">
+                                    <h4 class="mb-4 font-bold uppercase">Table of content</h4>
+                                    <div class="flex flex-wrap prose prose-sm prose-invert">
+                                        {{ toc }}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </aside>
+                        </aside>
+                    {% endif %}
                 </div>
             </div>
         </div>

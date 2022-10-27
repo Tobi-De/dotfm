@@ -7,7 +7,7 @@ from .models import Subscriber
 class SubscriberAdmin(admin.ModelAdmin):
     list_display = (
         "id",
-        "full_name",
+        "friendly_name",
         "email",
         "secret",
         "confirmed_at",

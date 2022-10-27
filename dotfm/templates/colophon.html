@@ -5,41 +5,74 @@
     <main class="px-8 mt-20">
         <div class="mx-auto max-w-7xl lg:px-8">
             <div class="px-4 lg:px-12">
-                <div class="mx-auto max-w-7xl lg:px-8">
-                    <div class="">
-                        <img class="object-cover w-full h-64 rounded"
-                             src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                             alt="Article">
+                <div class="mx-auto max-w-2xl lg:max-w-5xl">
+                    <h1 class="text-5xl font-bold tracking-tight">
+                        Colophon: what is the machinery behind this?</h1>
+                    <div class="text-zinc-400">
+                        <p class="mt-6 text-base text-zinc-400">
+                            I built this site with <a href="https://www.djangoproject.com/"
+                                                      class="text-teal-400 hover:text-teal-600 hover:underline"
+                                                      target="_blank">django</a> (completely overkill I know),
+                            <a href="https://tailwindcss.com/" class="text-teal-400 hover:text-teal-600 hover:underline"
+                               target="_blank">tailwind css</a> and
+                            <a href="https://htmx.org" class="text-teal-400 hover:text-teal-600 hover:underline"
+                               target="_blank">htmx</a>. The <a href="{% url "coltrane:content" "posts" %}"
+                                                                class="text-teal-400 hover:text-teal-600 hover:underline"
+                                                                target="_blank">blog</a> was built using <a
+                                class="text-teal-400 hover:text-teal-600 hover:underline"
+                                href="https://github.com/adamghill/coltrane" target="_blank">coltrane</a>, a django
+                            based content
+                            site
+                            <!-- todo add my linod link here-->
+                            framework. The app is deployed on a <a href="https://cloud.linode.com"
+                                                                   class="text-teal-400 hover:text-teal-600 hover:underline"
+                                                                   target="_blank">linode</a> vps and
+                            managed with <a href="https://caprover.com/"
+                                            class="text-teal-400 hover:text-teal-600 hover:underline"
+                                            target="_blank">caprover</a>.
+                        </p>
 
-                        <div class="p-6">
-                            <div>
-                                <span class="text-xs font-medium text-blue-600 uppercase dark:text-blue-400">Product</span>
-                                <a href="#"
-                                   class="block mt-2 text-2xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline"
-                                   tabindex="0" role="link">I Built A Successful Blog In One Year</a>
-                                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Lorem ipsum dolor sit amet,
-                                    consectetur
-                                    adipiscing elit. Molestie parturient et sem ipsum volutpat vel. Natoque sem et
-                                    aliquam
-                                    mauris
-                                    egestas quam volutpat viverra. In pretium nec senectus erat. Et malesuada
-                                    lobortis.</p>
-                            </div>
+                        <p class="text-zinc-400">
+                            I didn't design this myself, here is a non-exhaustive list of projects I was inspired by:
+                        </p>
 
-                            <div class="mt-4">
-                                <div class="flex items-center">
-                                    <div class="flex items-center">
-                                        <img class="object-cover h-10 rounded-full"
-                                             src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60"
-                                             alt="Avatar">
-                                        <a href="#" class="mx-2 font-semibold text-gray-700 dark:text-gray-200"
-                                           tabindex="0"
-                                           role="link">Jone Doe</a>
-                                    </div>
-                                    <span class="mx-1 text-xs text-gray-600 dark:text-gray-300">21 SEP 2015</span>
-                                </div>
-                            </div>
-                        </div>
+                        <ul class="prose prose-invert my-4">
+                            <li>
+                                <a href=https://spotlight.tailwindui.com/"
+                                   class="text-teal-400 hover:text-teal-600 hover:underline"
+                                   target="_blank">A template by the creators of Tailwind CSS</a>
+                            </li>
+                            <li><a href="https://leerob.io/" class="text-teal-400 hover:text-teal-600 hover:underline"
+                                   target="_blank">Lee Robinson personal website</a></li>
+                            <li><a href="https://www.joshwcomeau.com/tutorials/"
+                                   class="text-teal-400 hover:text-teal-600 hover:underline"
+                                   target="_blank">Josh W Comeau blog</a></li>
+                            <li><a href="https://adamj.eu/"
+                                   class="text-teal-400 hover:text-teal-600 hover:underline"
+                                   target="_blank">Adam Johnson personal website</a></li>
+                        </ul>
+
+                        The <a href="https://github.com/Tobi-De/dotfm"
+                               class="text-teal-400 hover:text-teal-600 hover:underline"
+                               target="_blank">source code</a> of this app is available on github.
+
+                        <p class="my-2">
+                            This is my second attempt at this, the previous version was also built with django and the
+                            <a
+                                    href="https://github.com/Tobi-De/portfolio"
+                                    class="text-teal-400 hover:text-teal-600 hover:underline"
+                                    target="_blank">source code</a> is also available on github.
+                        </p>
+
+                        <p>
+                            There are probably thousands of better ways to build this and I would suggest pure HTML, CSS
+                            and javascript for something this simple or a static site generator like
+                            <a href="https://github.com/getpelican/pelican"
+                               class="text-teal-400 hover:text-teal-600 hover:underline"
+                               target="_blank">Pelican</a>
+                            <br>
+                            Thanks to all of these technologies for making my blog possible!
+                        </p>
                     </div>
                 </div>
             </div>

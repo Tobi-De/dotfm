@@ -17,6 +17,7 @@
     <orderEntry type="jdk" jdkName="Poetry (dotfm)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="@picocss/pico" level="application" />
+    <orderEntry type="library" name="a306996686" level="application" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />

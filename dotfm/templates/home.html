@@ -1,10 +1,8 @@
 {% extends "base.html" %}
-{% load solo_tags %}
 {% load static %}
 
 
 {% block content %}
-    {% get_solo 'blog.Author' as author %}
     <main>
         <section class="px-8 mt-20">
             <div class="px-8 mb-3">
@@ -23,40 +21,33 @@
                     <div class="mx-auto max-w-2xl lg:max-w-5xl">
                         <div class="max-w-2xl">
                             <h1 class="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
-                                Software Engineer</h1>
-                            <p class="mt-6 text-base text-zinc-400">I’m Spencer, a software designer
-                                and
-                                entrepreneur based in New York City. I’m the founder and CEO of Planetaria, where we
-                                develop
-                                technologies that empower regular people to explore space on their own terms.</p>
+                                Tobi, Backend Engineer</h1>
+                            <p class="mt-6 text-base text-zinc-400">
+                                I’m tobi, a software developer with a focus on the backend.
+                                I work mainly in the python ecosystem using tools like django, fastapi to build web
+                                applications and APIs. I build my frontends using HTML, CSS, AlpineJs and htmx.
+                            </p>
                             <div class="mt-6 flex gap-6">
                                 <a class="group p-1" aria-label="Follow on Twitter"
-                                   href="https://twitter.com">
+                                   href="https://twitter.com/tobidegnon">
                                     <svg viewBox="0 0 24 24" aria-hidden="true"
                                          class="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300">
                                         <path d="M20.055 7.983c.011.174.011.347.011.523 0 5.338-3.92 11.494-11.09 11.494v-.003A10.755 10.755 0 0 1 3 18.186c.308.038.618.057.928.058a7.655 7.655 0 0 0 4.841-1.733c-1.668-.032-3.13-1.16-3.642-2.805a3.753 3.753 0 0 0 1.76-.07C5.07 13.256 3.76 11.6 3.76 9.676v-.05a3.77 3.77 0 0 0 1.77.505C3.816 8.945 3.288 6.583 4.322 4.737c1.98 2.524 4.9 4.058 8.034 4.22a4.137 4.137 0 0 1 1.128-3.86A3.807 3.807 0 0 1 19 5.274a7.657 7.657 0 0 0 2.475-.98c-.29.934-.9 1.729-1.713 2.233A7.54 7.54 0 0 0 22 5.89a8.084 8.084 0 0 1-1.945 2.093Z"></path>
                                     </svg>
                                 </a>
                                 <a class="group p-1" aria-label="Email address"
-                                   href="https://instagram.com">
-                                    <svg viewBox="0 0 24 24" aria-hidden="true"
-                                         class="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300">
-                                        <path d="M12 3c-2.444 0-2.75.01-3.71.054-.959.044-1.613.196-2.185.418A4.412 4.412 0 0 0 4.51 4.511c-.5.5-.809 1.002-1.039 1.594-.222.572-.374 1.226-.418 2.184C3.01 9.25 3 9.556 3 12s.01 2.75.054 3.71c.044.959.196 1.613.418 2.185.23.592.538 1.094 1.039 1.595.5.5 1.002.808 1.594 1.038.572.222 1.226.374 2.184.418C9.25 20.99 9.556 21 12 21s2.75-.01 3.71-.054c.959-.044 1.613-.196 2.185-.419a4.412 4.412 0 0 0 1.595-1.038c.5-.5.808-1.002 1.038-1.594.222-.572.374-1.226.418-2.184.044-.96.054-1.267.054-3.711s-.01-2.75-.054-3.71c-.044-.959-.196-1.613-.419-2.185A4.412 4.412 0 0 0 19.49 4.51c-.5-.5-1.002-.809-1.594-1.039-.572-.222-1.226-.374-2.184-.418C14.75 3.01 14.444 3 12 3Zm0 1.622c2.403 0 2.688.009 3.637.052.877.04 1.354.187 1.67.31.421.163.72.358 1.036.673.315.315.51.615.673 1.035.123.317.27.794.31 1.671.043.95.052 1.234.052 3.637s-.009 2.688-.052 3.637c-.04.877-.187 1.354-.31 1.67-.163.421-.358.72-.673 1.036a2.79 2.79 0 0 1-1.035.673c-.317.123-.794.27-1.671.31-.95.043-1.234.052-3.637.052s-2.688-.009-3.637-.052c-.877-.04-1.354-.187-1.67-.31a2.789 2.789 0 0 1-1.036-.673 2.79 2.79 0 0 1-.673-1.035c-.123-.317-.27-.794-.31-1.671-.043-.95-.052-1.234-.052-3.637s.009-2.688.052-3.637c.04-.877.187-1.354.31-1.67.163-.421.358-.72.673-1.036.315-.315.615-.51 1.035-.673.317-.123.794-.27 1.671-.31.95-.043 1.234-.052 3.637-.052Z"></path>
-                                        <path d="M12 15a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm0-7.622a4.622 4.622 0 1 0 0 9.244 4.622 4.622 0 0 0 0-9.244Zm5.884-.182a1.08 1.08 0 1 1-2.16 0 1.08 1.08 0 0 1 2.16 0Z"></path>
-                                    </svg>
+                                   href="mailto:tobidegnon@proton.me">
+                                    <i class="fa-solid fa-envelope text-xl hover:text-zinc-300 text-zinc-400"></i>
                                 </a>
-                                <a class="group p-1" aria-label="Follow on GitHub" href="https://github.com">
+                                <a class="group p-1" aria-label="Follow on GitHub" href="https://github.com/Tobi-De">
                                     <svg viewBox="0 0 24 24" aria-hidden="true"
                                          class="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
                                               d="M12 2C6.475 2 2 6.588 2 12.253c0 4.537 2.862 8.369 6.838 9.727.5.09.687-.218.687-.487 0-.243-.013-1.05-.013-1.91C7 20.059 6.35 18.957 6.15 18.38c-.113-.295-.6-1.205-1.025-1.448-.35-.192-.85-.667-.013-.68.788-.012 1.35.744 1.538 1.051.9 1.551 2.338 1.116 2.912.846.088-.666.35-1.115.638-1.371-2.225-.256-4.55-1.14-4.55-5.062 0-1.115.387-2.038 1.025-2.756-.1-.256-.45-1.307.1-2.717 0 0 .837-.269 2.75 1.051.8-.23 1.65-.346 2.5-.346.85 0 1.7.115 2.5.346 1.912-1.333 2.75-1.05 2.75-1.05.55 1.409.2 2.46.1 2.716.637.718 1.025 1.628 1.025 2.756 0 3.934-2.337 4.806-4.562 5.062.362.32.675.936.675 1.897 0 1.371-.013 2.473-.013 2.82 0 .268.188.589.688.486a10.039 10.039 0 0 0 4.932-3.74A10.447 10.447 0 0 0 22 12.253C22 6.588 17.525 2 12 2Z"></path>
                                     </svg>
                                 </a>
-                                <a class="group p-1" aria-label="Follow on LinkedIn" href="https://linkedin.com">
-                                    <svg viewBox="0 0 24 24"
-                                         class="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300">
-                                        <path d="M18.335 18.339H15.67v-4.177c0-.996-.02-2.278-1.39-2.278-1.389 0-1.601 1.084-1.601 2.205v4.25h-2.666V9.75h2.56v1.17h.035c.358-.674 1.228-1.387 2.528-1.387 2.7 0 3.2 1.778 3.2 4.091v4.715zM7.003 8.575a1.546 1.546 0 01-1.548-1.549 1.548 1.548 0 111.547 1.549zm1.336 9.764H5.666V9.75H8.34v8.589zM19.67 3H4.329C3.593 3 3 3.58 3 4.297v15.406C3 20.42 3.594 21 4.328 21h15.338C20.4 21 21 20.42 21 19.703V4.297C21 3.58 20.4 3 19.666 3h.003z"></path>
-                                    </svg>
+                                <a class="group p-1" aria-label="Follow on DevTo" href="https://dev.to/tobi">
+                                    <i class="fa-brands fa-dev text-xl hover:text-zinc-300 text-zinc-400"></i>
                                 </a>
                             </div>
                         </div>
@@ -139,34 +130,35 @@
             <h2 class="font-bold text-2xl md:text-2xl tracking-tight mb-4 text-white text-center">Some things I've
                 built</h2>
             <p class="mt-4 text-center text-gray-500 dark:text-gray-300">
-                Some of the projects I've worked on recently, see more <a href="{% url "projects" %}"
-                                                                          class="font-medium text-teal-500">here</a>.
+                Some of my recent projects, <a href="{% url "projects" %}" class="font-medium text-teal-500">view the
+                archive</a>.
             </p>
             <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 md:grid-cols-2 xl:grid-cols-3">
                 <div class="overflow-hidden bg-cover rounded-lg cursor-pointer h-96 group"
                      style="background-image:url('https://images.unsplash.com/photo-1621111848501-8d3634f82336?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1565&q=80')">
-                    <div
-                            class="flex flex-col justify-center w-full h-full px-8 py-4 transition-opacity duration-700 opacity-0 backdrop-blur-sm bg-gray-800/60 group-hover:opacity-100">
-                        <h2 class="mt-4 text-2xl font-semibold text-white capitalize">Best website collections</h2>
-                        <p class="mt-2 text-lg tracking-wider text-blue-400 uppercase ">Website</p>
+                    <div class="flex flex-col justify-center w-full h-full px-8 py-4 transition-opacity duration-700 opacity-0 backdrop-blur-sm bg-gray-800/60 group-hover:opacity-100">
+                        <h2 class="mt-4 text-2xl font-semibold text-white capitalize">Izimanage</h2>
+                        <a href="https://izimanage.com" class="mt-2 text-lg tracking-wider text-teal-400 uppercase"
+                           target="_blank">Website</a>
                     </div>
                 </div>
 
                 <div class="overflow-hidden bg-cover rounded-lg cursor-pointer h-96 group"
                      style="background-image:url('https://images.unsplash.com/photo-1621609764180-2ca554a9d6f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80')">
-                    <div
-                            class="flex flex-col justify-center w-full h-full px-8 py-4 transition-opacity duration-700 opacity-0 backdrop-blur-sm bg-gray-800/60 group-hover:opacity-100">
-                        <h2 class="mt-4 text-2xl font-semibold text-white capitalize">Block of Ui kit collections</h2>
-                        <p class="mt-2 text-lg tracking-wider text-blue-400 uppercase ">Ui kit</p>
+                    <div class="flex flex-col justify-center w-full h-full px-8 py-4 transition-opacity duration-700 opacity-0 backdrop-blur-sm bg-gray-800/60 group-hover:opacity-100">
+                        <h2 class="mt-4 text-2xl font-semibold text-white capitalize">Femy Bien Etre</h2>
+                        <a href="https://femybienetre.com" class="mt-2 text-lg tracking-wider text-teal-400 uppercase"
+                           target="_blank">Website</a>
                     </div>
                 </div>
 
                 <div class="overflow-hidden bg-cover rounded-lg cursor-pointer h-96 group"
                      style="background-image:url('https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80')">
-                    <div
-                            class="flex flex-col justify-center w-full h-full px-8 py-4 transition-opacity duration-700 opacity-0 backdrop-blur-sm bg-gray-800/60 group-hover:opacity-100">
-                        <h2 class="mt-4 text-2xl font-semibold text-white capitalize">Ton’s of mobile mockup</h2>
-                        <p class="mt-2 text-lg tracking-wider text-blue-400 uppercase ">Mockups</p>
+                    <div class="flex flex-col justify-center w-full h-full px-8 py-4 transition-opacity duration-700 opacity-0 backdrop-blur-sm bg-gray-800/60 group-hover:opacity-100">
+                        <h2 class="mt-4 text-2xl font-semibold text-white capitalize">Facture Express</h2>
+                        <a href="https://facture-express.com"
+                           class="mt-2 text-lg tracking-wider text-teal-400 uppercase"
+                           target="_blank">website</a>
                     </div>
                 </div>
             </div>
@@ -177,11 +169,13 @@
                     <div class="text-center">
                         <h2 class="font-bold text-2xl md:text-2xl tracking-tight mb-4 text-white text-center">Get In
                             Touch</h2>
-                        <p class="font-normal text-zinc-400 my-6">Although I’m not currently looking for any new
-                            opportunities, my inbox is
-                            always open.
-                            Whether
-                            you have a question or just want to say hi, I’ll try my best to get back to you!</p>
+                        <p class="font-normal text-zinc-400 my-6">
+                            I'm open to new opportunities, if you think that I could be useful for your project or your
+                            business, please feel free to <a href="mailto:tobidegnon@proton.me"
+                                                             class="text-teal-400 hover:text-teal-600 hover:underline">send
+                            me an email</a> at
+                            the address below. I will do my best to
+                            get back to you as soon as possible.</p>
                         <div class="flex justify-center mt-4">
                             <a class="group flex text-sm font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
                                href="mailto:tobidegnon@proton.me">

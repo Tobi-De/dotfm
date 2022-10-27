@@ -1,5 +1,6 @@
 {% extends "blog/base.html" %}
 {% load blog_tags %}
+{% load humanize %}
 
 
 {% block content %}
@@ -8,14 +9,15 @@
         <div class="mx-auto max-w-7xl lg:px-8">
             <div class="px-4 lg:px-12">
                 <div class="mx-auto max-w-2xl lg:max-w-5xl">
-                    <header class="max-w-2xl">
-                        <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
-                            Snippets</h1>
-                        <p class="mt-6 text-base text-zinc-400">I’ve worked on tons of little
-                            projects over the years but these are the ones that I’m most proud of. Many of them are
-                            open-source, so if you see something that piques your interest, check out the code and
-                            contribute if you have ideas for how it can be improved.</p></header>
-                    <div class="mt-20 my-4 py-4">
+                    <header class="">
+                        <h1 class="text-5xl font-bold tracking-tight">
+                            Code Snippets</h1>
+                        <p class="mt-6 text-base text-zinc-400">
+                            Most are short and handy pieces of code that I often see myself copying and pasting over and over
+                            again in my projects.
+                        </p>
+                    </header>
+                    <div class="my-4 py-4">
                         <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
                             <table class="w-full text-sm text-left text-zinc-400">
                                 <thead class="text-xs uppercase bg-zinc-700 text-zinc-400">
@@ -35,21 +37,23 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="border-b border-zinc-700">
-                                    <th scope="row"
-                                        class="py-4 px-6 font-medium whitespace-nowrap">
-                                        Apple MacBook Pro 17"
-                                    </th>
-                                    <td class="py-4 px-6">
-                                        Sliver
-                                    </td>
-                                    <td class="py-4 px-6">
-                                        Laptop
-                                    </td>
-                                    <td class="py-4 px-6">
-                                        $2999
-                                    </td>
-                                </tr>
+                                {% for snippet in snippets %}
+                                    <tr class="border-b border-zinc-700">
+                                        <th scope="row"
+                                            class="py-4 px-6 font-medium whitespace-nowrap hover:text-teal-400">
+                                            <a href="{{ snippet.slug }}">{{ snippet.title }}</a>
+                                        </th>
+                                        <td class="py-4 px-6">
+                                            {{ snippet.description }}
+                                        </td>
+                                        <td class="py-4 px-6">
+                                            {{ snippet.tags|join:", " }}
+                                        </td>
+                                        <td class="py-4 px-6">
+                                            {{ snippet.publish_date|naturalday }}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
                                 </tbody>
                             </table>
                         </div>
@@ -59,7 +63,7 @@
         </div>
     </main>
     {#    <ul>#}
-    {#        {% for snippet in snippets %}#}
+    {#        #}
     {#            <li class="m-2">#}
     {#                <a href="{{ snippet.slug }}">{{ snippet.title }}</a>#}
     {#            </li>#}

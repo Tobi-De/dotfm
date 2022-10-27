@@ -36,6 +36,7 @@ DJANGO_APPS = [
     "django.contrib.messages",
     "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
+    "django.contrib.humanize",
 ]
 
 THIRD_PARTY_APPS = [
@@ -43,7 +44,6 @@ THIRD_PARTY_APPS = [
     "django_extensions",
     "django_browser_reload",
     "coltrane",
-    "solo",
 ]
 
 LOCAL_APPS = [

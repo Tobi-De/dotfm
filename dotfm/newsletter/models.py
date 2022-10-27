@@ -11,7 +11,7 @@ from model_utils.models import QueryManager, TimeStampedModel
 
 
 class Subscriber(TimeStampedModel):
-    full_name = models.CharField(max_length=255, blank=True, db_index=True)
+    friendly_name = models.CharField(max_length=255, blank=True, db_index=True)
     email = models.EmailField(unique=True)
     secret = UrlsafeTokenField(editable=False, db_index=True)
     confirmed_at = models.DateTimeField(blank=True, null=True)
@@ -30,10 +30,10 @@ class Subscriber(TimeStampedModel):
         confirmation_link = request.build_absolute_uri(
             reverse("newsletter:confirm_subscription", kwargs={"secret": self.secret})
         )
-        body = get_template("newsletter/emails/confirmation.html").render(
-            context=Context(
-                {"confirmation_link": confirmation_link, "subscriber": self}
-            )
+        body = render_to_string(
+            "newsletter/emails/confirmation.html",
+            request=request,
+            context={"confirmation_link": confirmation_link, "subscriber": self},
         )
         send_mail(
             subject="Subscription Confirmation",
