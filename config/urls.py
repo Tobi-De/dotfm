@@ -3,19 +3,16 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import TemplateView
 
+from dotfm.projects.views import index as projects_index
+
 urlpatterns = [
     path("", TemplateView.as_view(template_name="home.html"), name="home"),
-    path(
-        "projects/",
-        TemplateView.as_view(template_name="projects.html"),
-        name="projects",
-    ),
+    path("projects/", projects_index, name="projects"),
     path(
         "colophon/",
         TemplateView.as_view(template_name="colophon.html"),
         name="colophon",
     ),
-    path("blog/", include("dotfm.blog.urls", namespace="blog")),
     path("blog/", include("coltrane.urls", namespace="coltrane")),
     path("newsletter/", include("dotfm.newsletter.urls", namespace="newsletter")),
     path(settings.ADMIN_URL, admin.site.urls),

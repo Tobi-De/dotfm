@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name="Subscriber",
+            name="Project",
             fields=[
                 (
                     "id",
@@ -40,22 +40,16 @@ class Migration(migrations.Migration):
                         verbose_name="modified",
                     ),
                 ),
-                (
-                    "friendly_name",
-                    models.CharField(blank=True, db_index=True, max_length=255),
-                ),
-                ("email", models.EmailField(max_length=254, unique=True)),
-                (
-                    "secret",
-                    model_utils.fields.UrlsafeTokenField(
-                        db_index=True, editable=False, factory=None, max_length=128
-                    ),
-                ),
-                ("confirmed_at", models.DateTimeField(blank=True, null=True)),
-                ("unsubscribe_at", models.DateTimeField(blank=True, null=True)),
+                ("name", models.CharField(max_length=255, unique=True)),
+                ("description", models.TextField()),
+                ("stack", models.CharField(max_length=255)),
+                ("company", models.CharField(max_length=255)),
+                ("web_url", models.URLField(blank=True)),
+                ("github_url", models.URLField(blank=True)),
+                ("featured", models.BooleanField(default=False)),
             ],
             options={
-                "abstract": False,
+                "ordering": ("featured", "-created", "-modified"),
             },
         ),
     ]
