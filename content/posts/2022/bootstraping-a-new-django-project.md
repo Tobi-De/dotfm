@@ -6,7 +6,9 @@ slug: bootstraping-a-new-django-project
 tags:
  - python
  - django
-description:
+description: >
+ Initialize your new django projects with production-ready settings and easily setup some of the most common and
+ used django packages.
 publish_date: 2022-10-28
 upload_path: posts/2022
 ---
@@ -34,7 +36,7 @@ description [Behold My Awesome Project!]: My amazing ecommerce platform.
 author_name [Daniel Roy Greenfeld]: John Doe
 domain_name [example.com]: ushopify.com
 email [john-doe@example.com]: doe@ushopify.com
-version [0.1.0]: 
+version [0.1.0]:
 Select open_source_license:
 1 - MIT
 2 - BSD
@@ -109,23 +111,23 @@ You can use any option you want, I find [amazon SES](https://aws.amazon.com/ses/
 use_async [n]:
 ```
 Indicates whether the project should use web sockets with Uvicorn + Gunicorn. This statement is from the [cookiecutter-django official documentation](https://cookiecutter-django.readthedocs.io/en/latest/project-generation-options.html). If  you are not sure what it means, I recommend you read [this](https://dev.to/alexoleshkevich/websockets-in-django-3-1-532o) article on websocket in django.
-```c  
-use_drf [n]: 
+```c
+use_drf [n]:
 ```
 If you are building an API or planning on developing an internal  api to your project then choose **y**. More info on Dango Rest framework [here](https://www.django-rest-framework.org/). Drf is the go-to framework to build rest apis with django.
 
 ```c
-custom_bootstrap_compilation [n]: 
+custom_bootstrap_compilation [n]:
 ```
 Indicates whether the project should support Bootstrap recompilation via the selected JavaScript task runner’s task. This can be useful for real-time Bootstrap variable alteration (Official Doc description). If like me you are not sure you understood, then choose the default answer.
 
 ```c
-use_compressor [n]: 
+use_compressor [n]:
 ```
 Add and setup [django-compressor] for your project. This package compresses JavaScript and CSS into a single cached file. More informations on the official github page (link above).
 
-```c	
-use_celery [n]: 
+```c
+use_celery [n]:
 ```
 [Celery](https://github.com/celery/celery) is an open source asynchronous task queue or job queue which is based on distributed message passing. While it supports scheduling, its focus is on operations in real time. That was wikipedia definition :smile:. Celery is used to handle asynchronous task (background task) and scheduled task. For example if you have a payment page on you Ushopify app and you need to make an external api call to process the payment, you can't leave the page loading and the user waiting while all this is happening, you need to make that api call a background task. If you need to send daily message to your users, you won't be able to achieve that just with django, that where celery comes into play. But celery is know to be really painful to setup for beginners, if you choose **y**, your project will be already configure  to use celery. Isn't that great ?. You still need to understand and know how to use it, but most of the job is already done for you. I recommend you  still read the official [installation and configuration guide](https://docs.celeryproject.org/en/stable/django/first-steps-with-django.html) to know how things are put together and if you need help on how to use it the official [documentation](https://docs.celeryproject.org/en/stable/index.html) has all the informations you need. If you want a more simple to setup alternative to  celery you can try [django_q](https://github.com/Koed00/django-q), it help you accomplish the same things as celery but it is more simple to [setup and configure](https://django-q.readthedocs.io/en/latest/), and and unlike celery, it was created only to work with django. It is the one I generally use for my projects. I recommend you start with django_q but the choice is your, both of them are great.
 
@@ -145,7 +147,7 @@ use_whitenoise [n]:
 ```
 [whitenoise](https://github.com/evansd/whitenoise) help you simplifies static file serving on production. I usually choose **n** because I usually use boto3 and amazon S3 bucket for static files and media files, but if you don't need media files in your app  (that mean that your users or yourself won't be able to upload any kind of files to your app) then choose **y**, it will save you from having to pay for an amazon  S3 bucket.
 
-```c 
+```c
 use_heroku [n]: y
 ```
 heroku is a hosting platform for web applications. If you read my guide on how to [deploy your django project using dokku on DigitalOcean](https://www.tobidegnon.com/blog/post-detail/host-your-django-project-on-digital-ocean-with-dok/), you known it is one of the option's available if you decide to deploy your project. The cookiecutter will automatically create a Procfile and add a requirements.txt file, even if you are planning on using dokku, enter **y**.
@@ -156,17 +158,17 @@ Select ci_tool:
 2 - Travis
 3 - Gitlab
 4 - Github
-Choose from 1, 2, 3, 4 [1]: 
+Choose from 1, 2, 3, 4 [1]:
 ```
 Select an option other than the default  if you are planning to setup a CI/CD pipeline for your project. More info on how to setup  CI/CD for a django project [here](https://buddy.works/docs/quickstart/django). I'm planning on writing a guide on this myself.
 
 ```c
-keep_local_envs_in_vcs [y]: 
+keep_local_envs_in_vcs [y]:
 ```
 If you choose **y** on the **use_docker** or **use_heroku** option than your project will have an **.envs** folder with **.local** and **.production** sub directories, if you choose **n**, both folder will be kept out of your version control system (VCS), if you choose the default value your **.local** will be tracked by your vcs.
 
 ```c
-debug [n]: 
+debug [n]:
 ```
 this option is only for Cookiecutter Django developers only, choose the default value.
 

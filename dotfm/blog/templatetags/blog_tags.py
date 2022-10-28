@@ -5,7 +5,6 @@ from coltrane.renderer import StaticRequest, render_markdown
 from coltrane.retriever import get_content_items
 from coltrane.templatetags.coltrane_tags import directory_contents
 from django import template
-from django.conf import settings
 from django.utils.html import strip_tags
 
 register = template.Library()
@@ -29,12 +28,6 @@ def readtime_from_post(metadata: dict):
     return reading_time(context["content"])
 
 
-def _is_not_draft(metadata: dict) -> bool:
-    if settings.DEBUG:
-        return True
-    return not metadata.get("draft", True)
-
-
 def parse_publish_date(metadata: dict):
     # todo: change this later, add in coltrane maybe, parse date when calling directory_contents
     dt = dateparser.parse(metadata["publish_date"])
@@ -52,9 +45,7 @@ def get_posts(context) -> list[dict[str, str]]:
     posts: list[dict] = directory_contents(  # noqa
         context=context, directory="posts/2022"
     )
-    return sort_by_publish_date(
-        [parse_publish_date(post) for post in posts if _is_not_draft(post)]
-    )
+    return sort_by_publish_date([parse_publish_date(post) for post in posts])
 
 
 @register.simple_tag(name="featured_posts", takes_context=True)
@@ -69,9 +60,7 @@ def get_snippets(context) -> list[dict[str, str]]:
     snippets: list[dict] = directory_contents(  # noqa
         context=context, directory="snippets/2022"
     )
-    return sort_by_publish_date(
-        [parse_publish_date(snippet) for snippet in snippets if _is_not_draft(snippet)]
-    )
+    return sort_by_publish_date([parse_publish_date(snippet) for snippet in snippets])
 
 
 def get_content_items_with_tags():
