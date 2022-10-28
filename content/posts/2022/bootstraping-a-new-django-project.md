@@ -1,12 +1,13 @@
 ---
 share: True
+featured: True
 title: Bootstraping a new django project
 slug: bootstraping-a-new-django-project
 tags:
  - python
  - django
 description:
-publish_date:
+publish_date: 2022-10-28
 upload_path: posts/2022
 ---
 
