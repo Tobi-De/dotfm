@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
+{% load blog_tags %}
+{% load humanize %}
 
 
 {% block content %}
+    {% featured_posts as posts %}
     <main>
         <section class="px-8 mt-20">
             <div class="px-8 mb-3">
@@ -10,7 +13,7 @@
                     <div class="px-4 lg:px-12">
                         <div class="mx-auto max-w-2xl lg:max-w-5xl">
                             <img class="object-cover w-16 h-16 border-2 border-gray-700 rounded-full"
-                                 alt="Testimonial avatar"
+                                 alt="Tobi avatar"
                                  src="https://avatars.githubusercontent.com/u/40334729?v=4">
                         </div>
                     </div>
@@ -31,23 +34,33 @@
                                 <a class="group p-1" aria-label="Follow on Twitter"
                                    href="https://twitter.com/tobidegnon">
                                     <svg viewBox="0 0 24 24" aria-hidden="true"
-                                         class="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300">
+                                         class="h-6 w-6 fill-zinc-400 transition group-hover:fill-zinc-300">
                                         <path d="M20.055 7.983c.011.174.011.347.011.523 0 5.338-3.92 11.494-11.09 11.494v-.003A10.755 10.755 0 0 1 3 18.186c.308.038.618.057.928.058a7.655 7.655 0 0 0 4.841-1.733c-1.668-.032-3.13-1.16-3.642-2.805a3.753 3.753 0 0 0 1.76-.07C5.07 13.256 3.76 11.6 3.76 9.676v-.05a3.77 3.77 0 0 0 1.77.505C3.816 8.945 3.288 6.583 4.322 4.737c1.98 2.524 4.9 4.058 8.034 4.22a4.137 4.137 0 0 1 1.128-3.86A3.807 3.807 0 0 1 19 5.274a7.657 7.657 0 0 0 2.475-.98c-.29.934-.9 1.729-1.713 2.233A7.54 7.54 0 0 0 22 5.89a8.084 8.084 0 0 1-1.945 2.093Z"></path>
                                     </svg>
                                 </a>
                                 <a class="group p-1" aria-label="Email address"
                                    href="mailto:tobidegnon@proton.me">
-                                    <i class="fa-solid fa-envelope text-xl hover:text-zinc-300 text-zinc-400"></i>
+                                    <svg role="img" viewBox="0 0 24 24"
+                                         class="mt-0.5 h-5 w-5 fill-zinc-400 transition group-hover:fill-zinc-300"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 20.351s-1.096-.108-1.955-.705c-.86-.596-6.58-4.688-6.58-4.688v8.098S3.513 24 4.55 24h14.9c1.036 0 1.085-.942 1.085-.942v-8.1s-5.723 4.092-6.58 4.69c-.86.595-1.955.704-1.955.704zm0-20.35S4.925-.23 3.465 7.623v5.35s.06.572 1.67 1.735c1.607 1.162 5.773 4.436 6.867 4.436 1.088 0 5.254-3.273 6.865-4.437 1.607-1.164 1.668-1.737 1.668-1.737V7.62C19.075-.229 12 .003 12 .003zm4.846 10.536h-9.69V7.623C8.14 3.723 12 3.67 12 3.67s3.863.054 4.846 3.954z"></path>
+                                    </svg>
+                                    {#                                    <i class="fa-solid fa-envelope text-xl hover:text-zinc-300 text-zinc-400"></i>#}
                                 </a>
                                 <a class="group p-1" aria-label="Follow on GitHub" href="https://github.com/Tobi-De">
                                     <svg viewBox="0 0 24 24" aria-hidden="true"
-                                         class="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300">
+                                         class="h-6 w-6 fill-zinc-400 transition group-hover:fill-zinc-300">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
                                               d="M12 2C6.475 2 2 6.588 2 12.253c0 4.537 2.862 8.369 6.838 9.727.5.09.687-.218.687-.487 0-.243-.013-1.05-.013-1.91C7 20.059 6.35 18.957 6.15 18.38c-.113-.295-.6-1.205-1.025-1.448-.35-.192-.85-.667-.013-.68.788-.012 1.35.744 1.538 1.051.9 1.551 2.338 1.116 2.912.846.088-.666.35-1.115.638-1.371-2.225-.256-4.55-1.14-4.55-5.062 0-1.115.387-2.038 1.025-2.756-.1-.256-.45-1.307.1-2.717 0 0 .837-.269 2.75 1.051.8-.23 1.65-.346 2.5-.346.85 0 1.7.115 2.5.346 1.912-1.333 2.75-1.05 2.75-1.05.55 1.409.2 2.46.1 2.716.637.718 1.025 1.628 1.025 2.756 0 3.934-2.337 4.806-4.562 5.062.362.32.675.936.675 1.897 0 1.371-.013 2.473-.013 2.82 0 .268.188.589.688.486a10.039 10.039 0 0 0 4.932-3.74A10.447 10.447 0 0 0 22 12.253C22 6.588 17.525 2 12 2Z"></path>
                                     </svg>
                                 </a>
                                 <a class="group p-1" aria-label="Follow on DevTo" href="https://dev.to/tobi">
-                                    <i class="fa-brands fa-dev text-xl hover:text-zinc-300 text-zinc-400"></i>
+                                    <svg role="img" viewBox="0 0 24 24"
+                                         class="h-7 w-7 mb-0.5 fill-zinc-400 transition group-hover:fill-zinc-300"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M7.42 10.05c-.18-.16-.46-.23-.84-.23H6l.02 2.44.04 2.45.56-.02c.41 0 .63-.07.83-.26.24-.24.26-.36.26-2.2 0-1.91-.02-1.96-.29-2.18zM0 4.94v14.12h24V4.94H0zM8.56 15.3c-.44.58-1.06.77-2.53.77H4.71V8.53h1.4c1.67 0 2.16.18 2.6.9.27.43.29.6.32 2.57.05 2.23-.02 2.73-.47 3.3zm5.09-5.47h-2.47v1.77h1.52v1.28l-.72.04-.75.03v1.77l1.22.03 1.2.04v1.28h-1.6c-1.53 0-1.6-.01-1.87-.3l-.3-.28v-3.16c0-3.02.01-3.18.25-3.48.23-.31.25-.31 1.88-.31h1.64v1.3zm4.68 5.45c-.17.43-.64.79-1 .79-.18 0-.45-.15-.67-.39-.32-.32-.45-.63-.82-2.08l-.9-3.39-.45-1.67h.76c.4 0 .75.02.75.05 0 .06 1.16 4.54 1.26 4.83.04.15.32-.7.73-2.3l.66-2.52.74-.04c.4-.02.73 0 .73.04 0 .14-1.67 6.38-1.8 6.68z"></path>
+                                    </svg>
+                                    {#    <i class="fa-brands fa-dev text-xl hover:text-zinc-300 text-zinc-400"></i>#}
                                 </a>
                             </div>
                         </div>
@@ -57,73 +70,29 @@
         </section>
         <section class="mt-16">
             <h2 class="font-bold text-2xl md:text-2xl tracking-tight mb-4 text-white text-center">Featured Posts</h2>
-            <div class="my-4 flex flex-col items-center md:flex-row md:justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-                <a href="#"
-                   class="block p-6 max-w-sm rounded-lg border shadow-md border-zinc-700 hover:bg-zinc-700">
-                    <time class="relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 pl-3.5"
-                          datetime="2022-09-05"><span class="absolute inset-y-0 left-0 flex items-center"
-                                                      aria-hidden="true"><span
-                            class="h-4 w-0.5 rounded-full bg-zinc-500"></span></span>September
-                        5, 2022
-                    </time>
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight">Noteworthy
-                        technology acquisitions 2021</h5>
-                    <p class="font-normal text-zinc-400">Here are the biggest enterprise
-                        technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                    <div aria-hidden="true"
-                         class="relative z-10 mt-4 flex items-center text-sm font-medium text-teal-500">
-                        Read article
-                        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"
-                             class="ml-1 h-4 w-4 stroke-current">
-                            <path d="M6.75 5.75 9.25 8l-2.5 2.25" stroke-width="1.5" stroke-linecap="round"
-                                  stroke-linejoin="round"></path>
-                        </svg>
-                    </div>
-                </a>
-                <a href="#"
-                   class="block p-6 max-w-sm rounded-lg border shadow-md border-zinc-700 hover:bg-zinc-700">
-                    <time class="relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 pl-3.5"
-                          datetime="2022-09-05"><span class="absolute inset-y-0 left-0 flex items-center"
-                                                      aria-hidden="true"><span
-                            class="h-4 w-0.5 rounded-full bg-zinc-500"></span></span>September
-                        5, 2022
-                    </time>
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight">Noteworthy
-                        technology acquisitions 2021</h5>
-                    <p class="font-normal text-zinc-400">Here are the biggest enterprise
-                        technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                    <div aria-hidden="true"
-                         class="relative z-10 mt-4 flex items-center text-sm font-medium text-teal-500">
-                        Read article
-                        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"
-                             class="ml-1 h-4 w-4 stroke-current">
-                            <path d="M6.75 5.75 9.25 8l-2.5 2.25" stroke-width="1.5" stroke-linecap="round"
-                                  stroke-linejoin="round"></path>
-                        </svg>
-                    </div>
-                </a>
-                <a href="#"
-                   class="block p-6 max-w-sm rounded-lg border shadow-md  border-zinc-700 hover:bg-zinc-700">
-                    <time class="relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400  pl-3.5"
-                          datetime="2022-09-05">
-                        <span class="absolute inset-y-0 left-0 flex items-center" aria-hidden="true">
-                            <span class="h-4 w-0.5 rounded-full bg-zinc-500"></span></span>September
-                        5, 2022
-                    </time>
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight">Noteworthy
-                        technology acquisitions 2021</h5>
-                    <p class="font-normal text-zinc-400">Here are the biggest enterprise
-                        technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                    <div aria-hidden="true"
-                         class="relative z-10 mt-4 flex items-center text-sm font-medium text-teal-500">
-                        Read article
-                        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"
-                             class="ml-1 h-4 w-4 stroke-current">
-                            <path d="M6.75 5.75 9.25 8l-2.5 2.25" stroke-width="1.5" stroke-linecap="round"
-                                  stroke-linejoin="round"></path>
-                        </svg>
-                    </div>
-                </a>
+            <div class="my-4 flex flex-col items-center md:items-stretch md:flex-row md:justify-center gap-5 overflow-hidden py-4 sm:gap-8">
+                {% for post in posts %}
+                    <a href="{% url "coltrane:content" post.slug %}"
+                       class="block p-6 max-w-sm rounded-lg border shadow-md border-zinc-700 hover:bg-zinc-700">
+                        <time class="relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 pl-3.5"
+                              datetime="2022-09-05">
+                            <span class="absolute inset-y-0 left-0 flex items-center" aria-hidden="true">
+                                <span class="h-4 w-0.5 rounded-full bg-zinc-500"></span>
+                            </span>{{ post.publish_date|naturalday }}
+                        </time>
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight">{{ post.title }}</h5>
+                        <p class="font-normal text-zinc-400">{{ post.description }}</p>
+                        <div aria-hidden="true"
+                             class="relative z-10 mt-4 flex items-center text-sm font-medium text-teal-500">
+                            Read article
+                            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"
+                                 class="ml-1 h-4 w-4 stroke-current">
+                                <path d="M6.75 5.75 9.25 8l-2.5 2.25" stroke-width="1.5" stroke-linecap="round"
+                                      stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                    </a>
+                {% endfor %}
             </div>
         </section>
         <section class="mt-16 max-w-6xl mx-auto">
@@ -133,7 +102,7 @@
                 Some of my recent projects, <a href="{% url "projects" %}" class="font-medium text-teal-500">view the
                 archive</a>.
             </p>
-            <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 md:grid-cols-2 xl:grid-cols-3">
+            <div class="grid grid-cols-1 gap-8 mt-8 mx-2 md:mx-0 xl:mt-12 xl:gap-12 md:grid-cols-2 xl:grid-cols-3">
                 <div class="overflow-hidden bg-cover rounded-lg cursor-pointer h-96 group"
                      style="background-image:url('https://images.unsplash.com/photo-1621111848501-8d3634f82336?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1565&q=80')">
                     <div class="flex flex-col justify-center w-full h-full px-8 py-4 transition-opacity duration-700 opacity-0 backdrop-blur-sm bg-gray-800/60 group-hover:opacity-100">

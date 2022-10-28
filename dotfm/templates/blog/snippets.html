@@ -41,7 +41,7 @@
                                     <tr class="border-b border-zinc-700">
                                         <th scope="row"
                                             class="py-4 px-6 font-medium whitespace-nowrap hover:text-teal-400">
-                                            <a href="{{ snippet.slug }}">{{ snippet.title }}</a>
+                                            <a href="{% url "coltrane:content" snippet.slug %}">{{ snippet.title }}</a>
                                         </th>
                                         <td class="py-4 px-6">
                                             {{ snippet.description }}

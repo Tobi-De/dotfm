@@ -46,14 +46,14 @@
                                         <span class="text-zinc-500">{{ post|readtime_from_post }}</span>
                                     </div>
                                     <h2 class="mb-2 text-2xl font-bold tracking-tight hover:text-teal-400">
-                                        <a href="{{ post.slug }}">{{ post.title }}</a></h2>
+                                        <a href="{% url "coltrane:content" post.slug %}">{{ post.title }}</a></h2>
                                     <p class="mb-5 text-zinc-400">{{ post.description }}</p>
                                     <div class="flex items-center justify-between">
                                        <span class="text-sm text-zinc-500">Published <time
                                                datetime="{{ post.publish_date.isoformat }}">{{ post.publish_date|naturalday }}</time></span>
                                         <a
                                                 class="inline-flex items-center font-medium text-teal-400 hover:underline"
-                                                href="{{ post.slug }}">Read more
+                                                href="{% url "coltrane:content" post.slug %}">Read more
                                             <svg class="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 20 20"
                                                  xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd"
@@ -65,7 +65,7 @@
                             {% endfor %}
                         </div>
                     </div>
-                    <aside class="hidden lg:block lg:w-80" aria-labelledby="sidebar-label">
+                    <aside class="ml-3 hidden lg:block lg:w-80" aria-labelledby="sidebar-label">
                         <div class="sticky top-36">
                             <h3 id="sidebar-label" class="sr-only">Sidebar</h3>
                             <div class="p-6 pb-4 mt-6 mb-6 font-medium border rounded-lg border-zinc-700">

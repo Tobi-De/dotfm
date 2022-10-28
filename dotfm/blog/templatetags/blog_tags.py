@@ -57,6 +57,12 @@ def get_posts(context) -> list[dict[str, str]]:
     )
 
 
+@register.simple_tag(name="featured_posts", takes_context=True)
+def featured_posts(context) -> list[dict]:
+    posts = get_posts(context)
+    return [post for post in posts if post.get("featured")][:3]
+
+
 # todo: search for snippets table maybe
 @register.simple_tag(name="get_snippets", takes_context=True)
 def get_snippets(context) -> list[dict[str, str]]:
