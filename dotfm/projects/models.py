@@ -14,7 +14,7 @@ class Project(TimeStampedModel):
     featured = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ("featured", "-created", "-modified")
+        ordering = ("-featured", "-created", "-modified")
 
     def __str__(self):
         return self.name
