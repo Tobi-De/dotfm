@@ -15,4 +15,8 @@ class SubscriberAdmin(admin.ModelAdmin):
         "created",
         "modified",
     )
+    search_fields = (
+        "friendly_name",
+        "email",
+    )
     list_filter = ("created", "modified", "confirmed_at", "unsubscribe_at")
