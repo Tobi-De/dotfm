@@ -12,6 +12,7 @@ class Project(TimeStampedModel):
     web_url = models.URLField(blank=True)
     github_url = models.URLField(blank=True)
     featured = models.BooleanField(default=False)
+    active = models.BooleanField(default=True)
 
     class Meta:
         ordering = ("-featured", "-created", "-modified")
