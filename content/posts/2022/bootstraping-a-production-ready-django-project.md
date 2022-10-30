@@ -177,7 +177,7 @@ use_celery [n]:
 
 [Celery](https://github.com/celery/celery) is an open source asynchronous task queue or job queue which is based on distributed message passing. While it supports scheduling, its focus is on operations in real time. That was the wikipedia definition 😅. 
 Celery is used to handle asynchronous task (background task) and scheduled task. 
-Read [[../../../Task queues manager in django|this]] for more details on task queues manager in django.
+Read [[Task queues manager in django|this]] for more details on task queues manager in django.
 
 ```c
 use_mailhog [n]: y
@@ -204,7 +204,7 @@ use_heroku [n]: y
 Heroku is a hosting platform for web applications. The cookiecutter will add the necessary requirements for your project to work on heroku, these requirements being:
 - A requirements.txt file with all your project production requirements
 - A [Procfile](https://devcenter.heroku.com/articles/procfile)
-If you are using a similar deployment method based on a procfile like [[../../../host-your-django-project-on-digitalocen-using-dokku|dokku]] type *y* if not then *n*.
+If you are using a similar deployment method based on a procfile like [[Host your Django project on DigitalOcean using dokku|dokku]] type *y* if not then *n*.
 
 ```c
 Select ci_tool:
@@ -295,7 +295,7 @@ At the root of your project should have these directories:
 - **docs** : if you need to write a documentation for your project, it is configured to use [sphinx](https://www.sphinx-doc.org/en/master/index.html) documentation generator
 - **locale**: this folder is there to store [translations](https://docs.djangoproject.com/en/3.1/topics/i18n/translation/)
 - **requirements**: this folder contains all your projects requirements, the **base.txt** file contains all requirements common to your dev and prod environments, the **local.txt** file for your development environment and **production.txt** for your production environment.
- - **ushopify**: this folder contains all your templates and statics files, it also contains a users app created by the cookiecutter. This users app use the excellent [allauth](https://github.com/pennersr/django-allauth) package to offers your project full users management system, login, logout, reset password, change password, change email, email verification and much more. The users app contains a **tests** directory with test files structured like this: **test_{module}.py**. This test structure is the one defined in the **ushopify/conftest.py** file. Follow it when writing your tests or update the **conftest.py** file to match your needs. In this folder, you also have a **utils** subdirectory that contains a **context_processors.py** file. Read this short [article](https://dev.to/harveyhalwin/using-context-processor-in-django-to-create-dynamic-footer-45k4) for more information on context processors.
+- **ushopify**: this folder contains all your templates and statics files, it also contains a users app created by the cookiecutter. This users app use the excellent [allauth](https://github.com/pennersr/django-allauth) package to offers your project full users management system, login, logout, reset password, change password, change email, email verification and much more. The users app contains a **tests** directory with test files structured like this: **test_{module}.py**. This test structure is the one defined in the **ushopify/conftest.py** file. Follow it when writing your tests or update the **conftest.py** file to match your needs. In this folder, you also have a **utils** subdirectory that contains a **context_processors.py** file. Read this short [article](https://dev.to/harveyhalwin/using-context-processor-in-django-to-create-dynamic-footer-45k4) for more information on context processors.
 - **utility**: this folder contains some bash scripts that help  you install system and project requirements, useful only if you are planning on deploying on  a linux server and setup the server yourself.
 
 Beside those directories, you have the classic **manage.py** file to run your commands, a **Procfile** if you choose to deploy using heroku, a **pytest.ini** file because the project is configured to use [pytest](https://docs.pytest.org/en/stable/) for testing.
