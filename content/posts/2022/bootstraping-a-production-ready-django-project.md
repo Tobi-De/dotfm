@@ -177,7 +177,7 @@ use_celery [n]:
 
 [Celery](https://github.com/celery/celery) is an open source asynchronous task queue or job queue which is based on distributed message passing. While it supports scheduling, its focus is on operations in real time. That was the wikipedia definition 😅. 
 Celery is used to handle asynchronous task (background task) and scheduled task. 
-Read [[Task queues manager in django|this]] for more details on task queues manager in django.
+Read [[../../../Task queues manager in django|this]] for more details on task queues manager in django.
 
 ```c
 use_mailhog [n]: y
@@ -204,7 +204,7 @@ use_heroku [n]: y
 Heroku is a hosting platform for web applications. The cookiecutter will add the necessary requirements for your project to work on heroku, these requirements being:
 - A requirements.txt file with all your project production requirements
 - A [Procfile](https://devcenter.heroku.com/articles/procfile)
-If you are using a similar deployment method based on a procfile like [[Host your Django project on DigitalOcean using dokku|dokku]] type *y* if not then *n*.
+If you are using a similar deployment method based on a procfile like [[../../../host-your-django-project-on-digitalocen-using-dokku|dokku]] type *y* if not then *n*.
 
 ```c
 Select ci_tool:
