@@ -235,7 +235,7 @@ If all went well you will get this message.
  [SUCCESS]: Project initialized, keep up the good work!
 ```
 
-### Structures of the project
+## Structures of the project
 
 Let's take a quick tour of the generated project. The generated  project should look something like this:
 
