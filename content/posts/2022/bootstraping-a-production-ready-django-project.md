@@ -239,7 +239,7 @@ If all went well you will get this message.
 
 Let's take a quick tour of the generated project. The generated  project should look something like this:
 
-```c
+```shell
 ├── config
 │   ├── __init__.py
 │   ├── settings
