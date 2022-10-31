@@ -30,7 +30,7 @@ And for convenience, **cookiecuter-django** makes it easy to set up via the prom
 
 - Task queue manager (celery)
 - Mail services (amazon SES, Sendgrid, etc.) etc.
-- CI / CD pipeline (github, gitlab, etc)
+- CI / CD pipeline (GitHub, gitlab, etc)
 
 If you are already convinced at this point, just run the two commands below, and you are done 😀.
 
@@ -48,6 +48,10 @@ The [cookiecutter](https://github.com/cookiecutter/cookiecutter) project was ini
 ## Starting a new project using cookiecutter-django
 
 The default values are in brackets, if you see a blank line, then I've used the default value by pressing the **Enter** key. Through this guide I linked many external references to other page to help you understand what I can't detail here, but do not feel obligated to follow each link each time, otherwise you might feel exhausted before the end. I suggest you read the entire article at least once, then reread it by visiting the links that you find interesting.
+
+### Project metadata
+
+This section is for basic project information such as name, description, authors, etc.
 
 ```c
 pip install cookiecutter
@@ -74,7 +78,7 @@ A source code license is a legal text that tells people what they may do with th
 timezone [UTC]: US/Pacific
 ```
 
-I chose a completely random location. You can get the list of timezones [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) or open your python shell (ever heard of [bpython](https://bpython-interpreter.org/)?) and type this code:
+I chose a completely random location. You can get the full list of timezones [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) or open your python shell (ever heard of [bpython](https://bpython-interpreter.org/)?) and type this code:
 
 ```python
 from pytz import all_timezones
@@ -82,18 +86,22 @@ for tz in all_timezones:
       print(tz)
 ```
 
+### Local and production environments
+
+I'm on linux, so *n* for me.
+
 ```c
 windows [n]:
 use_pycharm [n]: y
 ```
 
-If you are using [pycharm](https://www.jetbrains.com/pycharm/), the cookiecutter will create **runserver**, **migrate** and more run configurations automatically for you, neat 😎.
+If you are using [pycharm](https://www.jetbrains.com/pycharm/), the cookiecutter will create `runserver`, `migrate` and more run configurations automatically for you, neat 😎.
 
 ```c
 use_docker [n]: n
 ```
 
-Docker is an open source platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure , so you can deliver software quickly. Choosing **y**, the cookiecutter will automatically create docker and docker-compose files to help you run your project locally and even deploy it with less effort, it's a great start to help you deploy your project easily, but I think it is necessary to have a minimum of experience with docker before you choose **y**. If you want more information about docker, check [here](https://www.docker.com/).
+Docker is an open source platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure, so you can deliver software quickly. Enter **y** and the cookiecutter will automatically create docker and docker-compose files to help you run your project locally and even deploy it with less effort. It's a great start to help you deploy your project, but I think it is necessary to have a minimum of experience with docker to understand how to correctly use the generated files. If you want more information about docker, read [this](https://www.docker.com/).
 
 ```c
 Select postgresql_version:
@@ -109,8 +117,10 @@ Select js_task_runner:
 Choose from 1, 2 [1]:
 ```
 
-I always choose the default option for the postgresql version, it's usually the latest.
-If you don't have much experience with front-end development, your answer for the **js_task_runner** option is probably the default one (None).
+*postgresql_version* set the version of postgresql to use in the Dockerfile for production. This only matters if you enter *y* at the *use_docker* option. As I don't often use the docker and docker compose configuration provided by the cookiecutter (I create my own files), it doesn't really matter to me.
+If you don't have much experience with front-end development, your answer for the *js_task_runner* option is probably the default one (None).
+
+### Cloud services
 
 ```c
 Select cloud_provider:
@@ -120,7 +130,8 @@ Select cloud_provider:
 Choose from 1, 2, 3 [1]:
 ```
 
-This option concerns the management of static files (HTML, CSS, static images like background images) and media files (file upload by you or your users like profile picture for example). If you choose **AWS** (amazon web service) or **GCP** (google cloud provider), your project will be configured for these providers to handle static and media files in production. If you choose **None**, then media files will not work by default (you will have to set it up yourself) in production and static files will work only if you choose **y** on the option **use_whitenoise**. For a step-by-step guide on how to configure static and media files serving yourself using **AWS**, watch [this](https://www.youtube.com/watch?v=kt3ZtW9MXhw&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=16).
+This is about static (HTML, CSS, static images like background images) and media files (file upload by you or your users like profile picture for example) storages. If you choose **AWS** (amazon web service) or **GCP** (google cloud provider), your project will be configured for these providers to handle static and media files in production. If you choose **None**, then media files will not work by default (you will have to set it up yourself) in production and static files will work only if you choose **y** on the option *use_whitenoise*.
+For a step-by-step guide on how to configure static and media files serving yourself using **AWS**, watch [this](https://www.youtube.com/watch?v=kt3ZtW9MXhw&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=16).
 
 ```c
 Select mail_service:
@@ -138,7 +149,9 @@ Choose from 1, 2, 3, 4, 5, 6, 7, 8, 9 [1]: 2
 
 I usually go with [amazon SES](https://aws.amazon.com/ses/) because it is the easiest to set up for me, but do what you want based on your experience. For a simple setup based on [SMTP](https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol) settings, choose **9**.
 
-```c
+### Async django
+
+```shell
 use_async [n]:
 ```
 
@@ -148,20 +161,24 @@ This statement is from the [cookiecutter-django official documentation](https://
 If you are not sure what it means, there is a high chance you don't need it, skip it.
 If you want to know more about websocket in django, read [this](https://dev.to/alexoleshkevich/websockets-in-django-3-1-532o). 
 
-```c  
+### Django rest framework
+
+```shell  
 use_drf [n]: 
 ```
 
 In case you are building a json based API, then choose **y**. 
 More info on Dango Rest framework [here](https://www.django-rest-framework.org/).  DRF is the go-to framework to build json-based APIs with django. What I call a json-based API here most people would call it a REST API, but [here's why](https://htmx.org/essays/how-did-rest-come-to-mean-the-opposite-of-rest/) they're wrong.
 
-```c
+### HTML / CSS
+
+```shell
 custom_bootstrap_compilation [n]: 
 ```
 
 Indicates whether the project should support Bootstrap recompilation via the selected JavaScript task runner’s task. This can be useful for real-time Bootstrap variable alteration (Official Doc description). If, like me, you are not sure that you understood, then choose the default answer.
 
-```c
+```shell
 use_compressor [n]: 
 ```
 
@@ -173,7 +190,9 @@ Add and setup [django-compressor](https://github.com/django-compressor/django-co
 
 Personally, I haven't tried it yet, but if I ever do, I'll probably write an article about it and update this section. 
 
-```c	
+### Celery
+
+```shell	
 use_celery [n]: 
 ```
 
@@ -182,25 +201,33 @@ Celery is used to handle asynchronous tasks (background tasks) and scheduled tas
 I don't use celery that much, I find it a bit too complex for most of my use cases. 
 You can read my article on [[Handling background tasks in django]] to see how I handle this kind of stuff in my projects.
 
-```c
+### Local email server setup
+
+```shell
 use_mailhog [n]: y
 ```
 
 [MailHog](https://github.com/mailhog/MailHog) is an email testing tool for developers. The [django console backend](https://docs.djangoproject.com/en/4.1/topics/email/#console-backend) is set up for local development if you choose **n** but mailhog gives you a nice graphical user interface (GUI) when you test your email delivery locally.
 
-```c
+### Sentry - production error tracking
+
+```shell
 use_sentry [n]: y
 ```
 
 [Sentry](https://github.com/getsentry/sentry) is an error monitoring and tracking system. I recommend you always choose **y** if you know your app is going in production, it will avoid you the hassle of always switching your **DEBUG** environment variable value to see errors when they happened in production. It is very easy to set up, just follow the [official guide](https://docs.sentry.io/platforms/python/guides/django/) If you want to configure it manually. If you choose **y** the only thing you need is a **Sentry DSN** key that you can get by creating a django app on the official [web platform](https://sentry.io).
 
-```c
+### Whitenoise
+
+```shell
 use_whitenoise [n]:
 ```
 
 [Whitenoise](https://github.com/evansd/whitenoise) serves your static files in production and [locally](http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development) if you want it to.  I usually choose **y** because having the same setup for production and local development can help mitigate surprises on your production environment.
 
-```c 
+### Heroku
+
+```shell 
 use_heroku [n]: y
 ```
 
@@ -209,7 +236,9 @@ Heroku is a hosting platform for web applications. The cookiecutter will add the
 - A [Procfile](https://devcenter.heroku.com/articles/procfile)
 If you are using a similar deployment method based on a procfile like [[Host your Django project on DigitalOcean using dokku|dokku]] type *y* if not then *n*.
 
-```c
+### Continuous Integration (CI)
+
+```shell
 Select ci_tool:
 1 - None
 2 - Travis
@@ -220,21 +249,26 @@ Choose from 1, 2, 3, 4 [1]:
 
 Select an option other than the default if you are planning to set up a CI/CD pipeline for your project. More info on how to set up CI/CD for a django project [here](https://buddy.works/docs/quickstart/django).
 
-```c
+### Environment variables
+
+```shell
 keep_local_envs_in_vcs [y]: 
 ```
 
 If you typed **y** on the **use_docker** or **use_heroku** option, then your project will have a `.envs` folder with `.local` and `.production` subdirectories.
 If on the current option you type **n**, both folder will be kept out of your version control system (VCS), if you choose the default value your `.local will be tracked by your VCS.
 
-```c
+### Cookiecutter debug
+
+```shell
 debug [n]: 
 ```
 
 This option is only for Cookiecutter Django developers only, choose the default value.
 
-If all went well you will get this message.
-```c
+If all went well, you will get this message.
+
+```shell
  [SUCCESS]: Project initialized, keep up the good work!
 ```
 
@@ -289,15 +323,15 @@ Let's take a quick tour of the generated project. The generated  project should 
     └── requirements-xenial.apt
 ```
 
-**Note**: This is not the entire structure of the directory, that would be too long 🙃
+> **Note**: This is not the entire structure of the directory, that would be too long 🙃
 
 
 At the root of your project should have these directories:
 
-- `config` : store all your project settings and configurations. In the `settings` subdirectory you have a `base.py` setting file for common settings, a **local.py** and a `production.py` file respectively for development and production specific settings. In the root of this directory, you have your classic **url.py** (your project level urls configurations) and your **wsgi.py** file.
+- `config` : store all your project settings and configurations. In the `settings`subdirectory, you have a `base.py` setting file for common settings, a `local.py` and a `production.py` file respectively for development and production specific settings. In the root of this directory, you have your classic `url.py` (your project level urls configurations) and your `wsgi.py` file.
 - `docs` : if you need to write a documentation for your project, it is configured to use [sphinx](https://www.sphinx-doc.org/en/master/index.html) documentation generator
 - `locale`: this folder is there to store [translations](https://docs.djangoproject.com/en/3.1/topics/i18n/translation/)
-- `requirements`: this folder contains all your project's requirements, the **base.txt** file contains all requirements common to your dev and prod environments, the **local.txt** file for your development environment and **production.txt** for your production environment.
+- `requirements`: this folder contains all your project's requirements, the `base.txt` file contains all requirements common to your dev and prod environments, the `local.txt` file for your development environment and `production.txt` for your production environment.
 - `ushopify` : this folder contains all your templates and statics files, it also contains a `users` app created by the cookiecutter. This app use the excellent [allauth](https://github.com/pennersr/django-allauth) package to offers your project full user management system, login, logout, reset password, change password, change email, email verification and much more. The `users` app contains a `tests` directory with test files structured like this: `test_{module}.py`. This test structure is the one defined in the `ushopify/conftest.py` file. Follow it when writing your tests or update the `conftest.py` file to match your needs. In this folder, you also have a `utils` subdirectory that contains a `context_processors.py` file. Read this short [article](https://dev.to/harveyhalwin/using-context-processor-in-django-to-create-dynamic-footer-45k4) for more information on context processors.
 - `Utility` : this folder contains some bash scripts that help you install system and project requirements, useful only if you are planning on deploying on a linux server and set up the server yourself.
 
