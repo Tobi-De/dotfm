@@ -43,9 +43,9 @@ Read on for a closer look at all the options available and why you might want to
 
 ## So what is a cookiecutter anyway ?
 
-The [cookiecutter](https://github.com/cookiecutter/cookiecutter) project was initiated by https://github.com/audreyfeldroy, the co-author of the excellent [Two Scoops of Django](https://www.feldroy.com/collections/everything/products/two-scoops-of-django-3-x).  It is a command-line utility that creates projects from cookiecutters (project templates). There are a multitude of cookiecutters for various frameworks, django, flask, etc.
+The [cookiecutter](https://github.com/cookiecutter/cookiecutter) project was initiated by [Audrey Feldroy](https://github.com/audreyfeldroy), the co-author of the excellent [Two Scoops of Django](https://www.feldroy.com/collections/everything/products/two-scoops-of-django-3-x).  It is a command-line utility that creates projects from cookiecutters (project templates). There are a multitude of cookiecutters for various frameworks, django, flask, etc.
 
-## Starting a new project using the cookiecutter-django
+## Starting a new project using cookiecutter-django
 
 The default values are in brackets, if you see a blank line, then I've used the default value by pressing the **Enter** key. Through this guide I linked many external references to other page to help you understand what I can't detail here, but do not feel obligated to follow each link each time, otherwise you might feel exhausted before the end. I suggest you read the entire article at least once, then reread it by visiting the links that you find interesting.
 
@@ -225,7 +225,7 @@ keep_local_envs_in_vcs [y]:
 ```
 
 If you typed **y** on the **use_docker** or **use_heroku** option, then your project will have a `.envs` folder with `.local` and `.production` subdirectories.
-If on the current option you type **n**, both folder will be kept out of your version control system (VCS), if you choose the default value your `.local` will be tracked by your VCS.
+If on the current option you type **n**, both folder will be kept out of your version control system (VCS), if you choose the default value your `.local will be tracked by your VCS.
 
 ```c
 debug [n]: 
