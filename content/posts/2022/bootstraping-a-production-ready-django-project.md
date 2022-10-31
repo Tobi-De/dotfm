@@ -26,9 +26,11 @@ If you are wondering what I mean by **production-ready**, here is a non-exhausti
 - pytest set up
 - etc
 
-And for convenience, **cookiecuter-django** makes it easy to install, via the initial prompt, common django packages that solve common issues such as:
-- a task queue manager (celery),
-- mail services (amazon SES, Sendgrid, etc.) etc.
+And for convenience, **cookiecuter-django** makes it easy to set up via the prompt common django packages that solve common issues such as :
+
+- Task queue manager (celery)
+- Mail services (amazon SES, Sendgrid, etc.) etc.
+- CI / CD pipeline (github, gitlab, etc)
 
 If you are already convinced at this point, just run the two commands below, and you are done 😀.
 
@@ -37,7 +39,7 @@ pip install "cookiecutter>=1.7.0"
 cookiecutter https://github.com/cookiecutter/cookiecutter-django
 ```
 
-Continue reading for a more in-depth look at all the options available and why you might want to ignore some of them.
+Read on for a closer look at all the options available and why you might want to ignore some of them to simplify the initial project generated a bit.
 
 ## So what is a cookiecutter anyway ?
 
@@ -72,7 +74,7 @@ A source code license is a legal text that tells people what they may do with th
 timezone [UTC]: US/Pacific
 ```
 
-I chose a completely random location. You can get the list of timezones [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) or open your python shell (you can use the default one, but I recommend you try [bpython](https://bpython-interpreter.org/)) and type this code:
+I chose a completely random location. You can get the list of timezones [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) or open your python shell (ever heard of [bpython](https://bpython-interpreter.org/)?) and type this code:
 
 ```python
 from pytz import all_timezones
@@ -91,7 +93,7 @@ If you are using [pycharm](https://www.jetbrains.com/pycharm/), the cookiecutter
 use_docker [n]: n
 ```
 
-Docker is an open source platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. Choosing **y**, the cookiecutter will automatically create docker and docker-compose files to help you run your project locally and even deploy it with less effort, it's a great start to help you deploy your project easily, but I think it is necessary to have a minimum of experience with docker before you choose **y**. If you want more information about docker, check [here](https://www.docker.com/).
+Docker is an open source platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure , so you can deliver software quickly. Choosing **y**, the cookiecutter will automatically create docker and docker-compose files to help you run your project locally and even deploy it with less effort, it's a great start to help you deploy your project easily, but I think it is necessary to have a minimum of experience with docker before you choose **y**. If you want more information about docker, check [here](https://www.docker.com/).
 
 ```c
 Select postgresql_version:
@@ -169,15 +171,16 @@ Add and setup [django-compressor](https://github.com/django-compressor/django-co
 
 **The official django-compressor documentation**
 
-Personally, I haven't tried it yet, but if I ever do, I'll probably write an article about it and update this section.
+Personally, I haven't tried it yet, but if I ever do, I'll probably write an article about it and update this section. 
 
 ```c	
 use_celery [n]: 
 ```
 
 [Celery](https://github.com/celery/celery) is an open source asynchronous task queue or job queue which is based on distributed message passing. While it supports scheduling, its focus is on operations in real time. That was the wikipedia definition 😅. 
-Celery is used to handle asynchronous task (background task) and scheduled task. 
-Read [[Task queues manager in django|this]] for more details on task queues manager in django.
+Celery is used to handle asynchronous tasks (background tasks) and scheduled tasks (things that should happen in the future). 
+I don't use celery that much, I find it a bit too complex for most of my use cases. 
+You can read my article on [[Handling background tasks in django]] to see how I handle this kind of stuff in my projects.
 
 ```c
 use_mailhog [n]: y
@@ -221,8 +224,8 @@ Select an option other than the default if you are planning to set up a CI/CD pi
 keep_local_envs_in_vcs [y]: 
 ```
 
-If you typed **y** on the **use_docker** or **use_heroku** option, then your project will have a **.envs** folder with **.local** and **.production** subdirectories.
-If on the current option you type **n**, both folder will be kept out of your version control system (VCS), if you choose the default value your **.local** will be tracked by your VCS.
+If you typed **y** on the **use_docker** or **use_heroku** option, then your project will have a `.envs` folder with `.local` and `.production` subdirectories.
+If on the current option you type **n**, both folder will be kept out of your version control system (VCS), if you choose the default value your `.local` will be tracked by your VCS.
 
 ```c
 debug [n]: 
@@ -291,21 +294,21 @@ Let's take a quick tour of the generated project. The generated  project should 
 
 At the root of your project should have these directories:
 
-- **config** : store all your project settings and configurations. In the **settings** subdirectory you have a **base.py** setting file for common settings, a **local.py** and a **production.py** file respectively for development and production specific settings. In the root of this directory you have your classic **url.py** (your project level urls configurations) and your **wsgi.py** file.
-- **docs** : if you need to write a documentation for your project, it is configured to use [sphinx](https://www.sphinx-doc.org/en/master/index.html) documentation generator
-- **locale**: this folder is there to store [translations](https://docs.djangoproject.com/en/3.1/topics/i18n/translation/)
-- **requirements**: this folder contains all your projects requirements, the **base.txt** file contains all requirements common to your dev and prod environments, the **local.txt** file for your development environment and **production.txt** for your production environment.
-- **ushopify**: this folder contains all your templates and statics files, it also contains a users app created by the cookiecutter. This users app use the excellent [allauth](https://github.com/pennersr/django-allauth) package to offers your project full users management system, login, logout, reset password, change password, change email, email verification and much more. The users app contains a **tests** directory with test files structured like this: **test_{module}.py**. This test structure is the one defined in the **ushopify/conftest.py** file. Follow it when writing your tests or update the **conftest.py** file to match your needs. In this folder, you also have a **utils** subdirectory that contains a **context_processors.py** file. Read this short [article](https://dev.to/harveyhalwin/using-context-processor-in-django-to-create-dynamic-footer-45k4) for more information on context processors.
-- **utility**: this folder contains some bash scripts that help  you install system and project requirements, useful only if you are planning on deploying on  a linux server and setup the server yourself.
+- `config` : store all your project settings and configurations. In the `settings` subdirectory you have a `base.py` setting file for common settings, a **local.py** and a `production.py` file respectively for development and production specific settings. In the root of this directory, you have your classic **url.py** (your project level urls configurations) and your **wsgi.py** file.
+- `docs` : if you need to write a documentation for your project, it is configured to use [sphinx](https://www.sphinx-doc.org/en/master/index.html) documentation generator
+- `locale`: this folder is there to store [translations](https://docs.djangoproject.com/en/3.1/topics/i18n/translation/)
+- `requirements`: this folder contains all your project's requirements, the **base.txt** file contains all requirements common to your dev and prod environments, the **local.txt** file for your development environment and **production.txt** for your production environment.
+- `ushopify` : this folder contains all your templates and statics files, it also contains a `users` app created by the cookiecutter. This app use the excellent [allauth](https://github.com/pennersr/django-allauth) package to offers your project full user management system, login, logout, reset password, change password, change email, email verification and much more. The `users` app contains a `tests` directory with test files structured like this: `test_{module}.py`. This test structure is the one defined in the `ushopify/conftest.py` file. Follow it when writing your tests or update the `conftest.py` file to match your needs. In this folder, you also have a `utils` subdirectory that contains a `context_processors.py` file. Read this short [article](https://dev.to/harveyhalwin/using-context-processor-in-django-to-create-dynamic-footer-45k4) for more information on context processors.
+- `Utility` : this folder contains some bash scripts that help you install system and project requirements, useful only if you are planning on deploying on a linux server and set up the server yourself.
 
-Beside those directories, you have the classic **manage.py** file to run your commands, a **Procfile** if you choose to deploy using heroku, a **pytest.ini** file because the project is configured to use [pytest](https://docs.pytest.org/en/stable/) for testing.
+Beside those directories, you have the classic `manage.py` file to run your commands, a `Procfile` if you choose to deploy using Heroku, a `pytest.ini` file because the project is configured to use [pytest](https://docs.pytest.org/en/stable/) for testing.
 
 
 ## Run your project
 
-Running your project works like for any other django project, you create a virtual environment, you install the requirements, create a database, then run your migrations, for more details read [this](https://cookiecutter-django.readthedocs.io/en/latest/developing-locally.html).
+Running your project works like for any other django project, you create a virtual environment, you install the requirements, create a database, then run your migrations.
+You can find detailed instructions [here](https://cookiecutter-django.readthedocs.io/en/latest/developing-locally.html).
 
 ---
-It was a lot to digest I know, and it can feel overwhelming the first time, but you get used to it over time. If you feel like some of the generated defaults don't work for you, want to use [poetry](https://python-poetry.org/) instead of a virtualenv, don't like the exact folder structure, etc, I encourage you to [build your own cookiecuter](https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html) or create a simpler version with the [django project template system](https://www.valentinog.com/blog/django-project/).
-If you have any comments, feel free to leave them in the comment section below and subscribe to keep up with my findings.
-I promise the next one will be less lengthy 😅.
+I know it was a lot to digest and the project generated can seem very complex the first time, but you get used to it with time. If you feel like some of the generated defaults don't work for you, want to use [poetry](https://python-poetry.org/) instead of a virtualenv, don't like the exact folder structure, etc, I encourage you to [build your own cookiecutter](https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html) or create a simpler version with the [django project template system](https://www.valentinog.com/blog/django-project/).
+If you have any comments, feel free to leave them in the comment section below and subscribe to keep up with my findings 😃.
