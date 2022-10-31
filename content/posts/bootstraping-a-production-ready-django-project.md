@@ -182,7 +182,7 @@ Select frontend_pipeline:
 Choose from 1, 2, 3 [1]:
 ```
 
-The tools suggested here are for minification, transpilation, etc. of static assets (CSS, JS, etc.). I don't use any of them, so my answer is always the default, **None**.
+The tools suggested here are for minification, transpilation, etc of static assets (CSS, JS, etc). I don't use any of them, so my answer is always the default, **None**.
 If you want to know more about these tools, check out their official documentation:
 
 -  [Gulp](https://gulpjs.com/)
