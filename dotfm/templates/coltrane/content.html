@@ -1,7 +1,7 @@
 {% extends "blog/base.html" %}
 {% load static %}
 {% load blog_tags %}
-{% load humanize%}
+{% load humanize %}
 
 {% block content %}
     <main class="px-8 mt-20">
@@ -22,7 +22,7 @@
                             <p class="mt-6 text-base text-zinc-600 dark:text-zinc-400">{{ description }}</p>
                         </header>
                         <div class="relative w-full mb-4 prose prose-invert">
-                            {{ content }}
+                            {{ content|obsidian_links }}
                             {% include "blog/_comments.html" %}
                         </div>
                     </div>

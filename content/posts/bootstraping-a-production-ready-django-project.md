@@ -8,7 +8,7 @@ tags:
  - cookiecuter
  - project-starter
 description: >
- If you have some experience with django and feel that the django django-admin startproject command is too light for you, then cookiecuter-django might be just what you are looking for. 
+ If you have some experience with django and feel that the django django-admin startproject command is too light for you, then cookiecuter-django might be just what you are looking for.
 publish_date: 2022-10-30
 upload_path: posts/2022
 ---
@@ -62,7 +62,7 @@ description [Behold My Awesome Project!]: My amazing ecommerce platform.
 author_name [Daniel Roy Greenfeld]: John Doe
 domain_name [example.com]: ushopify.com
 email [john-doe@example.com]: doe@ushopify.com
-version [0.1.0]: 
+version [0.1.0]:
 Select open_source_license:
 1 - MIT
 2 - BSD
@@ -156,30 +156,30 @@ use_async [n]:
 ```
 
 > Indicates whether the project should use web sockets with Uvicorn + Gunicorn.
- 
+
 This statement is from the [cookiecutter-django official documentation](https://cookiecutter-django.readthedocs.io/en/latest/project-generation-options.html).
 If you are not sure what it means, there is a high chance you don't need it, skip it.
-If you want to know more about websocket in django, read [this](https://dev.to/alexoleshkevich/websockets-in-django-3-1-532o). 
+If you want to know more about websocket in django, read [this](https://dev.to/alexoleshkevich/websockets-in-django-3-1-532o).
 
 ### Django rest framework
 
-```shell  
-use_drf [n]: 
+```shell
+use_drf [n]:
 ```
 
-In case you are building a json based API, then choose **y**. 
+In case you are building a json based API, then choose **y**.
 More info on Dango Rest framework [here](https://www.django-rest-framework.org/).  DRF is the go-to framework to build json-based APIs with django. What I call a json-based API here most people would call it a REST API, but [here's why](https://htmx.org/essays/how-did-rest-come-to-mean-the-opposite-of-rest/) they're wrong.
 
 ### HTML / CSS
 
 ```shell
-custom_bootstrap_compilation [n]: 
+custom_bootstrap_compilation [n]:
 ```
 
 Indicates whether the project should support Bootstrap recompilation via the selected JavaScript task runner’s task. This can be useful for real-time Bootstrap variable alteration (Official Doc description). If, like me, you are not sure that you understood, then choose the default answer.
 
 ```shell
-use_compressor [n]: 
+use_compressor [n]:
 ```
 
 Add and setup [django-compressor](https://github.com/django-compressor/django-compressor) for your project.
@@ -188,17 +188,17 @@ Add and setup [django-compressor](https://github.com/django-compressor/django-co
 
 **The official django-compressor documentation**
 
-Personally, I haven't tried it yet, but if I ever do, I'll probably write an article about it and update this section. 
+Personally, I haven't tried it yet, but if I ever do, I'll probably write an article about it and update this section.
 
 ### Celery
 
-```shell	
-use_celery [n]: 
+```shell
+use_celery [n]:
 ```
 
-[Celery](https://github.com/celery/celery) is an open source asynchronous task queue or job queue which is based on distributed message passing. While it supports scheduling, its focus is on operations in real time. That was the wikipedia definition 😅. 
-Celery is used to handle asynchronous tasks (background tasks) and scheduled tasks (things that should happen in the future). 
-I don't use celery that much, I find it a bit too complex for most of my use cases. 
+[Celery](https://github.com/celery/celery) is an open source asynchronous task queue or job queue which is based on distributed message passing. While it supports scheduling, its focus is on operations in real time. That was the wikipedia definition 😅.
+Celery is used to handle asynchronous tasks (background tasks) and scheduled tasks (things that should happen in the future).
+I don't use celery that much, I find it a bit too complex for most of my use cases.
 You can read my article on [[Handling background tasks in django]] to see how I handle this kind of stuff in my projects.
 
 ### Local email server setup
@@ -227,7 +227,7 @@ use_whitenoise [n]:
 
 ### Heroku
 
-```shell 
+```shell
 use_heroku [n]: y
 ```
 
@@ -244,7 +244,7 @@ Select ci_tool:
 2 - Travis
 3 - Gitlab
 4 - Github
-Choose from 1, 2, 3, 4 [1]: 
+Choose from 1, 2, 3, 4 [1]:
 ```
 
 Select an option other than the default if you are planning to set up a CI/CD pipeline for your project. More info on how to set up CI/CD for a django project [here](https://buddy.works/docs/quickstart/django).
@@ -252,7 +252,7 @@ Select an option other than the default if you are planning to set up a CI/CD pi
 ### Environment variables
 
 ```shell
-keep_local_envs_in_vcs [y]: 
+keep_local_envs_in_vcs [y]:
 ```
 
 If you typed **y** on the **use_docker** or **use_heroku** option, then your project will have a `.envs` folder with `.local` and `.production` subdirectories.
@@ -261,7 +261,7 @@ If on the current option you type **n**, both folder will be kept out of your ve
 ### Cookiecutter debug
 
 ```shell
-debug [n]: 
+debug [n]:
 ```
 
 This option is only for Cookiecutter Django developers only, choose the default value.

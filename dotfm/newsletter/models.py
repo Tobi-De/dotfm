@@ -5,7 +5,6 @@ from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.html import strip_tags
-from django_lifecycle import LifecycleModel
 from model_utils.fields import UrlsafeTokenField
 from model_utils.models import QueryManager, TimeStampedModel
 
