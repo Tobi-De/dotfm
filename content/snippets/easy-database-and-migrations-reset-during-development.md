@@ -6,7 +6,6 @@ tags:
  - django
  - django-migrations
  - python
- - script
 description: Remove all your django migrations files with one commmand.
 publish_date: 2022-10-30
 upload_path: snippets
