@@ -83,7 +83,7 @@ A source code license is a legal text that tells people what they may do with th
 timezone [UTC]: US/Pacific
 ```
 
-I chose a completely random location. You can get the full list of timezones [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) or open your python shell (ever heard of [bpython](https://bpython-interpreter.org/)?) and type this code:
+I chose a completely random location. You can get the [full list of timezones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) or open your python shell (ever heard of [bpython](https://bpython-interpreter.org/)?) and type this code:
 
 ```python
 from pytz import all_timezones
@@ -93,7 +93,7 @@ for tz in all_timezones:
 
 ### Editor and OS
 
-I'm on linux, so *n* for me.
+I'm on linux, so **n** for me.
 
 ```shell
 windows [n]:
@@ -332,12 +332,12 @@ tree -L 2
 
 At the root of your project should have these directories:
 
-- `config` : store all your project settings and configurations. In the `settings`subdirectory, you have a `base.py` setting file for common settings, a `local.py` and a `production.py` file respectively for development and production specific settings. In the root of this directory, you have your classic `url.py` (your project level urls configurations) and your `wsgi.py` file.
-- `docs` : if you need to write a documentation for your project, it is configured to use [sphinx](https://www.sphinx-doc.org/en/master/index.html) documentation generator
+- `config`: store all your project settings and configurations. In the `settings` subdirectory, you have a `base.py` setting file for common settings, a `local.py` and a `production.py` file respectively for development and production specific settings. In the root of this directory, you have your classic `url.py` (your project level urls configurations) and your `wsgi.py` file.
+- `docs`: if you need to write a documentation for your project, it is configured to use [sphinx](https://www.sphinx-doc.org/en/master/index.html) documentation generator
 - `locale`: this folder is there to store [translations](https://docs.djangoproject.com/en/3.1/topics/i18n/translation/)
 - `requirements`: this folder contains all your project's requirements, the `base.txt` file contains all requirements common to your dev and prod environments, the `local.txt` file for your development environment and `production.txt` for your production environment.
-- `ushopify` : this folder contains all your templates and statics files, it also contains a `users` app created by the cookiecutter. This app use the excellent [allauth](https://github.com/pennersr/django-allauth) package to offers your project full user management system, login, logout, reset password, change password, change email, email verification and much more. The `users` app contains a `tests` directory with test files structured like this: `test_{module}.py`. This test structure is the one defined in the `ushopify/conftest.py` file. Follow it when writing your tests or update the `conftest.py` file to match your needs. In this folder, you also have a `utils` subdirectory that contains a `context_processors.py` file. Read this short [article](https://dev.to/harveyhalwin/using-context-processor-in-django-to-create-dynamic-footer-45k4) for more information on context processors.
-- `Utility` : this folder contains some bash scripts that help you install system and project requirements, useful only if you are planning on deploying on a linux server and set up the server yourself.
+- `ushopify`: this folder contains all your templates and statics files, it also contains a `users` app created by the cookiecutter. This app use the excellent [allauth](https://github.com/pennersr/django-allauth) package to offers your project full user management system, login, logout, reset password, change password, change email, email verification and much more. The `users` app contains a `tests` directory with test files structured like this: `test_{module}.py`. This test structure is the one defined in the `ushopify/conftest.py` file. Follow it when writing your tests, or update the `conftest.py` file to match your needs. In this folder, you also have a `utils` subdirectory that contains a `context_processors.py` file. Read this short [article](https://dev.to/harveyhalwin/using-context-processor-in-django-to-create-dynamic-footer-45k4) for more information on context processors.
+- `Utility`: this folder contains some bash scripts that help you install system and project requirements, useful only if you are planning on deploying on a linux server and set up the server yourself.
 
 Beside those directories, you have the classic `manage.py` file to run your commands, a `Procfile` if you choose to deploy using Heroku, a `pytest.ini` file because the project is configured to use [pytest](https://docs.pytest.org/en/stable/) for testing.
 
@@ -349,4 +349,4 @@ You can find detailed instructions [here](https://cookiecutter-django.readthedoc
 
 ---
 I know it was a lot to digest and the project generated can seem very complex the first time, but you get used to it with time. If you feel like some of the generated defaults don't work for you, want to use [poetry](https://python-poetry.org/) instead of a virtualenv, don't like the exact folder structure, etc, I encourage you to [build your own cookiecutter](https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html) or create a simpler version with the [django project template system](https://www.valentinog.com/blog/django-project/).
-If you have any comments, feel free to leave them in the comment section below and subscribe to keep up with my findings 😃.
+If you have any comments, feel free to leave them in the comment section below and subscribe to keep up to date with my findings 😃.
