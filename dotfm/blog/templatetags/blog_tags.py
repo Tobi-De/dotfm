@@ -74,9 +74,10 @@ def get_content_items_with_tags():
     ]
 
 
-@register.simple_tag(name="all_unique_tags")
-def all_unique_tags() -> set[str]:
-    tags = chain(*[item.metadata.get("tags") for item in get_content_items_with_tags()])
+@register.simple_tag(name="all_unique_tags", takes_context=True)
+def all_unique_tags(context) -> set[str]:
+    # tags are only show blog posts index
+    tags = chain(*[item.get("tags") for item in get_posts(context)])
     return {tag.strip().lower() for tag in tags}
 
 
