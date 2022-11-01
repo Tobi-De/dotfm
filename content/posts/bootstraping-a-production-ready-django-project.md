@@ -6,7 +6,7 @@ slug: bootstraping-a-production-ready-django-project
 tags:
  - django
  - cookiecuter
- - project-starter
+ - project-template
 description: >
  If you have some experience with django and feel that the django django-admin startproject command is too light for you, then cookiecuter-django might be just what you are looking for. 
 publish_date: 2022-10-30
