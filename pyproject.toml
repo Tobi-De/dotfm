@@ -21,6 +21,7 @@ django-alive = "^1.2.1"
 sentry-sdk = "^1.10.1"
 django-pgclone = "^2.3.3"
 django-storages = {extras = ["boto3"], version = "^1.13.1"}
+django-dbbackup = "^4.0.2"
 
 [tool.poetry.group.dev.dependencies]
 werkzeug = "^2.2.2"
