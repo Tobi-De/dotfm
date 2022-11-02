@@ -44,7 +44,6 @@ THIRD_PARTY_APPS = [
     "django_extensions",
     "django_browser_reload",
     "coltrane",
-    "dbbackup",
     "pgclone",
 ]
 
@@ -200,15 +199,7 @@ if not DEBUG:
         environment="production",
     )
 
-    DBBACKUP_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-    DBBACKUP_STORAGE_OPTIONS = {
-        "access_key": env("DJANGO_AWS_ACCESS_KEY_ID"),
-        "secret_key": env("DJANGO_AWS_SECRET_ACCESS_KEY"),
-        "bucket_name": env("DJANGO_AWS_STORAGE_BUCKET_NAME"),
-        "default_acl": "private",
-    }
-
-    PGCLONE_STORAGE_LOCATION = f"s3://{env('DJANGO_AWS_STORAGE_BUCKET_NAME')}/"
+    PGCLONE_STORAGE_LOCATION = f"s3://{env('DJANGO_AWS_STORAGE_BUCKET_NAME')}/backups/"
     PGCLONE_S3_CONFIG = {
         "AWS_ACCESS_KEY_ID": env("DJANGO_AWS_ACCESS_KEY_ID"),
         "AWS_SECRET_ACCESS_KEY": env("DJANGO_AWS_SECRET_ACCESS_KEY"),
