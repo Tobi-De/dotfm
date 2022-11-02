@@ -15,8 +15,11 @@ WORKDIR /code
 RUN apk update \
     && apk add --virtual build-deps build-base \
     && apk add --no-cache libffi-dev libpq-dev redis \
-    && pip install --upgrade pip supervisor \
+    && pip install --upgrade pip \
+    && pip install awscliv2 \
     && python --version
+
+RUN echo 'alias aws="awsv2"' >> ~/.bashrc
 
 COPY --from=requirements-stage /tmp/requirements.txt /code/requirements.txt
 
