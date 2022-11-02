@@ -1,4 +1,4 @@
-FROM python:3.11.0rc2-bullseye as requirements-stage
+FROM python:3.11.0-bullseye as requirements-stage
 
 WORKDIR /tmp
 
@@ -8,18 +8,15 @@ COPY ./pyproject.toml ./poetry.lock* /tmp/
 
 RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 
-FROM python:3.11.0rc2-alpine3.16
+FROM python:3.11.0-alpine3.16
 
 WORKDIR /code
 
 RUN apk update \
     && apk add --virtual build-deps build-base \
-    && apk add --no-cache libffi-dev libpq-dev redis \
+    && apk add --no-cache libffi-dev libpq-dev \
     && pip install --upgrade pip \
-    && pip install awscliv2 \
     && python --version
-
-RUN echo 'alias aws="awsv2"' >> ~/.bashrc
 
 COPY --from=requirements-stage /tmp/requirements.txt /code/requirements.txt
 
