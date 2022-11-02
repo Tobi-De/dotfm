@@ -45,6 +45,7 @@ THIRD_PARTY_APPS = [
     "django_browser_reload",
     "coltrane",
     "dbbackup",
+    "pgclone",
 ]
 
 LOCAL_APPS = [
@@ -205,4 +206,11 @@ if not DEBUG:
         "secret_key": env("DJANGO_AWS_SECRET_ACCESS_KEY"),
         "bucket_name": env("DJANGO_AWS_STORAGE_BUCKET_NAME"),
         "default_acl": "private",
+    }
+
+    PGCLONE_STORAGE_LOCATION = f"s3://{env('DJANGO_AWS_STORAGE_BUCKET_NAME')}/"
+    PGCLONE_S3_CONFIG = {
+        "AWS_ACCESS_KEY_ID": env("DJANGO_AWS_ACCESS_KEY_ID"),
+        "AWS_SECRET_ACCESS_KEY": env("DJANGO_AWS_SECRET_ACCESS_KEY"),
+        "AWS_DEFAULT_REGION": env("DJANGO_AWS_S3_REGION_NAME"),
     }
