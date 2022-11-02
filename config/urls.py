@@ -6,6 +6,7 @@ from django.views.generic import TemplateView
 from dotfm.projects.views import index as projects_index
 
 urlpatterns = [
+    path("-/", include("django_alive.urls")),
     path("", TemplateView.as_view(template_name="home.html"), name="home"),
     path("projects/", projects_index, name="projects"),
     path(

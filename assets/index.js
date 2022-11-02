@@ -7,4 +7,4 @@ import mermaidAPI from 'mermaid';
 
 window.htmx = require('htmx.org');
 
-mermaidAPI.initialize({'theme': 'dark'});
+mermaidAPI.initialize({'theme': 'dark', startOnLoad: true });
