@@ -17,24 +17,39 @@
 </head>
 <body class="container mx-auto bg-zinc-900 text-zinc-50">
 <header>
-    <nav class="flex justify-center mt-4">
-        <ul class="flex gap-2 justify-center border border-0 p-1 rounded-full bg-zinc-800/90 text-zinc-200 text-sm font-medium">
-            <li><a href="{% url "home" %}"
-                   class="relative block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400">Home</a>
-            </li>
-            <li><a href="{% url "projects" %}"
-                   class="relative block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400">Projects</a>
-            </li>
-            <li><a href="{% url "coltrane:content" "posts" %}"
-                   class="relative block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400">Posts</a>
-            </li>
-            <li><a href="{% url "coltrane:content" "snippets" %}"
-                   class="relative block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400">Snippets</a>
-            </li>
-            <li><a href="{% url "colophon" %}"
-                   class="relative block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400">Colophon</a>
-            </li>
-        </ul>
+    <nav class="md:flex md:justify-center mt-4" x-data="{ isOpen: false }">
+        <div class="flex justify-end m-4 p-4 md:hidden">
+            <button
+                    type="button"
+                    class="text-zinc-200 hover:text-zinc-600 focus:outline-none border border-0 p-1 rounded-full bg-zinc-800/90"
+                    aria-label="toggle menu"
+                    @click="isOpen = !isOpen"
+            >
+                <svg viewBox="0 0 24 24" class="h-7 w-7 fill-current">
+                    <path fill-rule="evenodd"
+                          d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
+                </svg>
+            </button>
+        </div>
+        <div :class="isOpen ? 'show' : 'hidden'" class="md:block mt-4">
+            <ul class="flex justify-center flex-col md:flex-row gap-2 border border-0 p-1 border-zinc-700 mx-4 md:mx-4 divide-y divide-zinc-100/5 md:divide-none rounded-md md:rounded-full bg-zinc-800/90 text-zinc-200 text-sm font-medium">
+                <li><a href="{% url "home" %}"
+                       class="relative block px-3 py-2 transition hover:text-teal-400">Home</a>
+                </li>
+                <li><a href="{% url "projects" %}"
+                       class="relative block px-3 py-2 transition hover:text-teal-400">Projects</a>
+                </li>
+                <li><a href="{% url "coltrane:content" "posts" %}"
+                       class="relative block px-3 py-2 transition hover:text-teal-400">Posts</a>
+                </li>
+                <li><a href="{% url "coltrane:content" "snippets" %}"
+                       class="relative block px-3 py-2 transition hover:text-teal-400">Snippets</a>
+                </li>
+                <li><a href="{% url "colophon" %}"
+                       class="relative block px-3 py-2 transition hover:text-teal-400">Colophon</a>
+                </li>
+            </ul>
+        </div>
     </nav>
 </header>
 

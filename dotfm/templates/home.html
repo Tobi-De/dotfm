@@ -68,7 +68,7 @@
         </section>
         <section class="mt-16">
             <h2 class="font-bold text-2xl md:text-2xl tracking-tight mb-4 text-white text-center">Featured Posts</h2>
-            <div class="my-4 flex flex-col items-center md:items-stretch md:flex-row md:justify-center gap-5 overflow-hidden py-4 sm:gap-8">
+            <div class="my-4 mx-4 md:mx-0 flex flex-col items-center md:items-stretch md:flex-row md:justify-center gap-5 overflow-hidden py-4 sm:gap-8">
                 {% for post in posts %}
                     <a href="{% url "coltrane:content" post.slug %}"
                        class="block p-6 max-w-sm rounded-lg border shadow-md border-zinc-700 hover:bg-zinc-700">
@@ -100,7 +100,7 @@
                 Some of my recent projects, <a href="{% url "projects" %}" class="font-medium text-teal-500">view the
                 archive</a>.
             </p>
-            <div class="grid grid-cols-1 gap-8 mt-8 mx-2 md:mx-0 xl:mt-12 xl:gap-12 md:grid-cols-2 xl:grid-cols-3">
+            <div class="grid grid-cols-1 gap-8 mt-8 mx-4 md:mx-0 xl:mt-12 xl:gap-12 md:grid-cols-2 xl:grid-cols-3">
                 <div class="overflow-hidden bg-cover rounded-lg cursor-pointer h-96 group"
                      style="background-image:url('https://images.unsplash.com/photo-1621111848501-8d3634f82336?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1565&q=80')">
                     <div class="flex flex-col justify-center w-full h-full px-8 py-4 transition-opacity duration-700 opacity-0 backdrop-blur-sm bg-gray-800/60 group-hover:opacity-100">
