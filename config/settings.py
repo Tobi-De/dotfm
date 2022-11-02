@@ -199,7 +199,7 @@ if not DEBUG:
         environment="production",
     )
 
-    PGCLONE_STORAGE_LOCATION = f"s3://{env('DJANGO_AWS_STORAGE_BUCKET_NAME')}/backups/"
+    PGCLONE_STORAGE_LOCATION = f"s3://{env('DJANGO_AWS_STORAGE_BUCKET_NAME')}/"
     PGCLONE_S3_CONFIG = {
         "AWS_ACCESS_KEY_ID": env("DJANGO_AWS_ACCESS_KEY_ID"),
         "AWS_SECRET_ACCESS_KEY": env("DJANGO_AWS_SECRET_ACCESS_KEY"),
