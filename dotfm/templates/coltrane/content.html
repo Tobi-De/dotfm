@@ -23,7 +23,23 @@
                         </header>
                         <div class="relative w-full mb-4 prose prose-invert">
                             {{ content|obsidian_links }}
-                            {% include "blog/_comments.html" %}
+                            <div class="comments-container">
+                                <giscus-widget
+                                        id="comments"
+                                        repo="Tobi-De/dotfm"
+                                        repoid="R_kgDOG4i3FA"
+                                        category="Announcements"
+                                        categoryid="DIC_kwDOG4i3FM4CRn5z"
+                                        mapping="pathname"
+                                        strict="1"
+                                        reactionsenabled="1"
+                                        emitmetadata="0"
+                                        inputposition="top"
+                                        theme="dark"
+                                        lang="en"
+                                        loading="lazy"
+                                ></giscus-widget>
+                            </div>
                         </div>
                     </div>
                     {% if "posts" in request.path %}
