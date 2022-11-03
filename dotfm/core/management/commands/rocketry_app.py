@@ -8,7 +8,7 @@ app = Rocketry(config={"task_execution": "main"})
 
 @app.task("monthly")
 def backup_database():
-    subprocess.run(["python", "manage.py", "pgclone", "dump"])
+    subprocess.run(["python", "manage.py", "pgclone", "dump", "-c", "prod"])
 
 
 class Command(BaseCommand):
