@@ -29,6 +29,10 @@ module.exports = {
                 },
             },
         },
+        fontFamily: {
+            // calibri: ["Calibri", "Tahoma", "sans-serif"],
+            // twilio: ["Twilio Sans Mono"]
+        }
     },
     plugins: [
         require('@tailwindcss/forms'),
