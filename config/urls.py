@@ -15,7 +15,7 @@ urlpatterns = [
         TemplateView.as_view(template_name="colophon.html"),
         name="colophon",
     ),
-    path("blog/", include("coltrane.urls", namespace="coltrane")),
+    path("blog/", include("dotfm.blog.urls", namespace="blog")),
     path("newsletter/", include("dotfm.newsletter.urls", namespace="newsletter")),
     path(settings.ADMIN_URL, admin.site.urls),
 ]

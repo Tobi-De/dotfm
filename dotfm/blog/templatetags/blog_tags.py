@@ -102,7 +102,7 @@ def convert_obsidian_outgoing_links(content: str) -> str:
         else:
             alias = None
             title = text
-        url = reverse("coltrane:content", args=("posts/" + slugify(title),))
+        url = reverse("blog:content", args=("posts/" + slugify(title),))
         return f"<a href={url}>{alias or text}</a>"
 
     for match in result:
