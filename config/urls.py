@@ -11,11 +11,15 @@ ONE_WEEK = 60 * 60 * 24 * 7
 
 urlpatterns = [
     path("-/", include("django_alive.urls")),
-    path("", TemplateView.as_view(template_name="home.html"), name="home"),
+    path(
+        "",
+        cache_page(ONE_WEEK)(TemplateView.as_view(template_name="home.html")),
+        name="home",
+    ),
     path("projects/", cache_page(ONE_WEEK)(projects_index), name="projects"),
     path(
         "colophon/",
-        TemplateView.as_view(template_name="colophon.html"),
+        cache_page(ONE_WEEK)(TemplateView.as_view(template_name="colophon.html")),
         name="colophon",
     ),
     path("blog/", include("dotfm.blog.urls", namespace="blog")),
