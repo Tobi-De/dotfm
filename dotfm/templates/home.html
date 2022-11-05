@@ -79,7 +79,7 @@
                             </span>{{ post.publish_date|naturalday }}
                         </time>
                         <h5 class="mb-2 text-2xl font-bold tracking-tight">{{ post.title }}</h5>
-                        <p class="font-normal text-zinc-400">{{ post.description }}</p>
+                        <p class="font-normal text-zinc-400">{{ post.description|truncatewords:20 }}</p>
                         <div aria-hidden="true"
                              class="relative z-10 mt-4 flex items-center text-sm font-medium text-teal-500">
                             Read article
