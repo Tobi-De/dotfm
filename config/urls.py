@@ -1,15 +1,18 @@
 from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
+from django.views.decorators.cache import cache_page
 from django.views.generic import TemplateView
 
 from dotfm.core import views as core_views
 from dotfm.projects.views import index as projects_index
 
+ONE_WEEK = 60 * 60 * 24 * 7
+
 urlpatterns = [
     path("-/", include("django_alive.urls")),
     path("", TemplateView.as_view(template_name="home.html"), name="home"),
-    path("projects/", projects_index, name="projects"),
+    path("projects/", cache_page(ONE_WEEK)(projects_index), name="projects"),
     path(
         "colophon/",
         TemplateView.as_view(template_name="colophon.html"),

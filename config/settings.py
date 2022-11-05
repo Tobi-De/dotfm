@@ -163,7 +163,11 @@ LOGGING = {
     "root": {"level": "INFO", "handlers": ["console"]},
 }
 
-COLTRANE = {"SITE": env("COLTRANE_SITE")}
+COLTRANE = {
+    "SITE": env("COLTRANE_SITE"),
+    # fixme: the line below cause an error, due to coltrane
+    # "VIEW_CACHE": {"SECONDS": 60 * 60 * 24 * 7},  # 24 hours
+}
 
 if not DEBUG:
     CSRF_TRUSTED_ORIGINS = env.list("DJANGO_CSRF_TRUSTED_ORIGINS")
