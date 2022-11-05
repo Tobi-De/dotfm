@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block header_meta %}
+    <title>My projects</title>
+    <meta name="description" content="The projects I have worked on over the years.">
+    <meta name="keywords" content="{{ tags|join:", " }}">
+{% endblock header_meta %}
+
 
 {% block content %}
     <main class="px-8 mt-20">
