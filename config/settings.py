@@ -45,6 +45,7 @@ THIRD_PARTY_APPS = [
     "django_browser_reload",
     "coltrane",
     "pgclone",
+    "anymail",
 ]
 
 LOCAL_APPS = [
@@ -216,4 +217,13 @@ if not DEBUG:
         "AWS_ACCESS_KEY_ID": env("DJANGO_AWS_ACCESS_KEY_ID"),
         "AWS_SECRET_ACCESS_KEY": env("DJANGO_AWS_SECRET_ACCESS_KEY"),
         "AWS_DEFAULT_REGION": env("DJANGO_AWS_S3_REGION_NAME"),
+    }
+
+    EMAIL_BACKEND = "anymail.backends.amazon_ses.EmailBackend"
+    ANYMAIL = {
+        "AMAZON_SES_CLIENT_PARAMS": {
+            "aws_access_key_id": env("DJANGO_AWS_ACCESS_KEY_ID"),
+            "aws_secret_access_key": env("DJANGO_AWS_SECRET_ACCESS_KEY"),
+            "region_name": env("DJANGO_AWS_S3_REGION_NAME"),
+        },
     }
