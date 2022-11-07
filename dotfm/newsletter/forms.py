@@ -1,9 +1,6 @@
 from django import forms
 
-from .models import Subscriber
 
-
-class SubscriberForm(forms.ModelForm):
-    class Meta:
-        model = Subscriber
-        fields = ("email", "friendly_name")
+class SubscriberForm(forms.Form):
+    friendly_name = forms.CharField(max_length=255)
+    email = forms.EmailField()

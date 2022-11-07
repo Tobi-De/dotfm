@@ -20,7 +20,7 @@
     <link rel=manifest href=/site.webmanifest>
     <meta name=theme-color content=#000000>
 </head>
-<body class="container mx-auto bg-zinc-900 text-zinc-50">
+<body class="container mx-auto bg-zinc-900 text-zinc-50" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
 <header>
     <nav class="md:flex md:justify-center mt-4" x-data="{ isOpen: false, path: '{{ request.path }}'}">
         <div class="flex justify-end m-4 p-4 md:hidden">
