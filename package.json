@@ -13,9 +13,8 @@
   },
   "dependencies": {
     "alpinejs": "^3.10.5",
-    "giscus": "^1.2.0",
-    "htmx.org": "^1.8.2",
-    "mermaid": "^9.1.7"
+    "giscus": "^1.2.2",
+    "htmx.org": "^1.8.4"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
