@@ -170,6 +170,12 @@ COLTRANE = {
     # "VIEW_CACHE": {"SECONDS": 60 * 60 * 24 * 7},  # 24 hours
 }
 
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.dummy.DummyCache",
+    }
+}
+
 if not DEBUG:
     CSRF_TRUSTED_ORIGINS = env.list("DJANGO_CSRF_TRUSTED_ORIGINS")
 
@@ -226,4 +232,10 @@ if not DEBUG:
             "aws_secret_access_key": env("DJANGO_AWS_SECRET_ACCESS_KEY"),
             "region_name": env("DJANGO_AWS_S3_REGION_NAME"),
         },
+    }
+
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        }
     }
