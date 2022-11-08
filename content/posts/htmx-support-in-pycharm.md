@@ -17,7 +17,7 @@ upload_path: posts
 If you're here, I assume you already know htmx, if not I recommend you check out this excellent introduction to [htmx + django](https://www.youtube.com/watch?v=Ula0c_rZ6gk) by [BugBytes](https://www.bugbytes.io/).
 [htmx](https://htmx.org/) is my front-end tool of choice for building web applications and [pycharm from JetBrains](https://www.jetbrains.com/pycharm/) my daily code editor / IDE. By default, pycharm doesn't recognize htmx attributes when you use them in your templates, you get an ugly warning line telling you that these attributes are not allowed 🙁. You can right-click on the warning and choose the `Add <attribue_name> to custom html attribute` option, this will remove the warning and autocomplete the next time you type the same attribute and that's it. It's not particularly useful, but don't worry friend, there's a better way.
 There is a simple way to add autocompletion and documentation of htmx attributes in your JetBrains editors, and that is via [web-types](https://github.com/JetBrains/web-types#web-types). Web-types is a json based format (written in json) that provides tools like IDEs with metadata information about the content of web component libraries like htmx.
-I got this tip via this [tweet]((https://twitter.com/sponsfreixes/status/1573725414643535872), so thanks to the author for sharing.
+I got this tip via this [tweet](https://twitter.com/sponsfreixes/status/1573725414643535872), so thanks to the author for sharing.
   
 
 ## Setup
