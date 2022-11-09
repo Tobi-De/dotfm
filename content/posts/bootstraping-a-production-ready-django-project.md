@@ -26,7 +26,7 @@ If you are wondering what I mean by **production-ready**, here is a non-exhausti
 - pytest set up
 - etc
 
-And for convenience, **cookiecuter-django** makes it easy to set up via the prompt common django packages that solve common issues such as :
+And for convenience, **cookiecutter-django** makes it easy to set up via the prompt common django packages that solve common issues such as :
 
 - Task queue manager (celery)
 - Mail services (amazon SES, Sendgrid, etc.) etc.
