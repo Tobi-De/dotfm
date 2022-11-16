@@ -1,14 +1,9 @@
 import datetime as dt
 
-import dateparser
 from coltrane.feeds import ContentFeed as ColtraneContentFeed
 from coltrane.retriever import ContentItem, get_content_items
 from django.urls import reverse_lazy
 from django.utils.feedgenerator import Atom1Feed
-
-
-def _get_publish_date(item: ContentItem) -> dt.date:
-    return dateparser.parse(item.metadata["publish_date"])
 
 
 class ContentFeed(ColtraneContentFeed):
@@ -17,12 +12,12 @@ class ContentFeed(ColtraneContentFeed):
     author_email = "tobidegnon@proton.me"
 
     def item_pubdate(self, item: ContentItem) -> dt.date:
-        return _get_publish_date(item)
+        return item.metadata["publish_date"]
 
     def items(self):
         # skip index pages
         items_ = [item for item in get_content_items() if item.path.stem != "index"]
-        items_.sort(key=_get_publish_date, reverse=True)
+        items_.sort(key=lambda item: item.metadata["publish_date"], reverse=True)
         return items_
 
 
