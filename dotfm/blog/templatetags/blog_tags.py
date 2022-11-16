@@ -1,7 +1,6 @@
 import re
 from itertools import chain
 
-import dateparser
 from coltrane.renderer import StaticRequest, render_markdown
 from coltrane.retriever import get_content_items
 from coltrane.templatetags.coltrane_tags import directory_contents
@@ -32,13 +31,6 @@ def readtime_from_post(metadata: dict):
     return reading_time(context["content"])
 
 
-def parse_publish_date(metadata: dict):
-    # todo: change this later, add in coltrane maybe, parse date when calling directory_contents
-    dt = dateparser.parse(metadata["publish_date"])
-    metadata.update({"publish_date": dt})
-    return metadata
-
-
 def sort_by_publish_date(content_list: list[dict]) -> list[dict]:
     content_list.sort(key=lambda p: p.get("publish_date"), reverse=True)
     return content_list
@@ -46,8 +38,8 @@ def sort_by_publish_date(content_list: list[dict]) -> list[dict]:
 
 @register.simple_tag(name="get_posts", takes_context=True)
 def get_posts(context) -> list[dict[str, str]]:
-    posts: list[dict] = directory_contents(context=context, directory="posts")  # noqa
-    return sort_by_publish_date([parse_publish_date(post) for post in posts])
+    posts: list[dict] = directory_contents(context=context, directory="posts")
+    return sort_by_publish_date([post for post in posts])
 
 
 @register.simple_tag(name="featured_posts", takes_context=True)
@@ -59,10 +51,8 @@ def featured_posts(context) -> list[dict]:
 # todo: search for snippets table maybe
 @register.simple_tag(name="get_snippets", takes_context=True)
 def get_snippets(context) -> list[dict[str, str]]:
-    snippets: list[dict] = directory_contents(  # noqa
-        context=context, directory="snippets"
-    )
-    return sort_by_publish_date([parse_publish_date(snippet) for snippet in snippets])
+    snippets: list[dict] = directory_contents(context=context, directory="snippets")
+    return sort_by_publish_date([snippet for snippet in snippets])
 
 
 def get_content_items_with_tags():

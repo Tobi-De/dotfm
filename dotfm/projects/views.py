@@ -8,5 +8,5 @@ def index(request: HttpRequest):
     return render(
         request,
         "projects/index.html",
-        {"projects": Project.objects.filter(active=True)},
+        {"projects": Project.objects.filter(active=True).values()},
     )

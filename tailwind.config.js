@@ -8,31 +8,19 @@ module.exports = {
             typography: {
                 DEFAULT: {
                     css: {
-                        //     color: "#94a3b8",
                         a: {
                             color: '#fff',
                             '&:hover': {
                                 color: 'rgb(45 212 191)',
                             },
                         },
-                        //     "h1, h2, h3, h4, h5, h6": {
-                        //         color: "#ccd6f6"
-                        //     },
-                        // "code, strong": {
-                        //     color: "#c9d1d9"
-                        // },
                         ".codehilite": {
                             "border-radius": "0.25rem",
-                            // "font-size": "18px",
                         },
                     },
                 },
             },
         },
-        fontFamily: {
-            // calibri: ["Calibri", "Tahoma", "sans-serif"],
-            // twilio: ["Twilio Sans Mono"]
-        }
     },
     plugins: [
         require('@tailwindcss/forms'),
