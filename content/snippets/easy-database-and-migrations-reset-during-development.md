@@ -4,7 +4,6 @@ title: Easy database and migrations reset during development
 slug: easy-database-and-migrations-reset-during-development
 tags:
  - django
- - django-migrations
  - python
 description: Remove all your django migrations files with one commmand.
 publish_date: 2022-10-30
