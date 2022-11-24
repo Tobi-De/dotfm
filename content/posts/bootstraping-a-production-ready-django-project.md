@@ -4,6 +4,7 @@ featured: True
 title: Bootstraping a production-ready django project
 slug: bootstraping-a-production-ready-django-project
 tags:
+ - python
  - django
  - cookiecutter
  - project-template
