@@ -1,0 +1,67 @@
+{% extends "blog/base.html" %}
+{% load blog_tags %}
+{% load humanize %}
+
+
+{% block content %}
+    {% get_snippets as snippets %}
+    <main class="md:px-8 mt-16">
+        <div class="mx-auto max-w-7xl lg:px-8">
+            <div class="px-4 lg:px-12">
+                <div class="mx-auto max-w-2xl lg:max-w-5xl">
+                    <header class="">
+                        <h1 class="text-5xl font-bold tracking-tight">
+                            Code Snippets</h1>
+                        <p class="mt-6 text-base text-zinc-400">
+                            Most are short and handy pieces of code that I often see myself copying and pasting over and
+                            over
+                            again in my projects. If you find obsolete code or think you have a better alternative,
+                            please leave a comment
+                            below the relevant snippet.
+                        </p>
+                    </header>
+                    <div class="my-4 py-4">
+                        <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+                            <table class="w-full text-sm text-left text-zinc-400">
+                                <thead class="text-xs uppercase bg-zinc-700 text-zinc-400">
+                                <tr>
+                                    <th scope="col" class="py-3 px-6">
+                                        Name
+                                    </th>
+                                    <th scope="col" class="py-3 px-6">
+                                        Description
+                                    </th>
+                                    <th scope="col" class="py-3 px-6">
+                                        Tags
+                                    </th>
+                                    <th scope="col" class="py-3 px-6">
+                                        Last updated
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for snippet in snippets %}
+                                    <tr class="border-b border-zinc-700">
+                                        <th class="py-4 px-6 font-medium hover:text-teal-400">
+                                            <a href="{% url "blog:content" snippet.slug %}">{{ snippet.title }}</a>
+                                        </th>
+                                        <td class="py-4 px-6">
+                                            {{ snippet.description }}
+                                        </td>
+                                        <td class="py-4 px-6">
+                                            {{ snippet.tags|join:", " }}
+                                        </td>
+                                        <td class="py-4 px-6">
+                                            {{ snippet.publish_date|naturalday }}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

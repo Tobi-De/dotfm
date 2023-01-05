@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.comments-container {
+  max-height: 640px;
+  overflow-y: scroll;
+}

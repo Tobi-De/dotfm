@@ -1,0 +1,7 @@
+{
+  "name": "dotfm",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "web-types": "./htmx.web-types.json"
+}
