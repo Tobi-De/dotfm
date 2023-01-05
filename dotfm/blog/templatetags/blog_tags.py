@@ -1,7 +1,7 @@
 import re
 from itertools import chain
 
-from coltrane.renderer import StaticRequest, MarkdownRenderer
+from coltrane.renderer import StaticRequest, MistuneMarkdownRenderer
 from coltrane.retriever import get_content_items
 from coltrane.templatetags.coltrane_tags import directory_contents
 from django import template
@@ -27,8 +27,10 @@ def reading_time(value: str) -> str:
 
 @register.filter(name="readtime_from_post")
 def readtime_from_post(metadata: dict):
-    # _, context = MarkdownRenderer().render_markdown(slug=metadata.get("slug"), request=StaticRequest("/"))
-    return 10#reading_time(context["content"])
+    _, context = MistuneMarkdownRenderer().render_markdown(
+        slug=metadata.get("slug"), request=StaticRequest("/")
+    )
+    return reading_time(context["content"])
 
 
 def sort_by_publish_date(content_list: list[dict]) -> list[dict]:
