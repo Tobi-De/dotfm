@@ -10,5 +10,5 @@ urlpatterns = [
     path("", RedirectView.as_view(url="/blog/posts"), name="index"),
     path("rss.xml/", RssFeed(), name="rss_feed"),
     path("atom.xml/", AtomFeed(), name="atom_feed"),
-    re_path(r"^(?P<slug>(\w|-|\/)*)/", content, name="content"),
+    re_path(r"^(?P<slug>(\w|-|\/)*)", content, name="content"),
 ]
