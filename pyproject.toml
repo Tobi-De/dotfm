@@ -37,6 +37,7 @@ rocketry = "^2.5.1"
 coltrane = {extras = ["mistune"], version = "^0.22.0"}
 hiredis = "^2.1.0"
 redis = "^4.4.1"
+pendulum = "^2.1.2"
 
 [tool.poetry.dependencies.django-anymail]
 extras = [
