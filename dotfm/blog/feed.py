@@ -1,10 +1,11 @@
 import datetime as dt
 
+import pendulum
 from coltrane.feeds import ContentFeed as ColtraneContentFeed
-from coltrane.retriever import ContentItem, get_content_items
+from coltrane.retriever import ContentItem
+from coltrane.retriever import get_content_items
 from django.urls import reverse_lazy
 from django.utils.feedgenerator import Atom1Feed
-import pendulum
 
 
 class ContentFeed(ColtraneContentFeed):
@@ -14,7 +15,9 @@ class ContentFeed(ColtraneContentFeed):
 
     def item_pubdate(self, item: ContentItem) -> dt.datetime:
         date = item.metadata["publish_date"]
-        return pendulum.datetime(date.year, date.month, date.day, tz="Africa/Porto-Novo")
+        return pendulum.datetime(
+            date.year, date.month, date.day, tz="Africa/Porto-Novo"
+        )
 
     def items(self):
         # skip index pages
