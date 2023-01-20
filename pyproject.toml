@@ -32,18 +32,17 @@ django-alive = "^1.2.1"
 django-htmx = "^1.13.0"
 gunicorn = "^20.1.0"
 psycopg2 = "^2.9.5"
-sentry-sdk = "^1.12.1"
+sentry-sdk = "^1.13.0"
 rocketry = "^2.5.1"
-coltrane = {extras = ["mistune"], version = "^0.22.0"}
-hiredis = "^2.1.0"
-redis = "^4.4.1"
-pendulum = "^2.1.2"
+coltrane = {extras = ["mistune"], version = "^0.23.1"}
+hiredis = "^2.1.1"
+redis = "^4.4.2"
 
 [tool.poetry.dependencies.django-anymail]
 extras = [
     "amazon_ses",
 ]
-version = "^8.6"
+version = "^9.0"
 
 [tool.poetry.dependencies.whitenoise]
 extras = [
@@ -56,14 +55,14 @@ django-browser-reload = "^1.6.0"
 django-debug-toolbar = "^3.8.1"
 django-fastdev = "^1.7.3"
 ipython = "^8.8.0"
-coverage = "^6.5.0"
-pytest = "^7.2.0"
+coverage = "^7.0.5"
+pytest = "^7.2.1"
 pytest-django = "^4.5.2"
 pytest-sugar = "^0.9.6"
 pre-commit = "^2.21.0"
 pylint-django = "^2.5.3"
 bandit = "^1.7.4"
-poethepoet = "^0.16.5"
+poethepoet = "^0.18.1"
 
 [tool.poetry.group.dev.dependencies.Werkzeug]
 extras = [
