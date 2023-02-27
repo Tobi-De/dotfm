@@ -9,7 +9,8 @@ tags:
  - projectstarter 
  - cookiecutter
  - opensource
-description:
+description: >
+ A cli tool to bootstrap your django projects and enhance your development experience.
 publish_date: 2023-02-27
 upload_path: posts
 ---
