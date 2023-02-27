@@ -18,6 +18,8 @@ upload_path: posts
 Hello everyone!  
   
 I'm excited to introduce you to [fuzzy-couscous](https://github.com/Tobi-De/fuzzy-couscous), my latest project designed to enhance your django development experience with Django.  
+
+![showcase gif](https://raw.githubusercontent.com/Tobi-De/fuzzy-couscous/main/docs/assets/cuzzy_demo.gif)
   
 I've spent the last few months working on this command line tool, and I'm excited to share it with you and get your feedback.   
 The primary feature of fuzzy-couscous is to generate a django project using a project template that I've built, inspired heavily by the popular [cookiecutter-django](https://github.com/cookiecutter/cookiecutter-django)   
