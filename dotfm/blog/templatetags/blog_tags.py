@@ -41,7 +41,7 @@ def sort_by_publish_date(content_list: list[dict]) -> list[dict]:
 @register.simple_tag(name="get_posts", takes_context=True)
 def get_posts(context) -> list[dict[str, str]]:
     posts: list[dict] = directory_contents(context=context, directory="posts")
-    return sort_by_publish_date([post for post in posts])
+    return sort_by_publish_date(posts)
 
 
 @register.simple_tag(name="featured_posts", takes_context=True)
@@ -54,7 +54,7 @@ def featured_posts(context) -> list[dict]:
 @register.simple_tag(name="get_snippets", takes_context=True)
 def get_snippets(context) -> list[dict[str, str]]:
     snippets: list[dict] = directory_contents(context=context, directory="snippets")
-    return sort_by_publish_date([snippet for snippet in snippets])
+    return sort_by_publish_date(snippets)
 
 
 def get_content_items_with_tags():
@@ -94,7 +94,7 @@ def convert_obsidian_outgoing_links(content: str) -> str:
         else:
             alias = None
             title = text
-        url = reverse("blog:content", args=("posts/" + slugify(title),))
+        url = reverse("blog:content", args=(f"posts/{slugify(title)}", ))
         return f"<a href={url}>{alias or text}</a>"
 
     for match in result:
