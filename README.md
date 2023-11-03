@@ -1,5 +1,8 @@
 # dotfm
 
+> [!NOTE]
+> moved to https://github.com/tobi-de/pw
+
 Code source for my [personal website](https://oluwatobi.dev).
 
 [![fuzzy-couscous](https://img.shields.io/badge/built%20with-fuzzy--couscous-success)](https://github.com/Tobi-De/fuzzy-couscous)
